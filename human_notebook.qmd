@@ -142,7 +142,7 @@ faire tabularise avec fumeur et alcool et eau et masse ou summarise
 # Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur)
 
 ```
-
+ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soit graphique soit quand on interprete (le mieux nouvelle colonne avec bas ou haut risque conditionnel au sexe, case_when dans un smutate)
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice2}
