@@ -42,7 +42,7 @@ La description des données et les tests statistiques sont réalisés dans la Sc
 <!--% Ajoutez un chunk d'importation des données à partir de vos données remaniées dans `data/biometry.rds`. Inspirez-vous de vos projets individuels pour écrire correctement ces chunks. -->
 
 ```{r import}
-
+d
 
 ```
 
