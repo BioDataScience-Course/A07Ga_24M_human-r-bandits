@@ -48,8 +48,8 @@ biometry$intolerance_gluten <- factor(biometry$intolerance_gluten,
 
 unique(biometry$sucre)
 # Correction de quelques niveaux
-biometry$sucre[biometry$sucre == "souvent"] <- "souvent"
-biometry$sucre[biometry$sucre == "régulierement"] <- "régulièrement"
+biometry$sucre[biometry$sucre == "souveny"] <- "souvent"
+biometry$sucre[biometry$sucre == "regulierement"] <- "régulièrement"
 # Transformation en facteur ordonné
 biometry$sucre <- ordered(biometry$sucre,
   levels = c("jamais", "rarement", "régulièrement", "souvent"))
