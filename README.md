@@ -9,8 +9,8 @@ Ce projet est libre et par groupe de quatre étudiants. Il est important, car il
 -   être capable de partager équitablement le travail entre les membres du groupe
 -   être capable de poser une question de recherche
 -   réaliser des graphiques et des tableaux en lien avec la question de recherche
--   être capable de réaliser des tests d’hypothèses cohérents dans le contexte
--   pouvoir interpréter correctement des tests d’hypothèses sur le plan statistique, et puis au niveau biologique
+-   être capable de réaliser des tests d'hypothèses cohérents dans le contexte
+-   pouvoir interpréter correctement des tests d'hypothèses sur le plan statistique, et puis au niveau biologique
 -   être capable de synthétiser, discuter et conclure votre analyse dans un rapport
 
 ## Consignes
@@ -53,14 +53,14 @@ Vous avez encore du temps pour finaliser ces deux documents bloc-notes et rappor
 
 ## Ressources bibliographiques
 
-Vous avez à votre disposition une référence (chapitre du livre anthropométrie rédigé par Lebacq (2015)). Une recherche devrait vous mener à compléter ceci par une à deux autres références sous forme de publications scientifiques (pas de site web, Wikipedia ou autre littérature qui n’a pas été revue par des référés). Vous devez citer correctement ces références dans `biometry_report.Rmd` en utilisant les formatages R Markdown adéquats (référez-vous aux aide-mémoires et au bloc-notes où l'introduction est rédigée pour vous comme exemple).
+Vous avez à votre disposition une référence (chapitre du livre anthropométrie rédigé par Lebacq (2015)). Une recherche devrait vous mener à compléter ceci par une à deux autres références sous forme de publications scientifiques (pas de site web, Wikipedia ou autre littérature qui n'a pas été revue par des référés). Vous devez citer correctement ces références dans `biometry_report.Rmd` en utilisant les formatages R Markdown adéquats (référez-vous aux aide-mémoires et au bloc-notes où l'introduction est rédigée pour vous comme exemple).
 
 ## Notes importantes
 
-Le groupe tout entier est responsable de l’ensemble du travail (il s’agit donc de se répartir le travail, mais ensuite de relire la partie des autres et d’arriver à un consensus qui convienne à tout le monde). Chacun doit aussi contribuer aux différentes parties (pas un qui écrit l’introduction et un autre qui fait tous les tests statistiques, par exemple)
+Le groupe tout entier est responsable de l'ensemble du travail (il s'agit donc de se répartir le travail, mais ensuite de relire la partie des autres et d'arriver à un consensus qui convienne à tout le monde). Chacun doit aussi contribuer aux différentes parties (pas un qui écrit l'introduction et un autre qui fait tous les tests statistiques, par exemple)
 
-N’oubliez pas de cliquer sur le bouton "Rendu" pour tous vos documents et **vérifiez que vous pouvez compiler les versions finales HTML sans erreurs à la fin.** Corrigez les erreurs éventuelles rencontrées à ce stade avant de clôturer votre travail. Vérifiez également que votre dernier commit a bien été pushé sur GitHub avant la deadline.
+N'oubliez pas de cliquer sur le bouton "Rendu" pour tous vos documents et **vérifiez que vous pouvez compiler les versions finales HTML sans erreurs à la fin.** Corrigez les erreurs éventuelles rencontrées à ce stade avant de clôturer votre travail. Vérifiez également que votre dernier commit a bien été pushé sur GitHub avant la deadline.
 
 ## Référence
 
-*  Lebacq, Thérésa. 2015. "Anthropométrie (IMC, Tour de Taille Et Ratio Tour de Taille/Taille)." In *Enquête de Consommation Alimentaire 2014-2015*. Vol. 1 Bruxelles: WIV-ISP.
+-   Lebacq, Thérésa. 2015. "Anthropométrie (IMC, Tour de Taille Et Ratio Tour de Taille/Taille)." In *Enquête de Consommation Alimentaire 2014-2015*. Vol. 1 Bruxelles: WIV-ISP.
