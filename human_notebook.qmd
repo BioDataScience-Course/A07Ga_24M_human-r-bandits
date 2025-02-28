@@ -1,6 +1,6 @@
 ---
 title: "Santé humaine liée à l'obésité (bloc-notes)"
-author: "Jérome Borgniet, Arthur Ohmann, Théo Galand, Pierre Vandenberghe"
+author: "___, ___, ___, ___"
 date: "`r Sys.Date()`"
 format:
   html:
@@ -20,7 +20,7 @@ if (!"tools:tests" %in% search())
   source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
 
 # Configuration de l'environnement SciViews::R
-SciViews::R("infer", lang = "fr")
+SciViews::R(___, lang = "fr")
 ```
 
 # Introduction et but
