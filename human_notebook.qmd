@@ -56,16 +56,15 @@ biometry <- read$csv(
 
 ...Vos deux descriptions ici...
 
-```{r} description 1 étudiant 1}
-
-
+```{r description 1 étudiant 1}
+chart(data = biometry, tour_poignet ~ masse) + geom_point()
 
 
 ```      
 
 
-```{r} description 2 étudiant 1}
-
+```{r description 2 étudiant 1}
+skimr::skim(biometry)
 
 ```
 
