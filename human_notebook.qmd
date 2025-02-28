@@ -73,11 +73,17 @@ biometry <- read$csv(
 
 ...Vos deux descriptions ici...
 
-\`\`\`{r} description 1 étudiant 2}
+```{r} description 1 étudiant 2}
 
-```         
+
+
+
+```      
+
 
 ```{r} description 2 étudiant 2}
+
+
 ```
 
 ### Description par l'étudiant 3
