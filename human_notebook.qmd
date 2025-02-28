@@ -72,19 +72,16 @@ skimr::skim(biometry)
 
 ...Vos deux descriptions ici...
 
-```{r} description 1 étudiant 2}
-
-
-
-
+```{r description 1 étudiant 2}
+ chart(biometry, tour_taille ~ masse %col=% masse)+ geom_point()
 ```      
+on observe que plus les individus ont un tour de taille important plus ils ont une masse élevée et on a un nuage relativement linéaire sans trop d'extrèmes
 
-
-```{r} description 2 étudiant 2}
+```{r description 2 étudiant 2}
 
 
 ```
-
+faire tabularise avec fumeur et alcool et eau et masse ou summarise 
 ### Description par l'étudiant 3
 
 ...Vos deux descriptions ici...
