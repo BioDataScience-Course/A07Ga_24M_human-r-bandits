@@ -1,6 +1,6 @@
 # Étude de l'obésité - Importation et remaniement des données
-# Auteur : ___
-# Date : ____
+ #Auteur : Borgniet Jérôme, Ohmann Arthur, Galand Théo, Vandenberghe Pierre
+ #Date : 28/02/2025
 ###############################################################################
 
 # Packages utiles
@@ -48,7 +48,7 @@ biometry$intolerance_gluten <- factor(biometry$intolerance_gluten,
 
 unique(biometry$sucre)
 # Correction de quelques niveaux
-biometry$sucre[biometry$sucre == "souveny"] <- "souvent"
+biometry$sucre[biometry$sucre == "souvent"] <- "souvent"
 biometry$sucre[biometry$sucre == "régulierement"] <- "régulièrement"
 # Transformation en facteur ordonné
 biometry$sucre <- ordered(biometry$sucre,
@@ -70,7 +70,46 @@ biometry %>.%
     biometry
 
 # Ajout des labels et des unités
-# TODO
+biometry <- labelise(biometry,
+  label = list(
+    id    = "Identifiant",
+    date_naissance   = "Date de naissance",
+    genre = "Genre",
+    masse_std_ref = "Masse de référence de l'expérimentateur",
+    masse_std = "Masse de l'expérimentateur",
+    masse ="Masse",
+    taille = "Taille",
+    tour_poignet = "Tour de poignet",
+    tour_taille = "Tour de taille",
+    tour_hanche = "Tour de hanche",
+    date_mesure = "Date de la mesure",
+    activite_physique = "Activité physique",
+    alimentation = "Régime alimentaire",
+    alcool = "Consommation d'alcool",
+    intolerance_lactose = "Intolérance au lactose",
+    sommeil = "Sommeil",
+    intolerance_gluten = "Intolérance au gluten" , 
+    fast_food = "Fast-food" , 
+    sucre = "Consommation de sucre",
+    fumeur = "Fumeur",
+    cortisone = "Cortisone",
+    eau = "Consommation d'eau"),
+  units = list(
+    masse_std_ref   = "kg",
+    masse_std = "kg",
+    masse = "kg",
+    taille = "cm",
+    tour_poignet = "cm",
+    tour_taille = "cm",
+    tour_hanche = "cm",
+    activite_physique = "min/sem",
+    alcool = "verre/sem",
+    sommeil = "h/j",
+    fast_food = "nbr/mois" , 
+    fumeur = "nbr cigarettes/sem",
+    eau = "L/j"
+    )
+)
 
 
 # Sauvegarde local des données importantes 
