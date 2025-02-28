@@ -115,7 +115,7 @@ faire tabularise avec fumeur et alcool et eau et masse ou summarise
 <!--% Description et formule ci-dessous. -->
 
 ```{r indice1}
-# Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur)
+# Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur) 
 
 ```
 
