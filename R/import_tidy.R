@@ -1,6 +1,6 @@
 # Étude de l'obésité - Importation et remaniement des données
-# Auteur : ___
-# Date : ____
+ #Auteur : Borgniet Jérôme, Ohmann Arthur, Galand Théo, Vandenberghe Pierre
+ #Date : 28/02/2025
 ###############################################################################
 
 # Packages utiles
@@ -48,7 +48,7 @@ biometry$intolerance_gluten <- factor(biometry$intolerance_gluten,
 
 unique(biometry$sucre)
 # Correction de quelques niveaux
-biometry$sucre[biometry$sucre == "souveny"] <- "souvent"
+biometry$sucre[biometry$sucre == "souvent"] <- "souvent"
 biometry$sucre[biometry$sucre == "régulierement"] <- "régulièrement"
 # Transformation en facteur ordonné
 biometry$sucre <- ordered(biometry$sucre,
@@ -70,7 +70,7 @@ biometry %>.%
     biometry
 
 # Ajout des labels et des unités
-# TODO
+
 
 
 # Sauvegarde local des données importantes 
