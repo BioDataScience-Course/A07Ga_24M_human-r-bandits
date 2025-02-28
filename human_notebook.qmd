@@ -56,50 +56,25 @@ biometry <- read$csv(
 
 ...Vos deux descriptions ici...
 
-```{r} description 1 étudiant 1}
-
-```
-
-```{r} description 2 étudiant 1}
-
-```
-
 ### Description par l'étudiant 2
 
 ...Vos deux descriptions ici...
-
-```{r} description 1 étudiant 2}
-
-```
-
-```{r} description 2 étudiant 2}
-
-```
 
 ### Description par l'étudiant 3
 
 ...Vos deux descriptions ici...
 
-```{r} description 1 étudiant 3}
-
-```
-
-```{r} description 2 étudiant 3}
-
-```
-
 ### Description par l'étudiant 4
+```{r description1etudiant4}
+#compraison du type d'alimentation et du bmi
+chart(biometry, (date_mesure - date_naissance) ~ activite_physique) +
+ geom_point()
 
-...Vos deux descriptions ici...
-
-```{r} descrpition 1 étudiant 4}
-
-```
-
-```{r} description 2 étudiant 4}
 
 ```
+```{r}description2etudiant4}
 
+```
 ## Calcul d'indices
 
 <!--% Calculez au moins quatre indices (un par étudiant) en vous basant sur la littérature et en relation avec votre question de recherche. Décrivez chaque indice avec une formule mathématique en LaTeX. Calculez une nouvelle variable dans votre tableau pour cet indice sur base de la formule mathématique. Si cela est pertinent, définissez aussi une variable facteur qui qualifie l'état de bonne santé selon une échelle qualitative. -->
@@ -183,7 +158,12 @@ biometry <- read$csv(
 <!--% Description et formule ci-dessous. -->
 
 ```{r indice4}
-# Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur)
+# calcul de bmi et ajout de la masse_real
+biometry2 <- smutate(biometry, 
+  masse_real = masse - (masse_std_ref - masse_std),
+  bmi = masse_real/(taille/100)
+  )
+
 
 ```
 
