@@ -56,12 +56,9 @@ biometry <- read$csv(
 
 ...Vos deux descriptions ici...
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
 
-```{r} description2etudiant1}
-=======
+
+
 ```{r description 1 étudiant 1}
 chart(data = biometry, tour_poignet ~ masse) + geom_point()
 
@@ -71,26 +68,17 @@ chart(data = biometry, tour_poignet ~ masse) + geom_point()
 
 ```{r description 2 étudiant 1}
 skimr::skim(biometry)
->>>>>>> d115e23d7acb0f090c7957abf864ed073f8790f7
+
 
 ```
 
->>>>>>> 527c3555c1b0586b0eb1788ba227c4463c245bab
-### Description par l'étudiant 2
+
 
 ...Vos deux descriptions ici...
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-``` {r} description1etudiant2}
 
-```         
 
-```{r} description 2 étudiant 2}
-```
 
-=======
 ```{r description 1 étudiant 2}
  chart(biometry, tour_taille ~ masse %col=% masse)+ geom_point()
 ```      
@@ -101,15 +89,13 @@ on observe que plus les individus ont un tour de taille important plus ils ont u
 
 ```
 faire tabularise avec fumeur et alcool et eau et masse ou summarise 
->>>>>>> d115e23d7acb0f090c7957abf864ed073f8790f7
->>>>>>> 527c3555c1b0586b0eb1788ba227c4463c245bab
+
 ### Description par l'étudiant 3
 
 ...Vos deux descriptions ici...
 
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
+
+
 ```{r description1etudiant3}
 chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
   geom_point() 
@@ -119,36 +105,19 @@ chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
 chart(data = biometry, activite_physique ~ eau ) +
   geom_point()
 
-=======
-\`\`\`{r} description 1 étudiant 3}
 
-```         
-
-```{r} description 2 étudiant 3}
->>>>>>> d115e23d7acb0f090c7957abf864ed073f8790f7
-```
-
->>>>>>> 527c3555c1b0586b0eb1788ba227c4463c245bab
 ### Description par l'étudiant 4
 ```{r description1etudiant4}
 #compraison du type d'alimentation et du bmi
 chart(biometry, (date_mesure - date_naissance) ~ activite_physique) +
  geom_point()
 
-<<<<<<< HEAD
+
 
 ```
 ```{r}description2etudiant4}
 
-=======
-...Vos deux descriptions ici...
 
-\`\`\`{r} descrpition 1 étudiant 4}
-
-```         
-
-```{r} description 2 étudiant 4}
->>>>>>> 527c3555c1b0586b0eb1788ba227c4463c245bab
 ```
 ## Calcul d'indices
 
@@ -236,7 +205,7 @@ ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soi
 # calcul de bmi et ajout de la masse_real
 biometry2 <- smutate(biometry, 
   masse_real = masse - (masse_std_ref - masse_std),
-  bmi = masse_real/(taille/100)
+  bmi = masse_real/(taille/100)^2
   )
 
 
@@ -246,7 +215,9 @@ biometry2 <- smutate(biometry,
 
 ```{r plot_indice4}
 # Graphique ou tableau utilisant l'indice calculé.
-
+chart(biometry2, masse_real ~ bmi)+
+  geom_point()
+  
 ```
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
