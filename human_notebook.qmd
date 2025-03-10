@@ -118,22 +118,26 @@ chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
 chart(data = biometry, activite_physique ~ eau ) +
   geom_point()
 
+<<<<<<< HEAD
 
 ```
 # levels age -> pour créer des catégories 
 
 
+=======
+```
+>>>>>>> ca052d27ccfb18a2006d76cd3f20afde495f57a3
 ### Description par l'étudiant 4
 ```{r description1etudiant4}
 #compraison du type d'alimentation et du bmi
-chart(biometry, (date_mesure - date_naissance) ~ activite_physique) +
+chart(biometry, tour_taille ~ tour_hanche) +
  geom_point()
 
-
-
 ```
-```{r}description2etudiant4}
-
+```{r description2etudiant4}
+as.factor()
+chart(biometry, alcool ~ sommeil %fill=% alcool) +
+ geom_violin()
 
 ```
 ## Calcul d'indices
