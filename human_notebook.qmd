@@ -56,10 +56,7 @@ biometry <- read$csv(
 
 ...Vos deux descriptions ici...
 
-<<<<<<< HEAD
 
-```{r} description2etudiant1}
-=======
 ```{r description 1 étudiant 1}
 chart(data = biometry, tour_poignet ~ masse) + geom_point()
 
@@ -69,7 +66,7 @@ chart(data = biometry, tour_poignet ~ masse) + geom_point()
 
 ```{r description 2 étudiant 1}
 skimr::skim(biometry)
->>>>>>> d115e23d7acb0f090c7957abf864ed073f8790f7
+
 
 ```
 
@@ -77,15 +74,7 @@ skimr::skim(biometry)
 
 ...Vos deux descriptions ici...
 
-<<<<<<< HEAD
-``` {r} description1etudiant2}
 
-```         
-
-```{r} description 2 étudiant 2}
-```
-
-=======
 ```{r description 1 étudiant 2}
  chart(biometry, tour_taille ~ masse %col=% masse)+ geom_point()
 ```      
@@ -96,12 +85,12 @@ on observe que plus les individus ont un tour de taille important plus ils ont u
 
 ```
 faire tabularise avec fumeur et alcool et eau et masse ou summarise 
->>>>>>> d115e23d7acb0f090c7957abf864ed073f8790f7
+
 ### Description par l'étudiant 3
 
 ...Vos deux descriptions ici...
 
-<<<<<<< HEAD
+
 ```{r description1etudiant3}
 chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
   geom_point() 
@@ -111,14 +100,8 @@ chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
 chart(data = biometry, activite_physique ~ eau ) +
   geom_point()
 
-=======
-\`\`\`{r} description 1 étudiant 3}
-
-```         
-
-```{r} description 2 étudiant 3}
->>>>>>> d115e23d7acb0f090c7957abf864ed073f8790f7
 ```
+# levels age -> pour créer des catégories 
 
 ### Description par l'étudiant 4
 
