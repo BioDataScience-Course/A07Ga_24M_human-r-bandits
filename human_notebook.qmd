@@ -58,21 +58,38 @@ biometry <- read$csv(
 
 
 ```{r description 1 étudiant 1}
-chart(data = biometry, tour_poignet ~ masse) + geom_point()
+chart(data = biometry2, masse_real ~ tour_poignet | genre) + geom_point() + ylab("Masse de l'individu kg") + xlab("tout du poignet cm")
+
 
 
 ```      
-
+On observe une tendance à avoir une masse plus importante lorsque le tour de poigne est lui aussi plus grand. On observe également que les hommes ont des poignets et une masse plus large en générale.
 
 ```{r description 2 étudiant 1}
-skimr::skim(biometry)
 
+
+
+tableau_poignet <- biometry2 %>%
+  select(tour_poignet, masse_real) %>%
+  mutate(
+    categorie_tour_poignet = cut(tour_poignet, 
+                                 breaks = c(10, 12.5, 15, 17.5, 20, 22.5), 
+                                 labels = c("10-12.5", "12.5-15", "15-17.5", "17.5-20", "20-22.5"))
+  ) %>%
+  group_by(categorie_tour_poignet) %>%
+  summarise(
+    moyenne_masse_real = mean(masse_real, na.rm = TRUE),
+    nb_observations = n()
+  )
+  knitr::kable(tableau_poignet,caption = "Tableau : Moyenne de la Masse Réelle par Catégorie de Tour de Poignet", 
+        col.names = c("Catégorie Tour de Poignet (cm)", "Moyenne Masse Réelle (kg)", "Nombre d'Observations"))
 
 ```
+On observe que le poids a tendance à augmenter avec la circomféerance du poignet. On peut également noter que le nombre d'observation est bien plus grand autour de la catégorie de tour de poignet de 12.5 à 20 cm
 
-### Description par l'étudiant 2
 
 ...Vos deux descriptions ici...
+
 
 
 ```{r description 1 étudiant 2}
@@ -91,6 +108,7 @@ faire tabularise avec fumeur et alcool et eau et masse ou summarise
 ...Vos deux descriptions ici...
 
 
+
 ```{r description1etudiant3}
 chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
   geom_point() 
@@ -100,20 +118,24 @@ chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
 chart(data = biometry, activite_physique ~ eau ) +
   geom_point()
 
+
 ```
 # levels age -> pour créer des catégories 
 
+
 ### Description par l'étudiant 4
+```{r description1etudiant4}
+#compraison du type d'alimentation et du bmi
+chart(biometry, (date_mesure - date_naissance) ~ activite_physique) +
+ geom_point()
 
-...Vos deux descriptions ici...
 
-\`\`\`{r} descrpition 1 étudiant 4}
 
-```         
-
-```{r} description 2 étudiant 4}
 ```
+```{r}description2etudiant4}
 
+
+```
 ## Calcul d'indices
 
 <!--% Calculez au moins quatre indices (un par étudiant) en vous basant sur la littérature et en relation avec votre question de recherche. Décrivez chaque indice avec une formule mathématique en LaTeX. Calculez une nouvelle variable dans votre tableau pour cet indice sur base de la formule mathématique. Si cela est pertinent, définissez aussi une variable facteur qui qualifie l'état de bonne santé selon une échelle qualitative. -->
@@ -126,23 +148,24 @@ chart(data = biometry, activite_physique ~ eau ) +
 
 ```{r indice1}
 # Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur) 
-
+biometry2 <-
+  mutate( biometry2,
+    wwr = tour_taille / tour_poignet
+  )
 ```
 
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice1}
-# Graphique ou tableau utilisant l'indice calculé.
+chart(data = biometry2, masse_real ~ wwr | genre) + geom_point() + ylab("Masse de l'individu kg") + xlab("rapport taille et poignet ")
 
 ```
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   ...
+-   La relation n'est pas totalement linéaire entre le wwr et la masse réelle.
 
--   ...
-
--   ...
+-   On observe une augmentation de la masse lorsque le rapport taille/poignet augmente.
 
 ### Indice 2
 
@@ -197,7 +220,12 @@ ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soi
 <!--% Description et formule ci-dessous. -->
 
 ```{r indice4}
-# Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur)
+# calcul de bmi et ajout de la masse_real
+biometry2 <- smutate(biometry, 
+  masse_real = masse - (masse_std_ref - masse_std),
+  bmi = masse_real/(taille/100)^2
+  )
+
 
 ```
 
@@ -205,7 +233,9 @@ ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soi
 
 ```{r plot_indice4}
 # Graphique ou tableau utilisant l'indice calculé.
-
+chart(biometry2, masse_real ~ bmi)+
+  geom_point()
+  
 ```
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
@@ -227,10 +257,12 @@ ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soi
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-
+chart(data = biometry2, masse_real ~ wwr | genre) + geom_point() + ylab("Masse de l'individu kg") + xlab("rapport taille et poignet ")
 ```
 
 <!--% Hypothèse nulle et alternative -->
+
+
 
 <!--% Vérification des conditions d'application -->
 
