@@ -234,8 +234,14 @@ biometry <- smutate(biometry,
 
 ```{r plot_indice4}
 # Graphique ou tableau utilisant l'indice calculé.
+<<<<<<< HEAD
+chart(biometry, masse_corr ~ bmi %col=% bmi_cat) +
+  geom_point()+
+  labs(x="indice de masse corporel", y="masse [kg]")
+=======
 chart(biometry, masse_real ~ bmi)+
   geom_point()
+>>>>>>> 179cf3988523d84acc741caff674b83cefa6cb75
   
 ```
 
@@ -321,6 +327,10 @@ t.test(data = biometry, bmi ~ genre,
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_t_2}
+chart(data = biometry, wwr ~ bmi %col=% bmi_cat) +
+  geom_abline(slope = 1, intercept = 0) +
+  geom_point() +
+  labs(x = "indice de masse corporel", y = "rapport tout de taille et tour de hanche")
 
 ```
 
