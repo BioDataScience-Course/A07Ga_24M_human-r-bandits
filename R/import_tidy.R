@@ -93,7 +93,7 @@ label = list(
   sucre = "Consommation de sucre",
   fumeur = "Fumeur",
   cortisone = "Cortisone",
-  eau = "Consommation d'eau"),
+  eau = "Consommation d'eau")
 units = list(
   masse_std_ref   = "kg",
   masse_std = "kg",
@@ -109,7 +109,7 @@ units = list(
   fumeur = "nbr cigarettes/sem",
   eau = "L/j"
 )
-)
+
 
 
 # Sauvegarde local des données importantes 
