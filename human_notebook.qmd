@@ -53,31 +53,31 @@ biometry <- read$rds("data/biometry.rds")
 ...Vos deux descriptions ici...
 
 ```{r description 1 étudiant 1}
-chart(data = biometry, masse_corr ~ tour_poignet | genre) + geom_point() 
+chart(data = biometry, masse_corr ~ tour_taille | genre) + geom_point() 
 
 
 
 ```
 
-On observe une tendance à avoir une masse plus importante lorsque le tour de poigne est lui aussi plus grand. On observe également que les hommes ont des poignets et une masse plus large en générale.
+On observe une tendance à avoir une masse plus importante lorsque le tour de taille est lui aussi plus grand. On observe également que les hommes ont des tour de taille plus fins et une masse plus grande en générale.
 
 ```{r description 2 étudiant 1}
 
 
 tableau_poignet <- biometry %>%
-  select(tour_poignet, masse_corr) %>%
+  select(tour_taille, masse_corr) %>%
   mutate(
-    categorie_tour_poignet = cut(tour_poignet, 
-                                 breaks = c(10, 12.5, 15, 17.5, 20, 22.5), 
-                                 labels = c("10-12.5", "12.5-15", "15-17.5", "17.5-20", "20-22.5"))
+    categorie_tour_taille = cut(tour_taille, 
+                                 breaks = c(80, 90, 100, 110,120, 200), 
+                                 labels = c("80-90", "90-100", "100-110","110-120", "120 et plus"))
   ) %>%
-  group_by(categorie_tour_poignet) %>%
+  group_by(categorie_tour_taille) %>%
   summarise(
     moyenne_masse_corr = mean(masse_corr, na.rm = TRUE),
     nb_observations = n()
   )
-  knitr::kable(tableau_poignet,caption = "Tableau : Moyenne de la Masse Réelle par Catégorie de Tour de Poignet", 
-        col.names = c("Catégorie Tour de Poignet (cm)", "Moyenne Masse Réelle (kg)", "Nombre d'Observations"))
+  knitr::kable(tableau_poignet,caption = "Tableau : Moyenne de la Masse Réelle par Catégorie de Tour de Taille", 
+        col.names = c("Catégorie Tour de Taille (cm)", "Moyenne Masse Réelle (kg)", "Nombre d'Observations"))
 
 ```
 
@@ -146,14 +146,14 @@ chart(biometry, alcool ~ sommeil %fill=% alcool) +
 # Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur) 
 biometry <-
   mutate(biometry,
-    wwr = tour_taille / tour_poignet
+    rtt = tour_taille / taille
   )
 ```
 
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice1}
-chart(data = biometry, masse_corr ~ wwr | genre) + geom_point() +  xlab("rapport taille et poignet ") + ylab( "Masse de l'individu kg")
+chart(data = biometry, masse_corr ~ rtt | genre) + geom_point() +  xlab("rapport tour de taille taille ") + ylab( "Masse de l'individu kg")
 
 ```
 
