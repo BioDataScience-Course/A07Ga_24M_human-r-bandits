@@ -57,8 +57,6 @@ biometry <- read$csv(
 ...Vos deux descriptions ici...
 
 
-
-
 ```{r description 1 étudiant 1}
 chart(data = biometry, masse_real ~ tour_poignet | genre) + geom_point() + ylab("Masse de l'individu kg") + xlab("tout du poignet cm")
 
@@ -68,7 +66,9 @@ chart(data = biometry, masse_real ~ tour_poignet | genre) + geom_point() + ylab(
 On observe une tendance à avoir une masse plus importante lorsque le tour de poigne est lui aussi plus grand. On observe également que les hommes ont des poignets et une masse plus large en générale.
 
 ```{r description 2 étudiant 1}
-tableau_poignet <- biometry %>%
+
+
+tableau_poignet <- biometry2 %>%
   select(tour_poignet, masse_real) %>%
   mutate(
     categorie_tour_poignet = cut(tour_poignet, 
@@ -88,7 +88,6 @@ On observe que le poids a tendance à augmenter avec la circomféerance du poign
 
 
 ...Vos deux descriptions ici...
-
 
 
 
@@ -118,7 +117,12 @@ chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
 chart(data = biometry, activite_physique ~ eau ) +
   geom_point()
 
+
 ```
+# levels age -> pour créer des catégories 
+
+```
+
 ### Description par l'étudiant 4
 ```{r description1etudiant4}
 #compraison du type d'alimentation et du bmi
