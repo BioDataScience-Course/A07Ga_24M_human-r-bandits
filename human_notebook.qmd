@@ -42,10 +42,14 @@ La description des données et les tests statistiques sont réalisés dans la Sc
 <!--% Ajoutez un chunk d'importation des données à partir de vos données remaniées dans `data/biometry.rds`. Inspirez-vous de vos projets individuels pour écrire correctement ces chunks. -->
 
 ```{r import}
+<<<<<<< HEAD
 biometry <- read$rds("data/biometry.rds",
   cache_file = "data/cache/biometry_raw.csv",
   force = FALSE
 )
+=======
+biometry <- read$rds("data/biometry.rds")
+>>>>>>> 56c8f032261c440f31566f79ca87c70548e35b45
 
 ```
 
@@ -55,20 +59,20 @@ biometry <- read$rds("data/biometry.rds",
 
 ...Vos deux descriptions ici...
 
-
 ```{r description 1 étudiant 1}
-chart(data = biometry, masse_real ~ tour_poignet | genre) + geom_point() + ylab("Masse de l'individu kg") + xlab("tout du poignet cm")
+chart(data = biometry, masse_corr ~ tour_poignet | genre) + geom_point() 
 
 
 
-```      
+```
+
 On observe une tendance à avoir une masse plus importante lorsque le tour de poigne est lui aussi plus grand. On observe également que les hommes ont des poignets et une masse plus large en générale.
 
 ```{r description 2 étudiant 1}
 
 
-tableau_poignet <- biometry2 %>%
-  select(tour_poignet, masse_real) %>%
+tableau_poignet <- biometry %>%
+  select(tour_poignet, masse_corr) %>%
   mutate(
     categorie_tour_poignet = cut(tour_poignet, 
                                  breaks = c(10, 12.5, 15, 17.5, 20, 22.5), 
@@ -76,41 +80,44 @@ tableau_poignet <- biometry2 %>%
   ) %>%
   group_by(categorie_tour_poignet) %>%
   summarise(
-    moyenne_masse_real = mean(masse_real, na.rm = TRUE),
+    moyenne_masse_corr = mean(masse_corr, na.rm = TRUE),
     nb_observations = n()
   )
   knitr::kable(tableau_poignet,caption = "Tableau : Moyenne de la Masse Réelle par Catégorie de Tour de Poignet", 
         col.names = c("Catégorie Tour de Poignet (cm)", "Moyenne Masse Réelle (kg)", "Nombre d'Observations"))
 
 ```
-On observe que le poids a tendance à augmenter avec la circomféerance du poignet. On peut également noter que le nombre d'observation est bien plus grand autour de la catégorie de tour de poignet de 12.5 à 20 cm
 
+On observe que le poids a tendance à augmenter avec la circomféerance du poignet. On peut également noter que le nombre d'observation est bien plus grand autour de la catégorie de tour de poignet de 12.5 à 20 cm
 
 ...Vos deux descriptions ici...
 
-
-
 ```{r description 1 étudiant 2}
+<<<<<<< HEAD
  chart(biometry, tour_taille ~ masse %col=% masse)+ geom_point()
 ```      
+=======
+ chart(biometry, tour_taille ~ masse_corr %col=% masse_corr)+ geom_point()
+```
+
+>>>>>>> 56c8f032261c440f31566f79ca87c70548e35b45
 on observe que plus les individus ont un tour de taille important plus ils ont une masse élevée et on a un nuage relativement linéaire sans trop d'extrèmes
 
 ```{r description 2 étudiant 2}
 
 
 ```
-faire tabularise avec fumeur et alcool et eau et masse ou summarise 
+
+faire tabularise avec fumeur et alcool et eau et masse ou summarise
 
 ### Description par l'étudiant 3
 
 ...Vos deux descriptions ici...
 
-
-
 ```{r description1etudiant3}
 chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
   geom_point() 
-```         
+```
 
 ```{r description2etudiant3}
 chart(data = biometry, activite_physique ~ eau ) +
@@ -119,24 +126,29 @@ chart(data = biometry, activite_physique ~ eau ) +
 
 
 ```
-# levels age -> pour créer des catégories 
 
-
+# levels age -\> pour créer des catégories
 
 ### Description par l'étudiant 4
+
 ```{r description1etudiant4}
 #compraison du type d'alimentation et du bmi
 chart(biometry, tour_taille ~ tour_hanche) +
  geom_point()
 
 ```
+<<<<<<< HEAD
    On peut observer une légère corrélation entre le tour de taille et le tour de hanche. Nous pouvons donc déduire que si un individu possède un tour de taille élevé auront tendance à avoir un tour de hanche élevé aussi.
    
+=======
+
+>>>>>>> 56c8f032261c440f31566f79ca87c70548e35b45
 ```{r description2etudiant4}
 chart(biometry, ) +
  geom_violin()
 
 ```
+
 ## Calcul d'indices
 
 <!--% Calculez au moins quatre indices (un par étudiant) en vous basant sur la littérature et en relation avec votre question de recherche. Décrivez chaque indice avec une formule mathématique en LaTeX. Calculez une nouvelle variable dans votre tableau pour cet indice sur base de la formule mathématique. Si cela est pertinent, définissez aussi une variable facteur qui qualifie l'état de bonne santé selon une échelle qualitative. -->
@@ -158,7 +170,7 @@ biometry <-
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice1}
-chart(data = biometry, masse_real ~ wwr | genre) + geom_point() + ylab("Masse de l'individu kg") + xlab("rapport taille et poignet ")
+chart(data = biometry, masse_corr ~ wwr | genre) + geom_point() +  xlab("rapport taille et poignet ") + ylab( "Masse de l'individu kg")
 
 ```
 
@@ -176,8 +188,8 @@ chart(data = biometry, masse_real ~ wwr | genre) + geom_point() + ylab("Masse de
 # Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur)
 
 ```
-ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soit graphique soit quand on interprete (le mieux nouvelle colonne avec bas ou haut risque conditionnel au sexe, case_when dans un smutate)
-<!--% Graphique ou tableau utilisant l'indice calculé.-->
+
+ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soit graphique soit quand on interprete (le mieux nouvelle colonne avec bas ou haut risque conditionnel au sexe, case_when dans un smutate) <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice2}
 # Graphique ou tableau utilisant l'indice calculé.
@@ -258,15 +270,13 @@ chart(biometry, masse_real ~ bmi)+
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-chart(data = biometry, masse_real ~ wwr | genre) + 
+chart(data = biometry, masse_corr ~ wwr | genre) + 
   geom_point() + 
   ylab("Masse de l'individu kg") + 
   xlab("rapport taille et poignet ")
 ```
 
 <!--% Hypothèse nulle et alternative -->
-
-
 
 <!--% Vérification des conditions d'application -->
 
