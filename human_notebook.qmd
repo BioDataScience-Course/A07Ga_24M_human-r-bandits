@@ -42,7 +42,8 @@ La description des données et les tests statistiques sont réalisés dans la Sc
 <!--% Ajoutez un chunk d'importation des données à partir de vos données remaniées dans `data/biometry.rds`. Inspirez-vous de vos projets individuels pour écrire correctement ces chunks. -->
 
 ```{r import}
-biometry <- read$rds("data/biometry.rds",
+biometry <- read$csv(
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTTvgkHmrxPXHJ16cypzK7ooBhcSybscjBMc0obVSt1dvxlNL9rtage91lKD8Jec-3n4eX_6O-VdW7f/pub?gid=0&single=true&output=csv",
   cache_file = "data/cache/biometry_raw.csv",
   force = FALSE
 )
@@ -91,12 +92,12 @@ On observe que le poids a tendance à augmenter avec la circomféerance du poign
 
 
 ```{r description 1 étudiant 2}
- chart(biometry, tour_taille ~ masse %col=% masse)+ geom_point()
+ chart(biometry, tour_taille ~ masse_corr %col=% masse_corr)+ geom_point()
 ```      
 on observe que plus les individus ont un tour de taille important plus ils ont une masse élevée et on a un nuage relativement linéaire sans trop d'extrèmes
 
 ```{r description 2 étudiant 2}
-
+tabularise(
 
 ```
 faire tabularise avec fumeur et alcool et eau et masse ou summarise 
@@ -115,7 +116,6 @@ chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
 ```{r description2etudiant3}
 chart(data = biometry, activite_physique ~ eau ) +
   geom_point()
-
 
 
 ```
