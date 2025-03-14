@@ -42,9 +42,7 @@ La description des données et les tests statistiques sont réalisés dans la Sc
 <!--% Ajoutez un chunk d'importation des données à partir de vos données remaniées dans `data/biometry.rds`. Inspirez-vous de vos projets individuels pour écrire correctement ces chunks. -->
 
 ```{r import}
-biometry <- read$rds("data/biometry.rds",
-  cache_file = "data/cache/biometry_raw.csv",
-  force = FALSE
+biometry <- read$rds("data/biometry.rds"
 )
 
 ```
@@ -57,7 +55,7 @@ biometry <- read$rds("data/biometry.rds",
 
 
 ```{r description 1 étudiant 1}
-chart(data = biometry, masse_real ~ tour_poignet | genre) + geom_point() + ylab("Masse de l'individu kg") + xlab("tout du poignet cm")
+chart(data = biometry, masse_corr ~ tour_poignet | genre) + geom_point() 
 
 
 
@@ -67,8 +65,8 @@ On observe une tendance à avoir une masse plus importante lorsque le tour de po
 ```{r description 2 étudiant 1}
 
 
-tableau_poignet <- biometry2 %>%
-  select(tour_poignet, masse_real) %>%
+tableau_poignet <- biometry %>%
+  select(tour_poignet, masse_corr) %>%
   mutate(
     categorie_tour_poignet = cut(tour_poignet, 
                                  breaks = c(10, 12.5, 15, 17.5, 20, 22.5), 
@@ -76,7 +74,7 @@ tableau_poignet <- biometry2 %>%
   ) %>%
   group_by(categorie_tour_poignet) %>%
   summarise(
-    moyenne_masse_real = mean(masse_real, na.rm = TRUE),
+    moyenne_masse_corr = mean(masse_corr, na.rm = TRUE),
     nb_observations = n()
   )
   knitr::kable(tableau_poignet,caption = "Tableau : Moyenne de la Masse Réelle par Catégorie de Tour de Poignet", 
@@ -157,7 +155,7 @@ biometry <-
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice1}
-chart(data = biometry, masse_real ~ wwr | genre) + geom_point() + ylab("Masse de l'individu kg") + xlab("rapport taille et poignet ")
+chart(data = biometry, masse_corr ~ wwr | genre) + geom_point() +  xlab("rapport taille et poignet ") + ylab( "Masse de l'individu kg")
 
 ```
 
@@ -257,7 +255,7 @@ chart(biometry, masse_real ~ bmi)+
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-chart(data = biometry, masse_real ~ wwr | genre) + 
+chart(data = biometry, masse_corr ~ wwr | genre) + 
   geom_point() + 
   ylab("Masse de l'individu kg") + 
   xlab("rapport taille et poignet ")

@@ -70,7 +70,7 @@ biometry %>.%
     biometry
 
 # Ajout des labels et des unités
-# biometry <- labelise(biometry,
+biometry <- labelise(biometry,
 label = list(
   id    = "Identifiant",
   date_naissance   = "Date de naissance",
@@ -93,7 +93,7 @@ label = list(
   sucre = "Consommation de sucre",
   fumeur = "Fumeur",
   cortisone = "Cortisone",
-  eau = "Consommation d'eau")
+  eau = "Consommation d'eau"),
 units = list(
   masse_std_ref   = "kg",
   masse_std = "kg",
@@ -108,7 +108,7 @@ units = list(
   fast_food = "nbr/mois" , 
   fumeur = "nbr cigarettes/sem",
   eau = "L/j"
-)
+))
 
 
 
