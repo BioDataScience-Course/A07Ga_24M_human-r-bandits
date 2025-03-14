@@ -42,11 +42,7 @@ La description des données et les tests statistiques sont réalisés dans la Sc
 <!--% Ajoutez un chunk d'importation des données à partir de vos données remaniées dans `data/biometry.rds`. Inspirez-vous de vos projets individuels pour écrire correctement ces chunks. -->
 
 ```{r import}
-biometry <- read$csv(
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTTvgkHmrxPXHJ16cypzK7ooBhcSybscjBMc0obVSt1dvxlNL9rtage91lKD8Jec-3n4eX_6O-VdW7f/pub?gid=0&single=true&output=csv",
-  cache_file = "data/cache/biometry_raw.csv",
-  force = FALSE
-)
+biometry <- read$rds("data/biometry.rds")
 
 ```
 
@@ -56,13 +52,13 @@ biometry <- read$csv(
 
 ...Vos deux descriptions ici...
 
-
 ```{r description 1 étudiant 1}
 chart(data = biometry, masse_real ~ tour_poignet | genre) + geom_point() + ylab("Masse de l'individu kg") + xlab("tout du poignet cm")
 
 
 
-```      
+```
+
 On observe une tendance à avoir une masse plus importante lorsque le tour de poigne est lui aussi plus grand. On observe également que les hommes ont des poignets et une masse plus large en générale.
 
 ```{r description 2 étudiant 1}
@@ -84,34 +80,32 @@ tableau_poignet <- biometry2 %>%
         col.names = c("Catégorie Tour de Poignet (cm)", "Moyenne Masse Réelle (kg)", "Nombre d'Observations"))
 
 ```
-On observe que le poids a tendance à augmenter avec la circomféerance du poignet. On peut également noter que le nombre d'observation est bien plus grand autour de la catégorie de tour de poignet de 12.5 à 20 cm
 
+On observe que le poids a tendance à augmenter avec la circomféerance du poignet. On peut également noter que le nombre d'observation est bien plus grand autour de la catégorie de tour de poignet de 12.5 à 20 cm
 
 ...Vos deux descriptions ici...
 
-
-
 ```{r description 1 étudiant 2}
  chart(biometry, tour_taille ~ masse_corr %col=% masse_corr)+ geom_point()
-```      
+```
+
 on observe que plus les individus ont un tour de taille important plus ils ont une masse élevée et on a un nuage relativement linéaire sans trop d'extrèmes
 
 ```{r description 2 étudiant 2}
 tabularise(
 
 ```
-faire tabularise avec fumeur et alcool et eau et masse ou summarise 
+
+faire tabularise avec fumeur et alcool et eau et masse ou summarise
 
 ### Description par l'étudiant 3
 
 ...Vos deux descriptions ici...
 
-
-
 ```{r description1etudiant3}
 chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
   geom_point() 
-```         
+```
 
 ```{r description2etudiant3}
 chart(data = biometry, activite_physique ~ eau ) +
@@ -119,23 +113,25 @@ chart(data = biometry, activite_physique ~ eau ) +
 
 
 ```
-# levels age -> pour créer des catégories 
 
-
+# levels age -\> pour créer des catégories
 
 ### Description par l'étudiant 4
+
 ```{r description1etudiant4}
 #compraison du type d'alimentation et du bmi
 chart(biometry, tour_taille ~ tour_hanche) +
  geom_point()
 
 ```
+
 ```{r description2etudiant4}
 as.factor()
 chart(biometry, alcool ~ sommeil %fill=% alcool) +
  geom_violin()
 
 ```
+
 ## Calcul d'indices
 
 <!--% Calculez au moins quatre indices (un par étudiant) en vous basant sur la littérature et en relation avec votre question de recherche. Décrivez chaque indice avec une formule mathématique en LaTeX. Calculez une nouvelle variable dans votre tableau pour cet indice sur base de la formule mathématique. Si cela est pertinent, définissez aussi une variable facteur qui qualifie l'état de bonne santé selon une échelle qualitative. -->
@@ -175,8 +171,8 @@ chart(data = biometry, masse_real ~ wwr | genre) + geom_point() + ylab("Masse de
 # Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur)
 
 ```
-ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soit graphique soit quand on interprete (le mieux nouvelle colonne avec bas ou haut risque conditionnel au sexe, case_when dans un smutate)
-<!--% Graphique ou tableau utilisant l'indice calculé.-->
+
+ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soit graphique soit quand on interprete (le mieux nouvelle colonne avec bas ou haut risque conditionnel au sexe, case_when dans un smutate) <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice2}
 # Graphique ou tableau utilisant l'indice calculé.
@@ -264,8 +260,6 @@ chart(data = biometry, masse_real ~ wwr | genre) +
 ```
 
 <!--% Hypothèse nulle et alternative -->
-
-
 
 <!--% Vérification des conditions d'application -->
 
