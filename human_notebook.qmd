@@ -42,14 +42,7 @@ La description des données et les tests statistiques sont réalisés dans la Sc
 <!--% Ajoutez un chunk d'importation des données à partir de vos données remaniées dans `data/biometry.rds`. Inspirez-vous de vos projets individuels pour écrire correctement ces chunks. -->
 
 ```{r import}
-<<<<<<< HEAD
-biometry <- read$rds("data/biometry.rds",
-  cache_file = "data/cache/biometry_raw.csv",
-  force = FALSE
-)
-=======
 biometry <- read$rds("data/biometry.rds")
->>>>>>> 56c8f032261c440f31566f79ca87c70548e35b45
 
 ```
 
@@ -233,9 +226,8 @@ ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soi
 <!--% Description et formule ci-dessous. -->
 
 ```{r indice4}
-# calcul de bmi et ajout de la masse_real
+# calcul de bmi 
 biometry <- smutate(biometry, 
-  masse_real = masse - (masse_std_ref - masse_std),
   bmi = masse_real/(taille/100)^2
   )
 
@@ -246,7 +238,7 @@ biometry <- smutate(biometry,
 
 ```{r plot_indice4}
 # Graphique ou tableau utilisant l'indice calculé.
-chart(biometry, masse_real ~ bmi)+
+chart(biometry, masse_corr ~ bmi)
   geom_point()
   
 ```
