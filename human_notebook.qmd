@@ -86,14 +86,11 @@ On observe que le poids a tendance à augmenter avec la circomféerance du poign
 ...Vos deux descriptions ici...
 
 ```{r description 1 étudiant 2}
-<<<<<<< HEAD
- chart(biometry, tour_taille ~ masse %col=% masse)+ geom_point()
-```      
-=======
+
  chart(biometry, tour_taille ~ masse_corr %col=% masse_corr)+ geom_point()
 ```
 
->>>>>>> 56c8f032261c440f31566f79ca87c70548e35b45
+
 on observe que plus les individus ont un tour de taille important plus ils ont une masse élevée et on a un nuage relativement linéaire sans trop d'extrèmes
 
 ```{r description 2 étudiant 2}
@@ -130,17 +127,24 @@ chart(biometry, tour_taille ~ tour_hanche) +
  geom_point()
 
 ```
-<<<<<<< HEAD
-   On peut observer une légère corrélation entre le tour de taille et le tour de hanche. Nous pouvons donc déduire que si un individu possède un tour de taille élevé auront tendance à avoir un tour de hanche élevé aussi.
-   
-=======
 
->>>>>>> 56c8f032261c440f31566f79ca87c70548e35b45
+   On peut observer une légère corrélation entre le tour de taille et le tour de hanche. Nous pouvons donc déduire que si un individu possède un tour de taille élevé auront tendance à avoir un tour de hanche élevé aussi.
+
 ```{r description2etudiant4}
-chart(biometry, ) +
- geom_violin()
+ biometry %>.%
+  sgroup_by(., genre) %>.%
+  ssummarise(.,
+    masse_moyenne = fmean(masse_corr),
+    taille_moyenne = fmean(taille),
+    nombre_obs = fn(genre)) ->
+  biometry_tab
+  knitr::kable(biometry_tab, rows = NULL, digits = 1, 
+    col = c("Genre", "masse moyenne", "taille moyenne", "Observations"),
+    caption = "Visualisation de la différence morphologique entre les hommes et les femmes")
 
 ```
+   Ce tableau nous permet d'observer la différence morphologique entre les femmes et les hommes. On remarque que les hommes sont en moyenne plus grand et plus lourd que les femmes.
+
 
 ## Calcul d'indices
 
@@ -228,9 +232,12 @@ ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soi
 ```{r indice4}
 # calcul de bmi 
 biometry <- smutate(biometry, 
-  bmi = masse_real/(taille/100)^2
+  bmi = masse_corr/(taille/100)^2
   )
-
+biometry$bmi_cat <- cut(biometry$bmi, 
+  breaks = c(0, 18.5, 24.9, 29.9, Inf),  # Seuils standards du BMI
+  labels = c("Sous-poids", "Poids normal", "Surpoids", "Obèse"),  # Noms des classes
+  right = FALSE)
 
 ```
 
@@ -238,8 +245,8 @@ biometry <- smutate(biometry,
 
 ```{r plot_indice4}
 # Graphique ou tableau utilisant l'indice calculé.
-chart(biometry, masse_corr ~ bmi)
-  geom_point()
+chart(biometry, masse_corr ~ bmi %col=% bmi_cat)
+  geom_line()
   
 ```
 
