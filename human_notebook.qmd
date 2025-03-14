@@ -92,7 +92,7 @@ On observe que le poids a tendance à augmenter avec la circomféerance du poign
 on observe que plus les individus ont un tour de taille important plus ils ont une masse élevée et on a un nuage relativement linéaire sans trop d'extrèmes
 
 ```{r description 2 étudiant 2}
-tabularise()
+
 
 ```
 
@@ -299,6 +299,8 @@ chart(data = biometry, masse_corr ~ wwr | genre) +
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_t_1}
+chart(data = biometry,bmi ~ activite_physique ) +
+  geom_point()
 
 ```
 
@@ -307,6 +309,8 @@ chart(data = biometry, masse_corr ~ wwr | genre) +
 <!-- Vérification des conditions d'application -->
 
 ```{r test_t_1}
+t.test(data = biometry, bmi ~ genre,
+  alternative = "two.sided", conf.level = 0.95, var.equal = TRUE)
 
 ```
 
