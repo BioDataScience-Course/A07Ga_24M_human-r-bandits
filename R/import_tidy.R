@@ -118,3 +118,4 @@ write$rds(biometry_metadata, "data/biometry_metadata.rds", compress = "xz")
 
 # Élimination des objets de l'environnement global
 rm(biometry_metadata, biometry)
+
