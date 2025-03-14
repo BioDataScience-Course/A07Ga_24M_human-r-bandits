@@ -245,8 +245,9 @@ biometry$bmi_cat <- cut(biometry$bmi,
 
 ```{r plot_indice4}
 # Graphique ou tableau utilisant l'indice calculé.
-chart(biometry, masse_corr ~ bmi %col=% bmi_cat)
-  geom_line()
+chart(biometry, masse_corr ~ bmi %col=% bmi_cat) +
+  geom_point()+
+  labs(x="indice de masse corporel", y="masse [kg]")
   
 ```
 
@@ -328,6 +329,10 @@ chart(data = biometry, masse_corr ~ wwr | genre) +
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_t_2}
+chart(data = biometry, wwr ~ bmi %col=% bmi_cat) +
+  geom_abline(slope = 1, intercept = 0) +
+  geom_point() +
+  labs(x = "indice de masse corporel", y = "rapport tout de taille et tour de hanche")
 
 ```
 
