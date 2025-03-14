@@ -126,9 +126,7 @@ chart(biometry, tour_taille ~ tour_hanche) +
 ```
 
 ```{r description2etudiant4}
-as.factor()
-chart(biometry, alcool ~ sommeil %fill=% alcool) +
- geom_violin()
+#tableau par sex comparant la moyenne de taille et de poid 
 
 ```
 
@@ -226,22 +224,21 @@ biometry <- smutate(biometry,
   masse_real = masse - (masse_std_ref - masse_std),
   bmi = masse_real/(taille/100)^2
   )
-
+biometry$bmi_cat <- cut(biometry$bmi, 
+  breaks = c(0, 18.5, 24.9, 29.9, Inf),  # Seuils standards du BMI
+  labels = c("Sous-poids", "Poids normal", "Surpoids", "Obèse"),  # Noms des classes
+  right = FALSE)
 
 ```
 
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice4}
-# Graphique ou tableau utilisant l'indice calculé.
-<<<<<<< HEAD
+
+# changer en tableau  de nombe de chaque catégories par sex!?
 chart(biometry, masse_corr ~ bmi %col=% bmi_cat) +
   geom_point()+
   labs(x="indice de masse corporel", y="masse [kg]")
-=======
-chart(biometry, masse_real ~ bmi)+
-  geom_point()
->>>>>>> 179cf3988523d84acc741caff674b83cefa6cb75
   
 ```
 
@@ -323,10 +320,9 @@ chart(data = biometry, masse_corr ~ wwr | genre) +
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_t_2}
-chart(data = biometry, wwr ~ bmi %col=% bmi_cat) +
-  geom_abline(slope = 1, intercept = 0) +
+chart(data = biometry, masse_corr ~ bmi %col=% bmi_cat) +
   geom_point() +
-  labs(x = "indice de masse corporel", y = "rapport tout de taille et tour de hanche")
+  labs(x = "indice de masse corporel", y = "masse [kg]")
 
 ```
 
