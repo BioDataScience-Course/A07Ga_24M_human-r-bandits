@@ -196,6 +196,9 @@ chart(data = biometry, masse_corr ~ rth %col=% genre) + geom_point() +  xlab("ra
 
 ```{r indice3}
 # Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur)
+ biometry <- smutate(biometry,
+   IC = (tour_taille/100)/(0.109*(sqrt(masse_corr/(taille/100)))))
+
 
 ```
 
@@ -203,7 +206,15 @@ chart(data = biometry, masse_corr ~ rth %col=% genre) + geom_point() +  xlab("ra
 
 ```{r plot_indice3}
 # Graphique ou tableau utilisant l'indice calculé.
+a <- chart(biometry, alimentation ~ IC %fill=% alimentation) +
+  geom_boxplot() +
+  labs(x = "indice de conicité", y = "type d'alimentation") 
+b <- chart(biometry, IC ~ genre %fill=% genre) +
+  geom_boxplot() +
+  labs(y = "indice de conicité", x = "genre") +
+  scale_fill_viridis_d()
 
+combine_charts(list(a,b))
 ```
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
