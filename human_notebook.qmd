@@ -270,11 +270,12 @@ as.data.frame(d)
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   ...
+-   On remarque qu’en général, que cela soit chez les femmes ou les hommes, il y a plus de gens avec un poids normal ou un sur-poids.
 
--   ...
+-   Il n’est pas possible d’évaluer les tendances de l’un ou l’autre genre car l’expérience n’est pas dans un plan balancé. Nous ne pouvons pas déterminer si l’un ou l’autre genre à tendance a avoir un BMI plus élevé ou non. Nous pouvons quand même observer une certaine similarité entre les hommes et les femmes, le BMI ne tiens donc pas en compte du genre de l’individu.
 
--   ...
+-   Les personnes en sous-poids sont les moins représentées car elles sont en dessous de 10% de l’échantillion (et 6% pour les hommes)
+
 
 ## Tests d'hypothèses
 
@@ -380,7 +381,7 @@ chart(data = biometry, rtt ~ sucre) +
   stat_summary(geom = "point", fun = "mean", color = "red", size = 3, na.rm = TRUE)
 
 ```
-attention : faire sucere sexe pour module 10 et regrouper jamais rarement
+
 <!--% Hypothèse nulle et alternative -->
 
 
@@ -403,28 +404,17 @@ chart$qqplot(biometry_anova1_1)
 
 ```
 
-```{r posthoc_anova1_1}
-summary(biometry_posthoc <- confint(multcomp::glht(biometry_anova1_1,
-  linfct = multcomp::mcp(sucre = "Tukey"))))
-
-plot(biometry_posthoc)
-```
-
-le graphique quantile quantile montre que les résidus ne suivent pas une distribution normale, les conditions d'application du ANOVA n'étant donc pas remplis on fait un kurskal 
 ```{r kruskal_anova1_1}
 kruskal.test(biometry, log(rtt) ~ sucre)
 
 ```
-```{r posthocnp_anova1_1}
-
-
-
+```{r posthoc_anova1_1}
 summary(biometry_kw_comp1 <- nparcomp::nparcomp(data = biometry, log(rtt) ~ sucre))
   plot(biometry_kw_comp1)
 
 ```
 <!--% Interprétation statistique et biologique -->
-attention qu'il faut prendre en compte qu'on separera femme et homme au module 10
+
 ### ANOVA à un facteur 2
 
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
@@ -446,7 +436,7 @@ bartlett.test(data = biometry, bmi ~ alimentation)
 ```
 Nous ne rejetons pas H0 au seuil alpha de 5% donc nous confirmons l'homoscédasticité dans nos sous-groupes
 
-<<<<<<< HEAD
+
 ```{r qqplot_anova1_2}
 chart$qqplot(biometry_anova1_2, lang = "fr")
 
@@ -454,8 +444,8 @@ chart$qqplot(biometry_anova1_2, lang = "fr")
 
 ```{r test_anova1_2}
 anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
-=======
->>>>>>> 010f97b973fca2984e3e0c3ec65bf1c127db34fa
+```
+
 
 <!--% Interprétation statistique et biologique -->
 
