@@ -20,7 +20,7 @@ if (!"tools:tests" %in% search())
   source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
 
 # Configuration de l'environnement SciViews::R
-SciViews::R("infer", "model", lang = "fr")
+SciViews::R("infer","model",lang = "fr")
 ```
 
 # Introduction et but
@@ -256,23 +256,29 @@ biometry$bmi_cat <- cut(biometry$bmi,
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice4}
+<<<<<<< HEAD
+biometry %>.%
+  sgroup_by(.,genre,bmi_cat) %>.%
+=======
 # changer en tableau  de nombre de chaque catégories par genre !?
 biometry %>.%
   sgroup_by(., genre, bmi_cat) %>.%
+>>>>>>> 6626f26496b2a5b4cab5ee08a9c9799712e6496a
   ssummarise(.,
-    `Nombre d'induvidus mesurés` = fn(bmi_cat)
-  ) -> d
-  as.data.frame(d)
+  `nombre d'individus mesurés` = fn(bmi_cat)) -> d
+as.data.frame(d)
+
+
   
 ```
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   On remarque qu’en général, que cela soit chez les femmes ou les hommes, il y a plus de gens avec un poids normal ou un sur-poids.
+-   ...
 
--   Il n’est pas possible d’évaluer les tendances de l’un ou l’autre genre car l’expérience n’est pas dans un plan balancé. Nous ne pouvons pas déterminer si l’un ou l’autre genre à tendance a avoir un BMI plus élevé ou non. Nous pouvons quand même observer une certaine similarité entre les hommes et les femmes, le BMI ne tiens donc pas en compte du genre de l’individu.
+-   ...
 
--   Les personnes en sous-poids sont les moins représentées car elles sont en dessous de 10% de l’échantillion (et 6% pour les hommes)
+-   ...
 
 ## Tests d'hypothèses
 
@@ -285,10 +291,10 @@ biometry %>.%
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-chart(data = biometry, rtt ~ bmi | genre) + 
+chart(data = biometry, masse_corr ~ wwr | genre) + 
   geom_point() + 
-  ylab("rapport taille taille") + 
-  xlab("BMI")
+  ylab("Masse de l'individu kg") + 
+  xlab("rapport taille et poignet ")
 ```
 
 <!--% Hypothèse nulle et alternative -->
@@ -371,6 +377,7 @@ chart(data = biometry, masse_corr ~ bmi %col=% bmi_cat) +
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova1_1}
+biometry <- drop_na(biometry, sucre)
 chart(data = biometry, rtt ~ sucre) + 
   geom_violin(na.rm = TRUE) +
   geom_jitter(width = 0.05, alpha = 0.5, na.rm = TRUE) +
@@ -389,16 +396,14 @@ H1 : μ i  =! μ j
 <!--% Vérification des conditions d'application -->
 
 ```{r test_anova1_1}
+bartlett.test(data = biometry, rtt ~ sucre)
 
-
-bartlett.test(data = biometry, log(rtt) ~ sucre)
-
-anova(biometry_anova1_1 <- lm(data = biometry, log(rtt) ~ sucre)) |> tabularise()
+anova(biometry_anova1_1 <- lm(data = biometry, rtt ~ sucre)) |> tabularise()
 
 ```
 
 ```{r qqplot_anova1_1}
-chart$qqplot(biometry_anova1_1, lang = "fr")
+chart$qqplot(biometry_anova1_1)
 
 ```
 
@@ -426,8 +431,7 @@ chart(data = biometry, bmi ~ alimentation) +
 ```
 
 <!--% Hypothèse nulle et alternative -->
-H0: %\mu%[vg] = %\mu%[carn] == %\mu%[om] 
-H1: ∃(i,j) tel que %\mu%[i] != %\mu%[j] (avec i et j sont “carnivore”, “omnivore” ou “végétarien”)
+
 <!--% Vérification des conditions d'application -->
 
 ```{r test_anova1_2}
@@ -435,6 +439,7 @@ bartlett.test(data = biometry, bmi ~ alimentation)
 ```
 Nous ne rejetons pas H0 au seuil alpha de 5% donc nous confirmons l'homoscédasticité dans nos sous-groupes
 
+<<<<<<< HEAD
 ```{r qqplot_anova1_2}
 chart$qqplot(biometry_anova1_2, lang = "fr")
 
@@ -442,9 +447,11 @@ chart$qqplot(biometry_anova1_2, lang = "fr")
 
 ```{r test_anova1_2}
 anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
+=======
+>>>>>>> 010f97b973fca2984e3e0c3ec65bf1c127db34fa
 
-```
 <!--% Interprétation statistique et biologique -->
+
 
 <!--# Travaillez jusqu'ici pour le module 9. Commencez à rédiger la partie résultats avec la description des données. -->
 
