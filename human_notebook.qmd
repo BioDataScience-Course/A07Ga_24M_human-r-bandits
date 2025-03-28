@@ -390,7 +390,11 @@ Ho : mu
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova1_2}
-
+chart(data = biometry, bmi ~ alimentation) +
+  geom_violin() +
+  geom_jitter(width = 0.05, alpha = 0.5) +
+  stat_summary(geom = "point", fun = "mean", color = "red", size = 3) +
+  ylab("BMI")
 ```
 
 <!--% Hypothèse nulle et alternative -->
