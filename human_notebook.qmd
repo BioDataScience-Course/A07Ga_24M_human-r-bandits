@@ -375,14 +375,26 @@ chart(data = biometry, rtt ~ sucre) +
 ```
 
 <!--% Hypothèse nulle et alternative -->
-Ho : mu
+
+
+H0:μ jamais = μ rarement = μ régulièrement = μ souvent
+H1 : μ i  =! μ j  
+
+
+
 <!--% Vérification des conditions d'application -->
 
 ```{r test_anova1_1}
+bartlett.test(data = biometry, rtt ~ sucre)
 
+anova(biometry_anova1_1 <- lm(data = biometry, rtt ~ sucre)) |> tabularise()
 
 ```
 
+```{r qqplot_anova1_1}
+chart$qqplot(biometry_anova1_1)
+
+```
 <!--% Interprétation statistique et biologique -->
 
 ### ANOVA à un facteur 2
