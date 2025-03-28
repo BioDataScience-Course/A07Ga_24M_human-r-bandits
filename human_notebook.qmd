@@ -392,7 +392,7 @@ anova(biometry_anova1_1 <- lm(data = biometry, rtt ~ sucre)) |> tabularise()
 ```
 
 ```{r qqplot_anova1_1}
-chart$qqplot(biometry_anova1_1)
+chart$qqplot(biometry_anova1_1, lang = "fr")
 
 ```
 <!--% Interprétation statistique et biologique -->
