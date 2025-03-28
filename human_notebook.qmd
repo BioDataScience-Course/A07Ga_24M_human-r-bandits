@@ -256,14 +256,10 @@ biometry$bmi_cat <- cut(biometry$bmi,
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice4}
-<<<<<<< HEAD
-biometry %>.%
-  sgroup_by(.,genre,bmi_cat) %>.%
-=======
+
 # changer en tableau  de nombre de chaque catégories par genre !?
 biometry %>.%
   sgroup_by(., genre, bmi_cat) %>.%
->>>>>>> 6626f26496b2a5b4cab5ee08a9c9799712e6496a
   ssummarise(.,
   `nombre d'individus mesurés` = fn(bmi_cat)) -> d
 as.data.frame(d)
