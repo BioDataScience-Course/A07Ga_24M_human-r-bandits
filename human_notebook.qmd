@@ -435,6 +435,11 @@ bartlett.test(data = biometry, bmi ~ alimentation)
 ```
 Nous ne rejetons pas H0 au seuil alpha de 5% donc nous confirmons l'homoscédasticité dans nos sous-groupes
 
+```{r qqplot_anova1_2}
+chart$qqplot(biometry_anova1_2, lang = "fr")
+
+```
+
 ```{r test_anova1_2}
 anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
 
