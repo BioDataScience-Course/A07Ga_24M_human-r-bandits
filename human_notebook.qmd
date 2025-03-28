@@ -428,7 +428,8 @@ chart(data = biometry, bmi ~ alimentation) +
 ```
 
 <!--% Hypothèse nulle et alternative -->
-
+H0: %\mu%[vg] = %\mu%[carn] == %\mu%[om] 
+H1: ∃(i,j) tel que %\mu%[i] != %\mu%[j] (avec i et j sont “carnivore”, “omnivore” ou “végétarien”)
 <!--% Vérification des conditions d'application -->
 
 ```{r test_anova1_2}
