@@ -372,6 +372,7 @@ chart(data = biometry, masse_corr ~ bmi %col=% bmi_cat) +
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova1_1}
+biometry <- drop_na(biometry, sucre)
 chart(data = biometry, rtt ~ sucre) + 
   geom_violin(na.rm = TRUE) +
   geom_jitter(width = 0.05, alpha = 0.5, na.rm = TRUE) +
