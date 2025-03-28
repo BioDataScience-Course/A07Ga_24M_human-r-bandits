@@ -20,7 +20,7 @@ if (!"tools:tests" %in% search())
   source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
 
 # Configuration de l'environnement SciViews::R
-SciViews::R("infer", lang = "fr")
+SciViews::R("infer", "model", lang = "fr")
 ```
 
 # Introduction et but
@@ -390,14 +390,16 @@ H1 : μ i  =! μ j
 <!--% Vérification des conditions d'application -->
 
 ```{r test_anova1_1}
-bartlett.test(data = biometry, rtt ~ sucre)
 
-anova(biometry_anova1_1 <- lm(data = biometry, rtt ~ sucre)) |> tabularise()
+
+bartlett.test(data = biometry, log(rtt) ~ sucre)
+
+anova(biometry_anova1_1 <- lm(data = biometry, log(rtt) ~ sucre)) |> tabularise()
 
 ```
 
 ```{r qqplot_anova1_1}
-chart$qqplot(biometry_anova1_1)
+chart$qqplot(biometry_anova1_1, lang = "fr")
 
 ```
 <!--% Interprétation statistique et biologique -->
