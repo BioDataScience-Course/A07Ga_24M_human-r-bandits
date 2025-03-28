@@ -401,6 +401,16 @@ anova(biometry_anova1_1 <- lm(data = biometry, log(rtt) ~ sucre)) |> tabularise(
 chart$qqplot(biometry_anova1_1, lang = "fr")
 
 ```
+
+```{r kruskal_anova1_1}
+kruskal.test(biometry, log(rtt) ~ sucre)
+
+```
+```{r posthoc_anova1_1}
+summary(biometry_kw_comp1 <- nparcomp::nparcomp(data = biometry, log(rtt) ~ sucre))
+  plot(biometry_kw_comp1)
+
+```
 <!--% Interprétation statistique et biologique -->
 
 ### ANOVA à un facteur 2
