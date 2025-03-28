@@ -106,14 +106,14 @@ faire tabularise avec fumeur et alcool et eau et masse ou summarise
 chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
   geom_point() 
 ```
-
+Nous observons sur ce graphique que la consommation de sucre ne semble pas avoir d'impact concret sur le tour de poignet et le tour de taille.
 ```{r description2etudiant3}
-chart(data = biometry, activite_physique ~ eau ) +
-  geom_point()
+chart(data = biometry, ~ activite_physique ) +
+  geom_histogram(bins = 20)
 
 
 ```
-
+On observe que dans notre échantillon l'activité physique est décrite selon une distribution bimodale et qu'une grande partie des individus ne fais pas de sport
 # levels age -\> pour créer des catégories
 
 ### Description par l'étudiant 4
@@ -124,7 +124,8 @@ chart(biometry, masse_corr ~ alimentation) +
  geom_boxplot(na.rm = TRUE)
 
 ```
-  On observe très peu de différence de masse entre les personnes ayant un régime carnivore et omnivore. Cependant, les végétarien ont une moyenne beaucoup plus faible. Mais est-ce que cela influence vraiment leur BMI ?
+
+On observe très peu de différence de masse entre les personnes ayant un régime carnivore et omnivore. Cependant, les végétarien ont une moyenne beaucoup plus faible. Mais est-ce que cela influence vraiment leur BMI ?
 
 ```{r description2etudiant4}
 #tableau par sex comparant la moyenne de taille et de poid 
@@ -138,7 +139,8 @@ biometry %>%
   as.data.frame(c)
 
 ```
-  On observe la différence entre dans le poids et la taille moyenne des Hommes et des Femmes. Les hommes sont en général plus grand et plus massifs que les femmes. On pourrait alors se demander si cela influence le BMI.
+
+On observe la différence entre dans le poids et la taille moyenne des Hommes et des Femmes. Les hommes sont en général plus grand et plus massifs que les femmes. On pourrait alors se demander si cela influence le BMI.
 
 ## Calcul d'indices
 
@@ -219,21 +221,21 @@ chart(data = biometry, masse_corr ~ rth %col=% genre) + geom_point() +  xlab("ra
 a <- chart(biometry, alimentation ~ IC %fill=% alimentation) +
   geom_boxplot() +
   labs(x = "indice de conicité", y = "type d'alimentation") 
-b <- chart(biometry, IC ~ genre %fill=% genre) +
+b <- chart(biometry, genre ~ IC %fill=% genre) +
   geom_boxplot() +
-  labs(y = "indice de conicité", x = "genre") +
+  labs(y = "genre", x = "indice de conicité") +
   scale_fill_viridis_d()
 
-combine_charts(list(a,b))
+combine_charts(list(a,b), ncol = 1, nrow = 2)
 ```
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   ...
+-   L'indice de conicité semble décrire relativement bien l'obésité chez les individus, en effet il semble être influencé par le régime alimentaire et pas par le genre. 
 
--   ...
+-   On peut observer que la moyenne de cet indice est plus basse chez les végétariens même si il faut rester critique car nous avons mesurer peu d'individus de cette catégorie. 
 
--   ...
+-   De manière générale on peut observer que l'indice prend des valeurs plus écartées pour les femmes que pour les hommes, en effet on observe des quartiles beaucoup plus important malgré une moyenne similaire entre les 2 groupes
 
 ### Indice 4
 
@@ -370,14 +372,19 @@ chart(data = biometry, masse_corr ~ bmi %col=% bmi_cat) +
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova1_1}
+chart(data = biometry, rtt ~ sucre) + 
+  geom_violin(na.rm = TRUE) +
+  geom_jitter(width = 0.05, alpha = 0.5, na.rm = TRUE) +
+  stat_summary(geom = "point", fun = "mean", color = "red", size = 3, na.rm = TRUE)
 
 ```
 
 <!--% Hypothèse nulle et alternative -->
-
+Ho : mu
 <!--% Vérification des conditions d'application -->
 
 ```{r test_anova1_1}
+
 
 ```
 
