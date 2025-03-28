@@ -380,7 +380,7 @@ chart(data = biometry, rtt ~ sucre) +
   stat_summary(geom = "point", fun = "mean", color = "red", size = 3, na.rm = TRUE)
 
 ```
-
+attention : faire sucere sexe pour module 10 et regrouper jamais rarement
 <!--% Hypothèse nulle et alternative -->
 
 
@@ -403,17 +403,28 @@ chart$qqplot(biometry_anova1_1)
 
 ```
 
+```{r posthoc_anova1_1}
+summary(biometry_posthoc <- confint(multcomp::glht(biometry_anova1_1,
+  linfct = multcomp::mcp(sucre = "Tukey"))))
+
+plot(biometry_posthoc)
+```
+
+le graphique quantile quantile montre que les résidus ne suivent pas une distribution normale, les conditions d'application du ANOVA n'étant donc pas remplis on fait un kurskal 
 ```{r kruskal_anova1_1}
 kruskal.test(biometry, log(rtt) ~ sucre)
 
 ```
-```{r posthoc_anova1_1}
+```{r posthocnp_anova1_1}
+
+
+
 summary(biometry_kw_comp1 <- nparcomp::nparcomp(data = biometry, log(rtt) ~ sucre))
   plot(biometry_kw_comp1)
 
 ```
 <!--% Interprétation statistique et biologique -->
-
+attention qu'il faut prendre en compte qu'on separera femme et homme au module 10
 ### ANOVA à un facteur 2
 
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
