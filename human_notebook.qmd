@@ -120,13 +120,21 @@ chart(data = biometry, activite_physique ~ eau ) +
 
 ```{r description1etudiant4}
 #compraison du type d'alimentation et du bmi
-chart(biometry, tour_taille ~ tour_hanche) +
+chart(biometry, alimentation ~ bmi) +
  geom_point()
 
 ```
 
 ```{r description2etudiant4}
 #tableau par sex comparant la moyenne de taille et de poid 
+biometry %<.%
+  sselect(., sex, taille, masse)
+  sgroup_by(., sex) %<.%
+  smutate(., 
+    taille_moy = fmean(taille),
+    poid_moy = fmean(masse_corr),
+    nbr = fn(sex)) -> c
+tabularise(c)
 
 ```
 
