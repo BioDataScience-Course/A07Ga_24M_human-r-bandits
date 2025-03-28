@@ -256,8 +256,14 @@ biometry$bmi_cat <- cut(biometry$bmi,
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice4}
+<<<<<<< HEAD
 biometry %>.%
   sgroup_by(.,genre,bmi_cat) %>.%
+=======
+# changer en tableau  de nombre de chaque catégories par genre !?
+biometry %>.%
+  sgroup_by(., genre, bmi_cat) %>.%
+>>>>>>> 6626f26496b2a5b4cab5ee08a9c9799712e6496a
   ssummarise(.,
   `nombre d'individus mesurés` = fn(bmi_cat)) -> d
 as.data.frame(d)
@@ -371,6 +377,7 @@ chart(data = biometry, masse_corr ~ bmi %col=% bmi_cat) +
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova1_1}
+biometry <- drop_na(biometry, sucre)
 chart(data = biometry, rtt ~ sucre) + 
   geom_violin(na.rm = TRUE) +
   geom_jitter(width = 0.05, alpha = 0.5, na.rm = TRUE) +
@@ -397,6 +404,16 @@ anova(biometry_anova1_1 <- lm(data = biometry, rtt ~ sucre)) |> tabularise()
 
 ```{r qqplot_anova1_1}
 chart$qqplot(biometry_anova1_1)
+
+```
+
+```{r kruskal_anova1_1}
+kruskal.test(biometry, log(rtt) ~ sucre)
+
+```
+```{r posthoc_anova1_1}
+summary(biometry_kw_comp1 <- nparcomp::nparcomp(data = biometry, log(rtt) ~ sucre))
+  plot(biometry_kw_comp1)
 
 ```
 <!--% Interprétation statistique et biologique -->
