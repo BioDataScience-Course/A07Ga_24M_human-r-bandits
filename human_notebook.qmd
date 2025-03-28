@@ -106,14 +106,14 @@ faire tabularise avec fumeur et alcool et eau et masse ou summarise
 chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
   geom_point() 
 ```
-
+Nous observons sur ce graphique que la consommation de sucre ne semble pas avoir d'impact concret sur le tour de poignet et le tour de taille.
 ```{r description2etudiant3}
-chart(data = biometry, activite_physique ~ eau ) +
-  geom_point()
+chart(data = biometry, ~ activite_physique ) +
+  geom_histogram(bins = 20)
 
 
 ```
-
+On observe que dans notre échantillon l'activité physique est décrite selon une distribution bimodale et qu'une grande partie des individus ne fais pas de sport
 # levels age -\> pour créer des catégories
 
 ### Description par l'étudiant 4
@@ -124,13 +124,14 @@ chart(biometry, masse_corr ~ alimentation) +
  geom_boxplot(na.rm = TRUE)
 
 ```
-  On observe très peu de différence de masse entre les personnes ayant un régime carnivore et omnivore. Cependant, les végétarien ont une moyenne beaucoup plus faible. Mais est-ce que cela influence vraiment leur BMI ?
+
+On observe très peu de différence de masse entre les personnes ayant un régime carnivore et omnivore. Cependant, les végétarien ont une moyenne beaucoup plus faible. Mais est-ce que cela influence vraiment leur BMI ?
 
 ```{r description2etudiant4}
 #tableau par sex comparant la moyenne de taille et de poid 
 biometry %>%
   group_by(., genre) %>%  
-  summarise(
+  summarise(.,
     `Taille Moyenne` = mean(taille, na.rm = TRUE),
     `Masse Moyenne` = mean(masse_corr, na.rm = TRUE),
     `Nombres Mesurés` = n()
@@ -138,7 +139,8 @@ biometry %>%
   as.data.frame(c)
 
 ```
-  On observe la différence entre dans le poids et la taille moyenne des Hommes et des Femmes. Les hommes sont en général plus grand et plus massifs que les femmes. On pourrait alors se demander si cela influence le BMI.
+
+On observe la différence entre dans le poids et la taille moyenne des Hommes et des Femmes. Les hommes sont en général plus grand et plus massifs que les femmes. On pourrait alors se demander si cela influence le BMI.
 
 ## Calcul d'indices
 
@@ -229,11 +231,11 @@ combine_charts(list(a,b), ncol = 1, nrow = 2)
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   ...
+-   L'indice de conicité semble décrire relativement bien l'obésité chez les individus, en effet il semble être influencé par le régime alimentaire et pas par le genre. 
 
--   ...
+-   On peut observer que la moyenne de cet indice est plus basse chez les végétariens même si il faut rester critique car nous avons mesurer peu d'individus de cette catégorie. 
 
--   ...
+-   De manière générale on peut observer que l'indice prend des valeurs plus écartées pour les femmes que pour les hommes, en effet on observe des quartiles beaucoup plus important malgré une moyenne similaire entre les 2 groupes
 
 ### Indice 4
 
@@ -256,17 +258,22 @@ biometry$bmi_cat <- cut(biometry$bmi,
 ```{r plot_indice4}
 
 # changer en tableau  de nombre de chaque catégories par genre !?
-
+biometry %>%
+  sgroup_by(., genre, bmi_cat) %>%
+  ssummarise(.,
+    `Nombre d'induvidus mesurés` = fn(bmi_cat)
+  ) -> d
+  as.data.frame(d)
   
 ```
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   ...
+-   On remarque qu'en général, que cela soit chez les femmes ou les hommes, il y a plus de gens avec un poids normal ou un sur-poids. 
 
--   ...
+-   Il n'est pas possible d'évaluer les tendances de l'un ou l'autre genre car l'expérience n'est pas dans un plan balancé. Nous ne pouvons pas déterminer si l'un ou l'autre genre à tendance a avoir un BMI plus élevé ou non. Nous pouvons quand même observer une certaine similarité entre les hommes et les femmes, le BMI ne tiens donc pas en compte du genre de l'individu.
 
--   ...
+-   Les personnes en sous-poids sont les moins représentées car elles sont en dessous de 10% de l'échantillion (et 6% pour les hommes)
 
 ## Tests d'hypothèses
 
@@ -279,10 +286,10 @@ biometry$bmi_cat <- cut(biometry$bmi,
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-chart(data = biometry, masse_corr ~ wwr | genre) + 
+chart(data = biometry, rtt ~ bmi | genre) + 
   geom_point() + 
-  ylab("Masse de l'individu kg") + 
-  xlab("rapport taille et poignet ")
+  ylab("rapport taille taille") + 
+  xlab("BMI")
 ```
 
 <!--% Hypothèse nulle et alternative -->
@@ -381,6 +388,7 @@ H1 : μ i  =! μ j
 
 ```{r test_anova1_1}
 
+
 ```
 
 <!--% Interprétation statistique et biologique -->
@@ -391,14 +399,19 @@ H1 : μ i  =! μ j
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova1_2}
+#bmi + variable à facteur > 3
+
 
 ```
 
 <!--% Hypothèse nulle et alternative -->
-
+H0: $\mu$[vg] = $\mu$[carn] == $\mu$[om]
+H1: ∃(i,j) tel que $\mu$[i] != $\mu$[j] (avec i et j sont "carnivore", "omnivore" ou "végétarien")
 <!--% Vérification des conditions d'application -->
 
+
 ```{r test_anova1_2}
+anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
 
 ```
 
@@ -429,6 +442,7 @@ H1 : μ i  =! μ j
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova2_2}
+
 
 ```
 
