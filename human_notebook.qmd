@@ -106,14 +106,14 @@ faire tabularise avec fumeur et alcool et eau et masse ou summarise
 chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
   geom_point() 
 ```
-
+Nous observons sur ce graphique que la consommation de sucre ne semble pas avoir d'impact concret sur le tour de poignet et le tour de taille.
 ```{r description2etudiant3}
-chart(data = biometry, activite_physique ~ eau ) +
-  geom_point()
+chart(data = biometry, ~ activite_physique ) +
+  geom_histogram(bins = 20)
 
 
 ```
-
+On observe que dans notre échantillon l'activité physique est décrite selon une distribution bimodale et qu'une grande partie des individus ne fais pas de sport
 # levels age -\> pour créer des catégories
 
 ### Description par l'étudiant 4
@@ -229,11 +229,11 @@ combine_charts(list(a,b), ncol = 1, nrow = 2)
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   ...
+-   L'indice de conicité semble décrire relativement bien l'obésité chez les individus, en effet il semble être influencé par le régime alimentaire et pas par le genre. 
 
--   ...
+-   On peut observer que la moyenne de cet indice est plus basse chez les végétariens même si il faut rester critique car nous avons mesurer peu d'individus de cette catégorie. 
 
--   ...
+-   De manière générale on peut observer que l'indice prend des valeurs plus écartées pour les femmes que pour les hommes, en effet on observe des quartiles beaucoup plus important malgré une moyenne similaire entre les 2 groupes
 
 ### Indice 4
 
