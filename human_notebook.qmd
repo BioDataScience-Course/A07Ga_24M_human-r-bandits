@@ -258,17 +258,22 @@ biometry$bmi_cat <- cut(biometry$bmi,
 ```{r plot_indice4}
 
 # changer en tableau  de nombre de chaque catégories par genre !?
-
+biometry %>%
+  sgroup_by(., genre, bmi_cat) %>%
+  ssummarise(.,
+    `Nombre d'induvidus mesurés` = fn(bmi_cat)
+  ) -> d
+  as.data.frame(d)
   
 ```
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   ...
+-   On remarque qu’en général, que cela soit chez les femmes ou les hommes, il y a plus de gens avec un poids normal ou un sur-poids.
 
--   ...
+-   Il n’est pas possible d’évaluer les tendances de l’un ou l’autre genre car l’expérience n’est pas dans un plan balancé. Nous ne pouvons pas déterminer si l’un ou l’autre genre à tendance a avoir un BMI plus élevé ou non. Nous pouvons quand même observer une certaine similarité entre les hommes et les femmes, le BMI ne tiens donc pas en compte du genre de l’individu.
 
--   ...
+-   Les personnes en sous-poids sont les moins représentées car elles sont en dessous de 10% de l’échantillion (et 6% pour les hommes)
 
 ## Tests d'hypothèses
 
@@ -281,10 +286,10 @@ biometry$bmi_cat <- cut(biometry$bmi,
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-chart(data = biometry, masse_corr ~ wwr | genre) + 
+chart(data = biometry, rtt ~ bmi | genre) + 
   geom_point() + 
-  ylab("Masse de l'individu kg") + 
-  xlab("rapport taille et poignet ")
+  ylab("rapport taille taille") + 
+  xlab("BMI")
 ```
 
 <!--% Hypothèse nulle et alternative -->
@@ -422,7 +427,8 @@ chart(data = biometry, bmi ~ alimentation) +
 ```
 
 <!--% Hypothèse nulle et alternative -->
-
+H0: %\mu%[vg] = %\mu%[carn] == %\mu%[om] 
+H1: ∃(i,j) tel que %\mu%[i] != %\mu%[j] (avec i et j sont “carnivore”, “omnivore” ou “végétarien”)
 <!--% Vérification des conditions d'application -->
 
 ```{r test_anova1_2}
@@ -430,7 +436,10 @@ bartlett.test(data = biometry, bmi ~ alimentation)
 ```
 Nous ne rejetons pas H0 au seuil alpha de 5% donc nous confirmons l'homoscédasticité dans nos sous-groupes
 
+```{r test_anova1_2}
+anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
 
+```
 <!--% Interprétation statistique et biologique -->
 
 <!--# Travaillez jusqu'ici pour le module 9. Commencez à rédiger la partie résultats avec la description des données. -->
