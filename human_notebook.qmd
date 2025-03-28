@@ -124,7 +124,8 @@ chart(biometry, masse_corr ~ alimentation) +
  geom_boxplot(na.rm = TRUE)
 
 ```
-  On observe très peu de différence de masse entre les personnes ayant un régime carnivore et omnivore. Cependant, les végétarien ont une moyenne beaucoup plus faible. Mais est-ce que cela influence vraiment leur BMI ?
+
+On observe très peu de différence de masse entre les personnes ayant un régime carnivore et omnivore. Cependant, les végétarien ont une moyenne beaucoup plus faible. Mais est-ce que cela influence vraiment leur BMI ?
 
 ```{r description2etudiant4}
 #tableau par sex comparant la moyenne de taille et de poid 
@@ -138,7 +139,8 @@ biometry %>%
   as.data.frame(c)
 
 ```
-  On observe la différence entre dans le poids et la taille moyenne des Hommes et des Femmes. Les hommes sont en général plus grand et plus massifs que les femmes. On pourrait alors se demander si cela influence le BMI.
+
+On observe la différence entre dans le poids et la taille moyenne des Hommes et des Femmes. Les hommes sont en général plus grand et plus massifs que les femmes. On pourrait alors se demander si cela influence le BMI.
 
 ## Calcul d'indices
 
@@ -365,14 +367,19 @@ chart(data = biometry, masse_corr ~ bmi %col=% bmi_cat) +
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova1_1}
+chart(data = biometry, rtt ~ sucre) + 
+  geom_violin(na.rm = TRUE) +
+  geom_jitter(width = 0.05, alpha = 0.5, na.rm = TRUE) +
+  stat_summary(geom = "point", fun = "mean", color = "red", size = 3, na.rm = TRUE)
 
 ```
 
 <!--% Hypothèse nulle et alternative -->
-
+Ho : mu
 <!--% Vérification des conditions d'application -->
 
 ```{r test_anova1_1}
+
 
 ```
 
