@@ -219,12 +219,12 @@ chart(data = biometry, masse_corr ~ rth %col=% genre) + geom_point() +  xlab("ra
 a <- chart(biometry, alimentation ~ IC %fill=% alimentation) +
   geom_boxplot() +
   labs(x = "indice de conicité", y = "type d'alimentation") 
-b <- chart(biometry, IC ~ genre %fill=% genre) +
+b <- chart(biometry, genre ~ IC %fill=% genre) +
   geom_boxplot() +
-  labs(y = "indice de conicité", x = "genre") +
+  labs(y = "genre", x = "indice de conicité") +
   scale_fill_viridis_d()
 
-combine_charts(list(a,b))
+combine_charts(list(a,b), ncol = 1, nrow = 2)
 ```
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
