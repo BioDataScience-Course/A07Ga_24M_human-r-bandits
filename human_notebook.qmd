@@ -120,15 +120,25 @@ chart(data = biometry, activite_physique ~ eau ) +
 
 ```{r description1etudiant4}
 #compraison du type d'alimentation et du bmi
-chart(biometry, tour_taille ~ tour_hanche) +
- geom_point()
+chart(biometry, masse_corr ~ alimentation) +
+ geom_boxplot(na.rm = TRUE)
 
 ```
+  On observe très peu de différence de masse entre les personnes ayant un régime carnivore et omnivore. Cependant, les végétarien ont une moyenne beaucoup plus faible. Mais est-ce que cela influence vraiment leur BMI ?
 
 ```{r description2etudiant4}
 #tableau par sex comparant la moyenne de taille et de poid 
+biometry %>%
+  group_by(., genre) %>%  
+  summarise(
+    `Taille Moyenne` = mean(taille, na.rm = TRUE),
+    `Masse Moyenne` = mean(masse_corr, na.rm = TRUE),
+    `Nombres Mesurés` = n()
+  ) -> c
+  as.data.frame(c)
 
 ```
+  On observe la différence entre dans le poids et la taille moyenne des Hommes et des Femmes. Les hommes sont en général plus grand et plus massifs que les femmes. On pourrait alors se demander si cela influence le BMI.
 
 ## Calcul d'indices
 
@@ -232,8 +242,7 @@ combine_charts(list(a,b), ncol = 1, nrow = 2)
 ```{r indice4}
 # calcul de bmi et ajout de la masse_real
 biometry <- smutate(biometry, 
-  masse_real = masse - (masse_std_ref - masse_std),
-  bmi = masse_real/(taille/100)^2
+  bmi = masse_corr/(taille/100)^2
   )
 biometry$bmi_cat <- cut(biometry$bmi, 
   breaks = c(0, 18.5, 24.9, 29.9, Inf),  # Seuils standards du BMI
@@ -246,10 +255,8 @@ biometry$bmi_cat <- cut(biometry$bmi,
 
 ```{r plot_indice4}
 
-# changer en tableau  de nombe de chaque catégories par sex!?
-chart(biometry, masse_corr ~ bmi %col=% bmi_cat) +
-  geom_point()+
-  labs(x="indice de masse corporel", y="masse [kg]")
+# changer en tableau  de nombre de chaque catégories par genre !?
+
   
 ```
 
