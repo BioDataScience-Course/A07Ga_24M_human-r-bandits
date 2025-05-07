@@ -188,11 +188,19 @@ chart(data = biometry, masse_corr ~ rtt | genre) + geom_point() +  xlab("rapport
 
 ```{r indice2}
 # Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur)
-# 
-biometry <-
-  smutate(biometry,
-    rth = tour_taille / tour_hanche)
+#calcul du RTH
+biometry <- biometry %>%
+  mutate(rth = tour_taille / tour_hanche)
 
+#catégorisation du risque selon le sexe
+biometry <- biometry %>%
+  mutate(rth = case_when(
+      sexe == "F" & rth < 0.65 ~ "Risque bas",
+      sexe == "F" & rth >= 0.65 & rth <= 0.8 ~ "Normal",
+      sexe == "F" & rth > 0.8 ~ "Obésité androïde",
+      sexe == "H" & rth < 0.85 ~ "Risque bas",
+      sexe == "H" & rth >= 0.85 & rth <= 0.95 ~ "Normal",
+      sexe == "H" & rth > 0.95 ~ "Obésité androïde"))
 ```
 
 ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soit graphique soit quand on interprete (le mieux nouvelle colonne avec bas ou haut risque conditionnel au sexe, case_when dans un smutate) <!--% Graphique ou tableau utilisant l'indice calculé.-->
