@@ -288,17 +288,20 @@ as.data.frame(d)
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-chart(data = biometry, masse_corr ~ wwr | genre) + 
+chart(data = biometry, rtt ~ bmi) + 
   geom_point() + 
-  ylab("Masse de l'individu kg") + 
-  xlab("rapport taille et poignet ")
+  ylab("rapport taille taille") + 
+  xlab("BMI")
 ```
 
 <!--% Hypothèse nulle et alternative -->
+H0 :
+H1 : 
 
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_1}
+chisq.test(biometry, p = c(___,___), rescale.p = FALSE)
 
 ```
 
@@ -358,10 +361,14 @@ chart(data = biometry, masse_corr ~ bmi %col=% bmi_cat) +
 ```
 
 <!--% Hypothèse nulle et alternative -->
+H0 :
+H1 :
 
 <!--% Vérification des conditions d'application -->
 
 ```{r test_t_2}
+t.test(data = biometry, masse_corr ~ bmi,
+  alternative = "", conf.level = 0.95, var.equal = TRUE)
 
 ```
 
@@ -434,8 +441,10 @@ H1: ∃(i,j) tel que %\mu%[i] != %\mu%[j] (avec i et j sont “carnivore”, “
 
 ```{r test_anova1_2}
 bartlett.test(data = biometry, bmi ~ alimentation)
+
+  
 ```
-Nous ne rejetons pas H0 au seuil alpha de 5% donc nous confirmons l'homoscédasticité dans nos sous-groupes
+Nous ne rejetons pas H0 au seuil alpha de 5% donc nous confirmons l'homoscédasticité dans nos sous-groupes grâce au test de bartlett
 
 
 ```{r qqplot_anova1_2}
@@ -445,11 +454,12 @@ chart$qqplot(biometry_anova1_2, lang = "fr")
 
 ```{r test_anova1_2}
 anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
+
 ```
 
 
 <!--% Interprétation statistique et biologique -->
-
+Nous ne rejetons pas H0 au seuil alpha de 5%, nous ne pouvons donc pas signicativement dire que le Bmi dépend de l'alimentation des différents sujets mesurés lors de l'expérimentation.
 
 <!--# Travaillez jusqu'ici pour le module 9. Commencez à rédiger la partie résultats avec la description des données. -->
 
