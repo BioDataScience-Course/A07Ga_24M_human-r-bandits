@@ -461,18 +461,19 @@ chart$qqplot(biometry_anova1_1)
 ```
 
 ```{r kruskal_anova1_1}
-kruskal.test(biometry, log(rtt) ~ sucre)
+kruskal.test(biometry, rtt ~ sucre)
 
 ```
 
 ```{r posthoc_anova1_1}
-summary(biometry_kw_comp1 <- nparcomp::nparcomp(data = biometry, log(rtt) ~ sucre))
+summary(biometry_kw_comp1 <- nparcomp::nparcomp(data = biometry, rtt ~ sucre))
   plot(biometry_kw_comp1)
 
 ```
 
 <!--% Interprétation statistique et biologique -->
-
+La valeur de la p-value se trouve en dessous du seuil alpha ce qui signifie que nous rejetons H0. Cela signifie qu'il y'a au moins une différence significative dans un des groupes. En observant les points du graphique quantile quantile nous pouvons affirmer que nos groupes ne suivent pas la normalité. La test de Kruskal-Walis nous fait lui aussi rejeter l'hypothèse nulle et nous suggère une différence entre au moins 2 groupes. cependant en observant le post-hoc nous remarquons chevauchement de la pulpart des intervalles de confiances. En effet seul un seul groupement cause le rejet des H0, la comparaison entre les groupes "rarement" et "régulièrement" qui a une p-value de 0.049. 
+Du point de vue biologique nous pouvons conclure que la consommation de sucre ne semble pas énormément affecter le rtt de manière générale. 2 groupes cependant sont éloignés en termes de moyennes ce qui a tendance à laisser penser qu'une différence significative de moyenne existe entre le groupe consommant rarement du sucre et celui qui en consomme souvent. Néanmoins la p-value restant proche du seuil nous nous pensons tout de meme que le taux de consommation de sucre n'a pas d'effet significatif sur le rtt. 
 
 ### ANOVA à un facteur 2
 
