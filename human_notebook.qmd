@@ -321,7 +321,7 @@ chart(data = biometry, rtt ~ bmi) +
 
 <!--% Hypothèse nulle et alternative -->
 
-H0 :\
+H0 : 
 H1 :
 
 <!--% Vérification des conditions d'application -->
@@ -478,13 +478,14 @@ bartlett.test(data = biometry, bmi ~ alimentation)
 
 Nous ne rejetons pas H0 au seuil alpha de 5% donc nous confirmons l'homoscédasticité dans nos sous-groupes grâce au test de bartlett
 
-```{r qqplot_anova1_2}
-chart$qqplot(biometry_anova1_2, lang = "fr")
+```{r test_anova1_2}
+
+anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
 
 ```
 
-```{r test_anova1_2}
-anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
+```{r qqplot_anova1_2}
+chart$qqplot(biometry_anova1_2, lang = "fr")
 
 ```
 
@@ -517,6 +518,13 @@ Nous ne rejetons pas H0 au seuil alpha de 5%, nous ne pouvons donc pas signicati
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova2_2}
+  biometry %>.%
+  sgroup_by(., intolerance_gluten, intolerance_lactose) %>.%
+  ssummarise(., mean_bmi = mean(bmi)) %>.%
+  print(.) %>.% # Tableau des moyennes par groupes
+  chart(data = ., mean_bmi ~ intolerance_gluten %col=% intolerance_lactose %group=% intolerance_lactose) +
+    geom_line() +
+    geom_point()
 
 ```
 
