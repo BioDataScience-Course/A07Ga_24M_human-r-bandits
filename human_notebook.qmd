@@ -215,9 +215,13 @@ ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soi
 
 ```{r plot_indice2}
 # Graphique ou tableau utilisant l'indice calculé.
-chart(biometry_homme, masse_corr ~ rth_cat_homme)+
+a <- chart(biometry_homme, masse_corr ~ rth_cat_homme)+
   geom_boxplot() + 
   ylab("Masse en kg")
+b <- chart(biometry_femme, masse_corr ~ rth_cat_femme)+
+  geom_boxplot() + 
+  ylab("Masse en kg")
+combine_charts(list(a,b))
 
 
 
