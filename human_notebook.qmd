@@ -81,8 +81,7 @@ tableau_taille <- biometry %>%
 
 ```
 
-On observe que le poids a tendance à augmenter avec le tour de taille. On peut également noter que le nombre d'observation est bien plus grand de 80 à 100cm de tour de taille.
-...Vos deux descriptions ici...
+On observe que le poids a tendance à augmenter avec le tour de taille. On peut également noter que le nombre d'observation est bien plus grand de 80 à 100cm de tour de taille. ...Vos deux descriptions ici...
 
 ```{r description 1 étudiant 2}
 #chart(biometry, tour_taille ~ masse_corr %col=% masse_corr)+ geom_point()
@@ -313,7 +312,8 @@ chart(data = biometry, rtt ~ bmi) +
 
 <!--% Hypothèse nulle et alternative -->
 
-H0 : H1 :
+H0 :\
+H1 :
 
 <!--% Vérification des conditions d'application -->
 
@@ -371,21 +371,23 @@ t.test(data = biometry, bmi ~ genre,
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_t_2}
-chart(data = biometry, masse_corr ~ bmi %col=% bmi_cat) +
-  geom_point() +
-  labs(x = "indice de masse corporel", y = "masse [kg]")
+chart(data = biometry, bmi ~ intolerance_gluten) +
+  geom_boxplot() +
+labs(x = "intolérance au gluten", y = "indice de masse corporel")
 
 ```
 
 <!--% Hypothèse nulle et alternative -->
 
-H0 : H1 :
+H0 :μ(bmi) intolérants au gluten < μ(bmi) tolérant du gluten
+
+H1 :μ(bmi) intolérants au gluten >= μ(bmi) tolérant du gluten
 
 <!--% Vérification des conditions d'application -->
 
 ```{r test_t_2}
-t.test(data = biometry, masse_corr ~ bmi,
-  alternative = "", conf.level = 0.95, var.equal = TRUE)
+t.test(data = biometry, bmi ~ intolerance_gluten,
+  alternative = "less", conf.level = 0.95, var.equal = TRUE)
 
 ```
 
@@ -408,7 +410,9 @@ chart(data = biometry, rtt ~ sucre) +
 
 <!--% Hypothèse nulle et alternative -->
 
-H0:μ jamais = μ rarement = μ régulièrement = μ souvent H1 : μ i =! μ j
+H0:μ jamais = μ rarement = μ régulièrement = μ souvent 
+
+H1 : μ i =! μ j
 
 <!--% Vérification des conditions d'application -->
 
@@ -451,7 +455,11 @@ chart(data = biometry, bmi ~ alimentation) +
 
 <!--% Hypothèse nulle et alternative -->
 
-H0: %\mu%\[vg\] = %\mu%\[carn\] == %\mu%\[om\] H1: ∃(i,j) tel que %\mu%\[i\] != %\mu%\[j\] (avec i et j sont "carnivore", "omnivore" ou "végétarien") <!--% Vérification des conditions d'application -->
+H0: %\mu%\[vg\] = %\mu%\[carn\] == %\mu%\[om\]
+
+H1: ∃(i,j) tel que %\mu%\[i\] != %\mu%\[j\] (avec i et j sont "carnivore", "omnivore" ou "végétarien")
+
+<!--% Vérification des conditions d'application -->
 
 ```{r test_anova1_2}
 bartlett.test(data = biometry, bmi ~ alimentation)
