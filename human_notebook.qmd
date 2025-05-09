@@ -280,6 +280,11 @@ biometry$bmi_cat <- cut(biometry$bmi,
   labels = c("Sous-poids", "Poids normal", "Surpoids", "Obèse"),  # Noms des classes
   right = FALSE)
 
+biometry$bmi_cat2 <- cut(biometry$bmi, 
+  breaks = c(0, 24.9, Inf),  # Seuils standards du BMI
+  labels = c("Bmi faible ", "Bmi élevé"),  # Noms des classes
+  right = FALSE)
+
 ```
 
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
@@ -316,27 +321,25 @@ as.data.frame(d)
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-chart(data = biometry, rtt ~ bmi_cat %col=% bmi_cat) + 
+chart(data = biometry, rtt_cat ~ bmi_cat2 %col=% bmi_cat2) + 
   geom_point() + 
   ylab("rapport taille taille") + 
   xlab("BMI")
+#faire sous forme de tableau 
 ```
 
 <!--% Hypothèse nulle et alternative -->
 
-<<<<<<< HEAD
+
 H0 : indépendance entre Bmi et rtt
 H1 : dépendance entre Bmi et rtt
-=======
-H0 :    
-H1 :
->>>>>>> 8e1539731e4a3325cde9ba5bbd430cb20f9360e1
+
 
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_1}
 #chisq.test(biometry, p = c(___,___), rescale.p = FALSE)
-tableau <- table(biometry$bmi_cat, biometry$rt)
+tableau <- table(biometry$bmi_cat2, biometry$rtt_cat)
 chisq.test(tableau)
 ```
 
