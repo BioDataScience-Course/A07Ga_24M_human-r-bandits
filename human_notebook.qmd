@@ -515,7 +515,7 @@ chart$qqplot(biometry_anova1_2, lang = "fr")
 <!--% Interprétation statistique et biologique -->
 
 Nous ne rejetons pas H0 au seuil alpha de 5%.
-Nous ne pouvons donc pas significativement dire que le bmi dépend de l'alimentation des différents sujets mesurés lors de l'expérimentation.
+Nous ne pouvons donc pas significativement dire que le bmi dépend de l'alimentation (régime carnivore ou végétale) des différents sujets mesurés lors de l'expérimentation.
 
 <!--# Travaillez jusqu'ici pour le module 9. Commencez à rédiger la partie résultats avec la description des données. -->
 
@@ -524,15 +524,32 @@ Nous ne pouvons donc pas significativement dire que le bmi dépend de l'alimenta
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova2_1}
+biometry$fumeur_cat <- cut(biometry$fumeur, 
+  breaks = c(0, 0.1,Inf),  # seuils
+  labels = c("Oui", "Non"),  # Noms des classes
+  right = FALSE)
+
+biometry %>.%
+  sdrop_na(.)%>.%
+  sgroup_by(., fumeur_cat, genre) %>.%
+  ssummarise(., mean_rtt = fmean(rtt)) %>.%
+  print(.) %>.% # Tableau des moyennes par groupes
+  chart(data = ., mean_rtt ~ fumeur_cat %col=% genre %group=% genre) +
+    geom_line() +
+    geom_point() +
+labs(y = "rtt moyen", x= "fumeur")
 
 ```
 
 <!--% Hypothèse nulle et alternative -->
 
 <!--% Vérification des conditions d'application -->
-
+```{r bartlett_anova2_2}
+bartlett.test(data = biometry, rtt ~ interaction(fumeur_cat, genre))
+```
 ```{r test_anova2_1}
-
+anova(biometry_anova2_1 <- lm(data = biometry, rtt ~ fumeur_cat + genre)) %>.%
+  tabularise(.)
 ```
 
 <!--% Interprétation statistique et biologique -->
