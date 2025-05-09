@@ -350,7 +350,7 @@ H1 :
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_2}
-
+chisq.test(bmi_tab, p = c("Sous-poids" = 1/4, "Poids normal" = 1/4, "Surpoids" = 1/4, "Obèse" = 1/4), rescale.p = FALSE)
 ```
 
 <!--% Interprétation statistique et biologique -->
