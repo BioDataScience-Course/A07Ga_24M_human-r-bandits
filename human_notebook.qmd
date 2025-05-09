@@ -327,7 +327,7 @@ H0 : H1 :
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_1}
-chisq.test(biometry, p = c(___,___), rescale.p = FALSE)
+#chisq.test(biometry, p = c(___,___), rescale.p = FALSE)
 
 ```
 
