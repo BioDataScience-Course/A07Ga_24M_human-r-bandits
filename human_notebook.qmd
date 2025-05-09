@@ -396,9 +396,9 @@ labs(x = "intolérance au gluten", y = "indice de masse corporel")
 
 <!--% Hypothèse nulle et alternative -->
 
-H0 :μ(bmi) intolérants au gluten < μ(bmi) tolérant du gluten
+H0 :μ(bmi) intolérants au gluten = μ(bmi) tolérant du gluten
 
-H1 :μ(bmi) intolérants au gluten >= μ(bmi) tolérant du gluten
+H1 :μ(bmi) intolérants au gluten != μ(bmi) tolérant du gluten
 
 <!--% Vérification des conditions d'application -->
 
@@ -409,6 +409,7 @@ t.test(data = biometry, bmi ~ intolerance_gluten,
 ```
 
 <!--% Interprétation statistique et biologique -->
+On peut donc remarquer que nous avons un p-value de 0,8286 ce qui veut dire que nous n'avons pas de différence signification au seuil alpha à 5% entre le bmi de ceux qui sont tolérant au gluten et ceux qui ne le sont pas. On a également un t de 0.95 et un df de 140.  
 
 <!--# Travaillez jusqu'ici pour le module 8. Commencez à travailler sur le rapport (intro, mat&met). -->
 
