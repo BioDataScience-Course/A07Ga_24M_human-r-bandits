@@ -341,6 +341,7 @@ H1 :
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_2}
+(bmi_tab <- table(dénombrement_bmi = biometry$bmi_cat))
 
 ```
 
@@ -349,7 +350,7 @@ H1 :
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_2}
-
+chisq.test(bmi_tab, p = c("Sous-poids" = 1/4, "Poids normal" = 1/4, "Surpoids" = 1/4, "Obèse" = 1/4), rescale.p = FALSE)
 ```
 
 <!--% Interprétation statistique et biologique -->
@@ -395,9 +396,9 @@ labs(x = "intolérance au gluten", y = "indice de masse corporel")
 
 <!--% Hypothèse nulle et alternative -->
 
-H0 :μ(bmi) intolérants au gluten < μ(bmi) tolérant du gluten
+H0 :μ(bmi) intolérants au gluten = μ(bmi) tolérant du gluten
 
-H1 :μ(bmi) intolérants au gluten >= μ(bmi) tolérant du gluten
+H1 :μ(bmi) intolérants au gluten != μ(bmi) tolérant du gluten
 
 <!--% Vérification des conditions d'application -->
 
@@ -408,6 +409,7 @@ t.test(data = biometry, bmi ~ intolerance_gluten,
 ```
 
 <!--% Interprétation statistique et biologique -->
+On peut donc remarquer que nous avons un p-value de 0,8286 ce qui veut dire que nous n'avons pas de différence signification au seuil alpha à 5% entre le bmi de ceux qui sont tolérant au gluten et ceux qui ne le sont pas. On a également un t de 0.95 et un df de 140.  
 
 <!--# Travaillez jusqu'ici pour le module 8. Commencez à travailler sur le rapport (intro, mat&met). -->
 
@@ -428,7 +430,7 @@ chart(data = biometry, rtt ~ sucre) +
 
 H0:μ jamais = μ rarement = μ régulièrement = μ souvent 
 
-H1 : μ i =! μ j
+H1 : μ i != μ j
 
 <!--% Vérification des conditions d'application -->
 
