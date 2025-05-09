@@ -327,7 +327,7 @@ H1 :
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_1}
-chisq.test(biometry, p = c(___,___), rescale.p = FALSE)
+#chisq.test(biometry, p = c(___,___), rescale.p = FALSE)
 
 ```
 
@@ -364,6 +364,10 @@ chart(data = biometry,bmi ~ activite_physique ) +
 ```
 
 <!-- Hypothèse nulle et alternative -->
+H0 :μ(bmi) homme  = μ(bmi) femme
+
+H1 :μ(bmi) homme !=  μ(bmi) femme
+
 
 <!-- Vérification des conditions d'application -->
 
@@ -450,6 +454,7 @@ summary(biometry_kw_comp1 <- nparcomp::nparcomp(data = biometry, log(rtt) ~ sucr
 
 <!--% Interprétation statistique et biologique -->
 
+
 ### ANOVA à un facteur 2
 
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
@@ -491,7 +496,8 @@ chart$qqplot(biometry_anova1_2, lang = "fr")
 
 <!--% Interprétation statistique et biologique -->
 
-Nous ne rejetons pas H0 au seuil alpha de 5%, nous ne pouvons donc pas signicativement dire que le Bmi dépend de l'alimentation des différents sujets mesurés lors de l'expérimentation.
+Nous ne rejetons pas H0 au seuil alpha de 5%.
+Nous ne pouvons donc pas significativement dire que le bmi dépend de l'alimentation des différents sujets mesurés lors de l'expérimentation.
 
 <!--# Travaillez jusqu'ici pour le module 9. Commencez à rédiger la partie résultats avec la description des données. -->
 
