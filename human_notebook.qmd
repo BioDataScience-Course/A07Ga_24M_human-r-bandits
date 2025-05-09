@@ -324,13 +324,10 @@ chart(data = biometry, rtt ~ bmi_cat %col=% bmi_cat) +
 
 <!--% Hypothèse nulle et alternative -->
 
-<<<<<<< HEAD
+
 H0 : indépendance entre Bmi et rtt
 H1 : dépendance entre Bmi et rtt
-=======
-H0 :    
-H1 :
->>>>>>> 8e1539731e4a3325cde9ba5bbd430cb20f9360e1
+
 
 <!--% Vérification des conditions d'application -->
 
