@@ -64,7 +64,7 @@ On observe une tendance à avoir une masse plus importante lorsque le tour de ta
 ```{r description 2 étudiant 1}
 
 
-tableau_poignet <- biometry %>%
+tableau_taille <- biometry %>%
   select(tour_taille, masse_corr) %>%
   mutate(
     categorie_tour_taille = cut(tour_taille, 
@@ -76,13 +76,12 @@ tableau_poignet <- biometry %>%
     moyenne_masse_corr = mean(masse_corr, na.rm = TRUE),
     nb_observations = n()
   )
-  knitr::kable(tableau_poignet,caption = "Tableau : Moyenne de la Masse Réelle par Catégorie de Tour de Taille", 
+  knitr::kable(tableau_taille,caption = "Tableau : Moyenne de la Masse Réelle par Catégorie de Tour de Taille", 
         col.names = c("Catégorie Tour de Taille (cm)", "Moyenne Masse Réelle (kg)", "Nombre d'Observations"))
 
 ```
 
-On observe que le poids a tendance à augmenter avec la circomféerance du poignet. On peut également noter que le nombre d'observation est bien plus grand autour de la catégorie de tour de poignet de 12.5 à 20 cm
-
+On observe que le poids a tendance à augmenter avec le tour de taille. On peut également noter que le nombre d'observation est bien plus grand de 80 à 100cm de tour de taille.
 ...Vos deux descriptions ici...
 
 ```{r description 1 étudiant 2}
@@ -95,7 +94,7 @@ chart(data = biometry, masse_corr ~ genre) +
 
 ```
 
- On observe que la masse corporelle médiane est plus élevée chez les hommes que chez les femmes. Les hommes présentent aussi une variabilité plus faible (avec quelques valeurs extrêmes) que les femmes. On pourrait suggèrer que cette différence notable de répartition de la masse entre les genres est liée à des facteurs physiologiques ou comportementaux selon le genre (composition corporelle, habitudes alimentaires)
+On observe que la masse corporelle médiane est plus élevée chez les hommes que chez les femmes. Les hommes présentent aussi une variabilité plus faible (avec quelques valeurs extrêmes) que les femmes. On pourrait suggèrer que cette différence notable de répartition de la masse entre les genres est liée à des facteurs physiologiques ou comportementaux selon le genre (composition corporelle, habitudes alimentaires)
 
 ```{r description 2 étudiant 2}
 chart(data = biometry, ~ alcool ) +
@@ -104,8 +103,8 @@ chart(data = biometry, ~ alcool ) +
 
 
 ```
-On a une distribution asymétrique à droite, la majorité des individus consomment peu d'alcool et au plus qu'on avance vers une consommation importante, on a de moins en moins d'individus présents
 
+On a une distribution asymétrique à droite, la majorité des individus consomment peu d'alcool et au plus qu'on avance vers une consommation importante, on a de moins en moins d'individus présents
 
 ### Description par l'étudiant 3
 
@@ -115,15 +114,17 @@ On a une distribution asymétrique à droite, la majorité des individus consomm
 chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
   geom_point() 
 ```
+
 Nous observons sur ce graphique que la consommation de sucre ne semble pas avoir d'impact concret sur le tour de poignet et le tour de taille.
+
 ```{r description2etudiant3}
 chart(data = biometry, ~ activite_physique ) +
   geom_histogram(bins = 20)
 
 
 ```
-On observe que dans notre échantillon l'activité physique est décrite selon une distribution bimodale et qu'une grande partie des individus ne fais pas de sport
-# levels age -\> pour créer des catégories
+
+On observe que dans notre échantillon l'activité physique est décrite selon une distribution bimodale et qu'une grande partie des individus ne fais pas de sport \# levels age -\> pour créer des catégories
 
 ### Description par l'étudiant 4
 
@@ -178,9 +179,9 @@ chart(data = biometry, masse_corr ~ rtt | genre) + geom_point() +  xlab("rapport
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   La relation n'est pas totalement linéaire entre le wwr et la masse réelle.
+-   La relation n'est pas totalement linéaire entre le rtt et la masse réelle.
 
--   On observe une augmentation de la masse lorsque le rapport taille/poignet augmente.
+-   On observe une augmentation de la masse lorsque le rapporttour de taille/taille augmente
 
 ### Indice 2
 
@@ -248,9 +249,9 @@ combine_charts(list(a,b), ncol = 1, nrow = 2)
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   L'indice de conicité semble décrire relativement bien l'obésité chez les individus, en effet il semble être influencé par le régime alimentaire et pas par le genre. 
+-   L'indice de conicité semble décrire relativement bien l'obésité chez les individus, en effet il semble être influencé par le régime alimentaire et pas par le genre.
 
--   On peut observer que la moyenne de cet indice est plus basse chez les végétariens même si il faut rester critique car nous avons mesurer peu d'individus de cette catégorie. 
+-   On peut observer que la moyenne de cet indice est plus basse chez les végétariens même si il faut rester critique car nous avons mesurer peu d'individus de cette catégorie.
 
 -   De manière générale on peut observer que l'indice prend des valeurs plus écartées pour les femmes que pour les hommes, en effet on observe des quartiles beaucoup plus important malgré une moyenne similaire entre les 2 groupes
 
@@ -287,12 +288,11 @@ as.data.frame(d)
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   On remarque qu’en général, que cela soit chez les femmes ou les hommes, il y a plus de gens avec un poids normal ou un sur-poids.
+-   On remarque qu'en général, que cela soit chez les femmes ou les hommes, il y a plus de gens avec un poids normal ou un sur-poids.
 
--   Il n’est pas possible d’évaluer les tendances de l’un ou l’autre genre car l’expérience n’est pas dans un plan balancé. Nous ne pouvons pas déterminer si l’un ou l’autre genre à tendance a avoir un BMI plus élevé ou non. Nous pouvons quand même observer une certaine similarité entre les hommes et les femmes, le BMI ne tiens donc pas en compte du genre de l’individu.
+-   Il n'est pas possible d'évaluer les tendances de l'un ou l'autre genre car l'expérience n'est pas dans un plan balancé. Nous ne pouvons pas déterminer si l'un ou l'autre genre à tendance a avoir un BMI plus élevé ou non. Nous pouvons quand même observer une certaine similarité entre les hommes et les femmes, le BMI ne tiens donc pas en compte du genre de l'individu.
 
--   Les personnes en sous-poids sont les moins représentées car elles sont en dessous de 10% de l’échantillion (et 6% pour les hommes)
-
+-   Les personnes en sous-poids sont les moins représentées car elles sont en dessous de 10% de l'échantillion (et 6% pour les hommes)
 
 ## Tests d'hypothèses
 
@@ -312,8 +312,8 @@ chart(data = biometry, rtt ~ bmi) +
 ```
 
 <!--% Hypothèse nulle et alternative -->
-H0 :
-H1 : 
+
+H0 : H1 :
 
 <!--% Vérification des conditions d'application -->
 
@@ -378,8 +378,8 @@ chart(data = biometry, masse_corr ~ bmi %col=% bmi_cat) +
 ```
 
 <!--% Hypothèse nulle et alternative -->
-H0 :
-H1 :
+
+H0 : H1 :
 
 <!--% Vérification des conditions d'application -->
 
@@ -408,11 +408,7 @@ chart(data = biometry, rtt ~ sucre) +
 
 <!--% Hypothèse nulle et alternative -->
 
-
-H0:μ jamais = μ rarement = μ régulièrement = μ souvent
-H1 : μ i  =! μ j  
-
-
+H0:μ jamais = μ rarement = μ régulièrement = μ souvent H1 : μ i =! μ j
 
 <!--% Vérification des conditions d'application -->
 
@@ -432,11 +428,13 @@ chart$qqplot(biometry_anova1_1)
 kruskal.test(biometry, log(rtt) ~ sucre)
 
 ```
+
 ```{r posthoc_anova1_1}
 summary(biometry_kw_comp1 <- nparcomp::nparcomp(data = biometry, log(rtt) ~ sucre))
   plot(biometry_kw_comp1)
 
 ```
+
 <!--% Interprétation statistique et biologique -->
 
 ### ANOVA à un facteur 2
@@ -452,17 +450,16 @@ chart(data = biometry, bmi ~ alimentation) +
 ```
 
 <!--% Hypothèse nulle et alternative -->
-H0: %\mu%[vg] = %\mu%[carn] == %\mu%[om] 
-H1: ∃(i,j) tel que %\mu%[i] != %\mu%[j] (avec i et j sont “carnivore”, “omnivore” ou “végétarien”)
-<!--% Vérification des conditions d'application -->
+
+H0: %\mu%\[vg\] = %\mu%\[carn\] == %\mu%\[om\] H1: ∃(i,j) tel que %\mu%\[i\] != %\mu%\[j\] (avec i et j sont "carnivore", "omnivore" ou "végétarien") <!--% Vérification des conditions d'application -->
 
 ```{r test_anova1_2}
 bartlett.test(data = biometry, bmi ~ alimentation)
 
   
 ```
-Nous ne rejetons pas H0 au seuil alpha de 5% donc nous confirmons l'homoscédasticité dans nos sous-groupes grâce au test de bartlett
 
+Nous ne rejetons pas H0 au seuil alpha de 5% donc nous confirmons l'homoscédasticité dans nos sous-groupes grâce au test de bartlett
 
 ```{r qqplot_anova1_2}
 chart$qqplot(biometry_anova1_2, lang = "fr")
@@ -474,8 +471,8 @@ anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularis
 
 ```
 
-
 <!--% Interprétation statistique et biologique -->
+
 Nous ne rejetons pas H0 au seuil alpha de 5%, nous ne pouvons donc pas signicativement dire que le Bmi dépend de l'alimentation des différents sujets mesurés lors de l'expérimentation.
 
 <!--# Travaillez jusqu'ici pour le module 9. Commencez à rédiger la partie résultats avec la description des données. -->
