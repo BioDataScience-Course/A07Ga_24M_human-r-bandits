@@ -168,7 +168,7 @@ biometry <-
     rtt = tour_taille / taille)
     biometry$rtt_cat  <- cut(biometry$rtt, 
  breaks = c(0, 0.5, Inf),  # découpage
-  labels = c("sasn risque", "à risque"),  # Noms des classes
+  labels = c("sans risque", "à risque"),  # Noms des classes
   right = FALSE)
 ```
 
@@ -325,11 +325,7 @@ as.data.frame(d)
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-chart(data = biometry, rtt_cat ~ bmi_cat2 %col=% bmi_cat2) + 
-  geom_point() + 
-  ylab("rapport taille taille") + 
-  xlab("BMI")
-#faire sous forme de tableau 
+table(biometry$bmi_cat2, biometry$rtt_cat)
 ```
 
 <!--% Hypothèse nulle et alternative -->
@@ -342,8 +338,7 @@ H1 : dépendance entre Bmi et rtt
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_1}
-#chisq.test(biometry, p = c(___,___), rescale.p = FALSE)
-tableau <- table(biometry$bmi_cat2, biometry$rtt_cat)
+chisq_tab <- table(biometry$bmi_cat2, biometry$rtt_cat)
 chisq.test(tableau)
 ```
 
@@ -367,6 +362,7 @@ chisq.test(bmi_tab, p = c("Sous-poids" = 1/4, "Poids normal" = 1/4, "Surpoids" =
 ```
 
 <!--% Interprétation statistique et biologique -->
+Nous rejetons H0 au seuil alpha de 5% (df = 3 X-squared = 30.846). Il y'a une différence significative entre la distribution observée des catégories de bmi et la distribution théorique de 1/4 pour chaque catégorie. 
 
 <!--# Travaillez jusqu'ici pour le module 7. -->
 
@@ -375,8 +371,11 @@ chisq.test(bmi_tab, p = c("Sous-poids" = 1/4, "Poids normal" = 1/4, "Surpoids" =
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_t_1}
-chart(data = biometry,bmi ~ activite_physique ) +
-  geom_point()
+chart(data = biometry,bmi ~ genre ) +
+  geom_boxplot() +
+  geom_jitter(width = 0.05, alpha = 0.3) +
+  stat_summary(geom = "point", fun = "mean", color = "red", size = 3)+
+  labs(y ="indice de masse corporelle")
 
 ```
 
