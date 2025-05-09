@@ -382,6 +382,7 @@ t.test(data = biometry, bmi ~ genre,
 ```
 
 <!-- Interprétation statistique et biologique -->
+la p-value est largement supérieure au seuil de 5% cela signifie que nous ne rejetons pas H0 et n'observons aucune preuve de différence entre les moyennes de ces groupes en termes de BMI. Biologiquement cela prouve que de façon générale le BMI ne semble pas dépendre du genre. 
 
 ### Test t de Student 2
 
