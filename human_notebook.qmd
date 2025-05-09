@@ -313,7 +313,7 @@ as.data.frame(d)
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-chart(data = biometry, rtt ~ bmi) + 
+chart(data = biometry, rtt ~ bmi_cat %col=% bmi_cat) + 
   geom_point() + 
   ylab("rapport taille taille") + 
   xlab("BMI")
@@ -321,14 +321,15 @@ chart(data = biometry, rtt ~ bmi) +
 
 <!--% Hypothèse nulle et alternative -->
 
-H0 : 
-H1 :
+H0 : indépendance entre Bmi et rtt
+H1 : dépendance entre Bmi et rtt
 
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_1}
 #chisq.test(biometry, p = c(___,___), rescale.p = FALSE)
-
+tableau <- table(biometry$bmi_cat, biometry$rt)
+chisq.test(tableau)
 ```
 
 <!--% Interprétation statistique et biologique -->
