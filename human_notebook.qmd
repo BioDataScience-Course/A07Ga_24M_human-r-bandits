@@ -165,10 +165,10 @@ On observe la différence entre dans le poids et la taille moyenne des Hommes et
 # Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur) 
 biometry <-
   mutate(biometry,
-    rtt = tour_taille / taille,
-    biometry$rtt_cat  <- cut(biometry$bmi, 
-  breaks = c(0, 18.5, 24.9, 29.9, Inf),  # Seuils standards du BMI
-  labels = c("Sous-poids", "Poids normal", "Surpoids", "Obèse"),  # Noms des classes
+    rtt = tour_taille / taille)
+    biometry$rtt_cat  <- cut(biometry$rtt, 
+ breaks = c(0, 0.5, Inf),  # découpage
+  labels = c("sasn risque", "à risque"),  # Noms des classes
   right = FALSE)
 ```
 
@@ -320,7 +320,7 @@ as.data.frame(d)
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_1}
-chart(data = biometry, rtt ~ bmi) + 
+chart(data = biometry, rtt ~ bmi_cat %col=% bmi_cat) + 
   geom_point() + 
   ylab("rapport taille taille") + 
   xlab("BMI")
@@ -328,14 +328,17 @@ chart(data = biometry, rtt ~ bmi) +
 
 <!--% Hypothèse nulle et alternative -->
 
-H0 : 
-H1 :
+
+H0 : indépendance entre Bmi et rtt
+H1 : dépendance entre Bmi et rtt
+
 
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_1}
 #chisq.test(biometry, p = c(___,___), rescale.p = FALSE)
-
+tableau <- table(biometry$bmi_cat, biometry$rt)
+chisq.test(tableau)
 ```
 
 <!--% Interprétation statistique et biologique -->
