@@ -544,20 +544,33 @@ Nous ne pouvons donc pas significativement dire que le bmi dépend de l'alimenta
 
 ```{r plot_anova2_2}
   biometry %>.%
+  sdrop_na(.)%>.%
   sgroup_by(., intolerance_gluten, intolerance_lactose) %>.%
-  ssummarise(., mean_bmi = mean(bmi)) %>.%
+  ssummarise(., mean_bmi = fmean(bmi)) %>.%
   print(.) %>.% # Tableau des moyennes par groupes
   chart(data = ., mean_bmi ~ intolerance_gluten %col=% intolerance_lactose %group=% intolerance_lactose) +
     geom_line() +
-    geom_point()
+    geom_point() +
+labs(y = "bmi moyen")
 
 ```
 
 <!--% Hypothèse nulle et alternative -->
+H0 :
+H1 : 
 
 <!--% Vérification des conditions d'application -->
+```{r bartlett_anova2_2}
+#barlett test 
+bartlett.test(data = biometry, bmi ~ interaction(intolerance_lactose, intolerance_gluten))
+
+
+```
+
 
 ```{r test_anova2_2}
+biometry_anova2_2 <- lm(data = biometry, mean(bmi) ~ intolerance_lactose * intolerance_gluten)
+anova(biometry_anova2_2)
 
 ```
 
