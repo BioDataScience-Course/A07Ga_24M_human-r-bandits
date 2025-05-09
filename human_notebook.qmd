@@ -364,6 +364,9 @@ chart(data = biometry,bmi ~ activite_physique ) +
 ```
 
 <!-- Hypothèse nulle et alternative -->
+H0 :μ(bmi) homme  = μ(bmi) femme
+
+H1 :μ(bmi) homme !=  μ(bmi) femme
 
 
 <!-- Vérification des conditions d'application -->
