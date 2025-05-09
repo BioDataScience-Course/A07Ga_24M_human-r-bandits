@@ -338,6 +338,7 @@ H1 :
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_2}
+(bmi_tab <- table(dénombrement_bmi = biometry$bmi_cat))
 
 ```
 
@@ -424,7 +425,7 @@ chart(data = biometry, rtt ~ sucre) +
 
 H0:μ jamais = μ rarement = μ régulièrement = μ souvent 
 
-H1 : μ i =! μ j
+H1 : μ i != μ j
 
 <!--% Vérification des conditions d'application -->
 
