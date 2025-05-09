@@ -165,8 +165,11 @@ On observe la différence entre dans le poids et la taille moyenne des Hommes et
 # Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur) 
 biometry <-
   mutate(biometry,
-    rtt = tour_taille / taille
-  )
+    rtt = tour_taille / taille,
+    biometry$rtt_cat  <- cut(biometry$bmi, 
+  breaks = c(0, 18.5, 24.9, 29.9, Inf),  # Seuils standards du BMI
+  labels = c("Sous-poids", "Poids normal", "Surpoids", "Obèse"),  # Noms des classes
+  right = FALSE)
 ```
 
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
@@ -321,7 +324,7 @@ chart(data = biometry, rtt ~ bmi) +
 
 <!--% Hypothèse nulle et alternative -->
 
-H0 :\
+H0 : 
 H1 :
 
 <!--% Vérification des conditions d'application -->
@@ -368,6 +371,7 @@ chart(data = biometry,bmi ~ activite_physique ) +
 H0 :μ(bmi) homme  = μ(bmi) femme
 
 H1 :μ(bmi) homme !=  μ(bmi) femme
+
 
 <!-- Vérification des conditions d'application -->
 
@@ -483,19 +487,21 @@ bartlett.test(data = biometry, bmi ~ alimentation)
 
 Nous ne rejetons pas H0 au seuil alpha de 5% donc nous confirmons l'homoscédasticité dans nos sous-groupes grâce au test de bartlett
 
+```{r test_anova1_2}
+
+anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
+
+```
+
 ```{r qqplot_anova1_2}
 chart$qqplot(biometry_anova1_2, lang = "fr")
 
 ```
 
-```{r test_anova1_2}
-anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
-
-```
-
 <!--% Interprétation statistique et biologique -->
 
-Nous ne rejetons pas H0 au seuil alpha de 5%, nous ne pouvons donc pas signicativement dire que le Bmi dépend de l'alimentation des différents sujets mesurés lors de l'expérimentation.
+Nous ne rejetons pas H0 au seuil alpha de 5%.
+Nous ne pouvons donc pas significativement dire que le bmi dépend de l'alimentation des différents sujets mesurés lors de l'expérimentation.
 
 <!--# Travaillez jusqu'ici pour le module 9. Commencez à rédiger la partie résultats avec la description des données. -->
 
@@ -522,6 +528,13 @@ Nous ne rejetons pas H0 au seuil alpha de 5%, nous ne pouvons donc pas signicati
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_anova2_2}
+  biometry %>.%
+  sgroup_by(., intolerance_gluten, intolerance_lactose) %>.%
+  ssummarise(., mean_bmi = mean(bmi)) %>.%
+  print(.) %>.% # Tableau des moyennes par groupes
+  chart(data = ., mean_bmi ~ intolerance_gluten %col=% intolerance_lactose %group=% intolerance_lactose) +
+    geom_line() +
+    geom_point()
 
 ```
 
