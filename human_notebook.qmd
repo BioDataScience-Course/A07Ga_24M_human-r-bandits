@@ -588,8 +588,9 @@ bartlett.test(data = biometry, bmi ~ interaction(intolerance_lactose, intoleranc
 
 
 ```{r test_anova2_2}
-biometry_anova2_2 <- lm(data = biometry, mean(bmi) ~ intolerance_lactose * intolerance_gluten)
-anova(biometry_anova2_2)
+anova(biometry_anova2_2 <- lm(data = biometry, bmi ~ intolerance_lactose * intolerance_gluten)) %>.%
+  tabularise(.)
+
 
 ```
 
