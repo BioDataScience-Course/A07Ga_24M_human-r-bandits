@@ -341,7 +341,7 @@ H1 : dépendance entre Bmi et rtt
 
 ```{r test_chi2_1}
 chisq_tab <- table(biometry$bmi_cat2, biometry$rtt_cat)
-chisq.test(tableau)
+chisq.test(chisq_tab)
 ```
 
 <!--% Interprétation statistique et biologique -->
