@@ -199,13 +199,13 @@ biometry <- biometry %>%
 biometry_homme <- filter(biometry, genre == "H") 
 biometry_homme$rth_cat_homme <- cut(biometry_homme$rth, 
   breaks = c(0, 0.85, 0.95, Inf),  # Seuils standards de rth
-  labels = c("Risque bas", "Normal", "Obésité androîde"),  # Noms des classes
+  labels = c("Risque bas", "Normal", "Obésité"),  # Noms des classes
   right = FALSE)
 
 biometry_femme <- filter(biometry, genre == "F") 
 biometry_femme$rth_cat_femme <- cut(biometry_femme$rth, 
   breaks = c(0, 0.65, 0.8, Inf),  # Seuils standards de rth
-  labels = c("Risque bas", "Normal", "Obésité androîde"),  # Noms des classes
+  labels = c("Risque bas", "Normal", "Obésité"),  # Noms des classes
   right = FALSE)
 
 
@@ -217,10 +217,12 @@ ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soi
 # Graphique ou tableau utilisant l'indice calculé.
 a <- chart(biometry_homme, masse_corr ~ rth_cat_homme)+
   geom_boxplot() + 
-  ylab("Masse en kg")
+  ylab("Masse en kg") + 
+  xlab("Rapport taille/hanche")
 b <- chart(biometry_femme, masse_corr ~ rth_cat_femme)+
   geom_boxplot() + 
-  ylab("Masse en kg")
+  ylab("Masse en kg")+
+  xlab("Rapport taille/hanche")
 combine_charts(list(a,b))
 
 
@@ -229,11 +231,11 @@ combine_charts(list(a,b))
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   ...
+-   Pour les hommes, nous avons trois catégories de rth et quand celui-ci augmente, on a une masse médiane qui augmente aussi par catégorie. On peut observer aussi le même effet chez les femmes mais ici avec notre jeu de données nous n'avons pas d'individus femmes dans la catégorie "risque bas" (rth en dessous de 0.65) 
 
--   ...
+- On a une variabilité plus grande dans la catégorie "Obésité" dans les deux genres 
 
--   ...
+- Présence de quelques valeurs extrêmes chez les Hommes 
 
 ### Indice 3
 
