@@ -346,6 +346,9 @@ chisq.test(chisq_tab)
 
 <!--% Interprétation statistique et biologique -->
 
+La p-value étant à 3.17e-13, elle est inférieur au seuil alpha de 5% donc on rejette l'hypothèse nulle (X-squared = 53.1 et df = 1).
+On peut donc en conclure qu'il y a une dépendance significative entre les catégories de BMI (faible ou élevé) et les catégories de rtt (sans risque ou à risque). Cela nous indique que plus le BMI est élevé, plus la probabilité d'être à risque est forte. 
+
 ### Test de Chi^2^ 2
 
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
@@ -356,6 +359,10 @@ chisq.test(chisq_tab)
 ```
 
 <!--% Hypothèse nulle et alternative -->
+
+H0:μ sous-poids = μ poids normal = μ surpoids = μ obèse 
+
+H1 : μ i != μ j 
 
 <!--% Vérification des conditions d'application -->
 
@@ -575,8 +582,8 @@ labs(y = "bmi moyen")
 ```
 
 <!--% Hypothèse nulle et alternative -->
-H0 :
-H1 : 
+H0 : μ gluten(non)/lactose(non) = μ gluten(non)/lactose(oui) = μ gluten(oui)/lactose(non) = μ gluten(oui)/lactose(oui)
+H1 : μ i/j != μ k/l
 
 <!--% Vérification des conditions d'application -->
 ```{r bartlett_anova2_2}
@@ -585,7 +592,7 @@ bartlett.test(data = biometry, bmi ~ interaction(intolerance_lactose, intoleranc
 
 
 ```
-
+On a une p-value de 0.177 donc au dessus du seuil alpha à 5% ce qui veut dire qu'il y a homoscédasticité ce qui respecte donc les conditions d'application pour l'anova.
 
 ```{r test_anova2_2}
 anova(biometry_anova2_2 <- lm(data = biometry, bmi ~ intolerance_lactose * intolerance_gluten)) %>.%
@@ -595,6 +602,8 @@ anova(biometry_anova2_2 <- lm(data = biometry, bmi ~ intolerance_lactose * intol
 ```
 
 <!--% Interprétation statistique et biologique -->
+Les valeurs de p-value pour tout les termes sont supérieurs au seuil alpha à 5% (0.531, 0.480, 0.433) ce qui veut dire qu'on ne rejette pas l'hypothèse nulle et qu'on a pas un effet significatif de l'intolérance au lactose, de l’intolérance au gluten, ni de leur interaction sur le BMI moyen.
+L’intolérance au gluten ou au lactose seule ne semble pas influencer de manière significative le BMI des individus dans cet échantillon. Il est possible que la taille de l'échantillon soit insuffisante (peu de gens intolérant au gluten et/ou lactose dans notre échantillon) pour détecter un effet réel si celui-ci existe.
 
 # Discussion et conclusions
 
