@@ -199,13 +199,13 @@ biometry <- biometry %>%
 biometry_homme <- filter(biometry, genre == "H") 
 biometry_homme$rth_cat_homme <- cut(biometry_homme$rth, 
   breaks = c(0, 0.85, 0.95, Inf),  # Seuils standards de rth
-  labels = c("Risque bas", "Normal", "Obésité androîde"),  # Noms des classes
+  labels = c("Risque bas", "Normal", "Obésité"),  # Noms des classes
   right = FALSE)
 
 biometry_femme <- filter(biometry, genre == "F") 
 biometry_femme$rth_cat_femme <- cut(biometry_femme$rth, 
   breaks = c(0, 0.65, 0.8, Inf),  # Seuils standards de rth
-  labels = c("Risque bas", "Normal", "Obésité androîde"),  # Noms des classes
+  labels = c("Risque bas", "Normal", "Obésité"),  # Noms des classes
   right = FALSE)
 
 
@@ -217,10 +217,12 @@ ratio avec tour de taille et tour de hanche et masse et tenir compte du sexe soi
 # Graphique ou tableau utilisant l'indice calculé.
 a <- chart(biometry_homme, masse_corr ~ rth_cat_homme)+
   geom_boxplot() + 
-  ylab("Masse en kg")
+  ylab("Masse en kg") + 
+  xlab("Rapport taille/hanche")
 b <- chart(biometry_femme, masse_corr ~ rth_cat_femme)+
   geom_boxplot() + 
-  ylab("Masse en kg")
+  ylab("Masse en kg")+
+  xlab("Rapport taille/hanche")
 combine_charts(list(a,b))
 
 
@@ -229,11 +231,11 @@ combine_charts(list(a,b))
 
 <!--% Interprétation en quelques points du graphique ou tableau. -->
 
--   ...
+-   Pour les hommes, nous avons trois catégories de rth et quand celui-ci augmente, on a une masse médiane qui augmente aussi par catégorie. On peut observer aussi le même effet chez les femmes mais ici avec notre jeu de données nous n'avons pas d'individus femmes dans la catégorie "risque bas" (rth en dessous de 0.65) 
 
--   ...
+- On a une variabilité plus grande dans la catégorie "Obésité" dans les deux genres 
 
--   ...
+- Présence de quelques valeurs extrêmes chez les Hommes 
 
 ### Indice 3
 
@@ -339,10 +341,13 @@ H1 : dépendance entre Bmi et rtt
 
 ```{r test_chi2_1}
 chisq_tab <- table(biometry$bmi_cat2, biometry$rtt_cat)
-chisq.test(tableau)
+chisq.test(chisq_tab)
 ```
 
 <!--% Interprétation statistique et biologique -->
+
+La p-value étant à 3.17e-13, elle est inférieur au seuil alpha de 5% donc on rejette l'hypothèse nulle (X-squared = 53.1 et df = 1).
+On peut donc en conclure qu'il y a une dépendance significative entre les catégories de BMI (faible ou élevé) et les catégories de rtt (sans risque ou à risque). Cela nous indique que plus le BMI est élevé, plus la probabilité d'être à risque est forte. 
 
 ### Test de Chi^2^ 2
 
@@ -354,6 +359,10 @@ chisq.test(tableau)
 ```
 
 <!--% Hypothèse nulle et alternative -->
+
+H0:μ sous-poids = μ poids normal = μ surpoids = μ obèse 
+
+H1 : μ i != μ j 
 
 <!--% Vérification des conditions d'application -->
 
@@ -544,6 +553,9 @@ labs(y = "rtt moyen", x= "fumeur")
 
 <!--% Hypothèse nulle et alternative -->
 
+H0: Il n’y a aucun effet du tabagisme (fumeur_cat) ou du genre (genre) sur le rapport tour de taille/taille (rtt). Les moyennes de tous les groupes sont égales.
+
+H1: Il existe au moins une différence significative entre les moyennes de rtt selon le genre ou le statut de fumeur.
 <!--% Vérification des conditions d'application -->
 ```{r bartlett_anova2_1}
 bartlett.test(data = biometry, rtt ~ interaction(fumeur_cat, genre))
@@ -573,8 +585,8 @@ labs(y = "bmi moyen")
 ```
 
 <!--% Hypothèse nulle et alternative -->
-H0 :
-H1 : 
+H0 : μ gluten(non)/lactose(non) = μ gluten(non)/lactose(oui) = μ gluten(oui)/lactose(non) = μ gluten(oui)/lactose(oui)
+H1 : μ i/j != μ k/l
 
 <!--% Vérification des conditions d'application -->
 ```{r bartlett_anova2_2}
@@ -583,15 +595,18 @@ bartlett.test(data = biometry, bmi ~ interaction(intolerance_lactose, intoleranc
 
 
 ```
-
+On a une p-value de 0.177 donc au dessus du seuil alpha à 5% ce qui veut dire qu'il y a homoscédasticité ce qui respecte donc les conditions d'application pour l'anova.
 
 ```{r test_anova2_2}
-biometry_anova2_2 <- lm(data = biometry, mean(bmi) ~ intolerance_lactose * intolerance_gluten)
-anova(biometry_anova2_2)
+anova(biometry_anova2_2 <- lm(data = biometry, bmi ~ intolerance_lactose * intolerance_gluten)) %>.%
+  tabularise(.)
+
 
 ```
 
 <!--% Interprétation statistique et biologique -->
+Les valeurs de p-value pour tout les termes sont supérieurs au seuil alpha à 5% (0.531, 0.480, 0.433) ce qui veut dire qu'on ne rejette pas l'hypothèse nulle et qu'on a pas un effet significatif de l'intolérance au lactose, de l’intolérance au gluten, ni de leur interaction sur le BMI moyen.
+L’intolérance au gluten ou au lactose seule ne semble pas influencer de manière significative le BMI des individus dans cet échantillon. Il est possible que la taille de l'échantillon soit insuffisante (peu de gens intolérant au gluten et/ou lactose dans notre échantillon) pour détecter un effet réel si celui-ci existe.
 
 # Discussion et conclusions
 
