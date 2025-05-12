@@ -123,8 +123,51 @@ On constate une corrélation entre un tour de taille plus large et une masse cor
 
 <!--% Sélectionnez les 4 tests d'hypothèses les plus pertinents depuis `human_notebook.qmd`, ainsi bien sûr que les calculs des indices nécessaires que vous placerez juste au-dessus de vos tests. Ces tests doivent répondre à votre question de recherche (le but). Reformulez les interprétations pour former un texte qui se lit en continu. -->
 
-...Vos tests d'hypothèses ici...
+```{r indice1}
+# Calcul de la ou des variables reprenant l'indice sous forme numérique (et facteur) 
+biometry <-
+  mutate(biometry,
+    rtt = tour_taille / taille)
+    biometry$rtt_cat  <- cut(biometry$rtt, 
+ breaks = c(0, 0.5, Inf),  # découpage
+  labels = c("sans risque", "à risque"),  # Noms des classes
+  right = FALSE)
+```
 
+```{r indice4}
+# calcul de bmi et ajout de la masse_real
+biometry <- smutate(biometry, 
+  bmi = masse_corr/(taille/100)^2
+  )
+biometry$bmi_cat <- cut(biometry$bmi, 
+  breaks = c(0, 18.5, 24.9, 29.9, Inf),  # Seuils standards du BMI
+  labels = c("Sous-poids", "Poids normal", "Surpoids", "Obèse"),  # Noms des classes
+  right = FALSE)
+
+biometry$bmi_cat2 <- cut(biometry$bmi, 
+  breaks = c(0, 24.9, Inf),  # Seuils standards du BMI
+  labels = c("Bmi faible ", "Bmi élevé"),  # Noms des classes
+  right = FALSE)
+
+```
+
+```{r test_anova2_1}
+anova(biometry_anova2_1 <- lm(data = biometry, rtt ~ fumeur_cat + genre)) %>.%
+  tabularise(.)
+```
+```{r test_anova1_2}
+
+anova(biometry_anova1_2 <- lm(data = biometry, bmi ~ alimentation)) |> tabularise()
+
+```
+```{r test_t_1}
+t.test(data = biometry, bmi ~ genre,
+  alternative = "two.sided", conf.level = 0.95, var.equal = TRUE)
+
+```
+```{r plot_chi2_1}
+table(biometry$bmi_cat2, biometry$rtt_cat)
+```
 # Discussion et conclusions
 
 <!--% Reprenez les résultats obtenus, discutez-les d'un point de vue biologique en 4 à 5 paragraphes et concluez votre travail. Vous pouvez les mettre également en relation avec vos recherches bibliographiques dans cette section. -->

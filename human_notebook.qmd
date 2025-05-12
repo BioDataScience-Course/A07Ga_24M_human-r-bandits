@@ -567,8 +567,8 @@ anova(biometry_anova2_1 <- lm(data = biometry, rtt ~ fumeur_cat + genre)) %>.%
 ```
 
 <!--% Interprétation statistique et biologique -->
-Les valeurs de p-value pour tout les termes sont supérieurs au seuil alpha à 5% (0.806 et 0.280) ce qui veut dire qu'on ne rejette pas l'hypothèse nulle et qu'on a pas un effet significatif du sexe ou de du  fait de fumer ou non.
-Nous ne pouvons donc pas dire que le sexe ou le fait de fumeurs influencent de manière significative le BMI des individus dans cet échantillon. 
+Les valeurs de p-value pour tout les termes sont supérieurs au seuil alpha à 5% (0.806 et 0.280) ce qui veut dire qu'on ne rejette pas l'hypothèse nulle et qu'on a pas d'effet significatif pour le sexe ou pour le fait de fumer ou non.
+Nous ne pouvons donc pas dire que le sexe ou le fait de fumer influencent de manière significative le BMI des individus dans cet échantillon. 
 
 
 ### ANOVA à deux facteurs 2
