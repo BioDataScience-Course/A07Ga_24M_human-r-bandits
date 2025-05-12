@@ -134,6 +134,7 @@ biometry <-
   right = FALSE)
 ```
 
+
 ```{r indice4}
 # calcul de bmi et ajout de la masse_real
 biometry <- smutate(biometry, 
@@ -168,6 +169,7 @@ t.test(data = biometry, bmi ~ genre,
 ```{r plot_chi2_1}
 table(biometry$bmi_cat2, biometry$rtt_cat)
 ```
+
 # Discussion et conclusions
 
 <!--% Reprenez les résultats obtenus, discutez-les d'un point de vue biologique en 4 à 5 paragraphes et concluez votre travail. Vous pouvez les mettre également en relation avec vos recherches bibliographiques dans cette section. -->
@@ -189,4 +191,7 @@ informations supplémentaires pour l'introduction : @incollection{lebacq2015,
   publisher = {WIV-ISP},
   address = {Bruxelles}
 indice de conicité: https://www.sciencedirect.com/science/article/pii/S0870255117301348?via%3Dihub 
+infos et données sur rth : https://www.cregg.org/commissions/motricite-et-nutrition/outils/#:~:text=RTH%20%3A%20rapport%20taille%20sur%20hanche,%2C85%20et%200%2C95.
+infos et données sur rtt: 
+https://www.sciensano.be/fr/resultats-de-lenquete-nationale-de-consommation-alimentaire-2022-2023/statut-ponderal-et-troubles-du-comportement-alimentaire/ratio-tour-de-taille
 <!--% N'indiquez rien ci-dessous. Quarto se chargera de rajouter vos références bibliographiques automatiquement. -->
