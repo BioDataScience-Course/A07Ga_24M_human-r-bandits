@@ -567,8 +567,8 @@ anova(biometry_anova2_1 <- lm(data = biometry, rtt ~ fumeur_cat + genre)) %>.%
 ```
 
 <!--% Interprétation statistique et biologique -->
-Les valeurs de p-value pour tout les termes sont supérieurs au seuil alpha à 5% (0.806 et 0.280) ce qui veut dire qu'on ne rejette pas l'hypothèse nulle et qu'on a pas un effet significatif du sexe ou de du  fait de fumer ou non.
-Nous ne pouvons donc pas dire que le sexe ou le fait de fumeurs influencent de manière significative le BMI des individus dans cet échantillon. 
+Les valeurs de p-value pour tout les termes sont supérieurs au seuil alpha à 5% (0.806 et 0.280) ce qui veut dire qu'on ne rejette pas l'hypothèse nulle et qu'on a pas d'effet significatif pour le sexe ou pour le fait de fumer ou non.
+Nous ne pouvons donc pas dire que le sexe ou le fait de fumer influencent de manière significative le BMI des individus dans cet échantillon. 
 
 
 ### ANOVA à deux facteurs 2
@@ -620,11 +620,11 @@ L’intolérance au gluten ou au lactose seule ne semble pas influencer de mani�
 
 -   Selon l'indice de conicité le régime alimentaire influence le bmi, cependant après des test nous ne pouvons pas dire que le régime alimentaire ai réellement une influence. 
 
--   Nous ne pouvons pas dire que le fait de fumer ou que le genre des individus influence le BMI 
+-   Nous ne pouvons pas dire que le fait de fumer puisse influencer significativement le bmi
 
--   ...
+-   Le sucre ne semble pas d'être en lien significaif ni avec le BMI ni avec le rtt 
 
--   ...
+-   Le genre des individus ne semble pas non plus influencer le bmi de manière significative. 
 
 <!--# Important : ce document doit compiler SANS ERREURS avec le bouton 'Rendu' sinon le travail sera sanctionné lourdement. La compilation du document Quarto est maintenant considérée comme acquise. -->
 
@@ -633,6 +633,10 @@ L’intolérance au gluten ou au lactose seule ne semble pas influencer de mani�
 infos et données sur rth : https://www.cregg.org/commissions/motricite-et-nutrition/outils/#:~:text=RTH%20%3A%20rapport%20taille%20sur%20hanche,%2C85%20et%200%2C95.
 infos et données sur rtt: 
 https://www.sciensano.be/fr/resultats-de-lenquete-nationale-de-consommation-alimentaire-2022-2023/statut-ponderal-et-troubles-du-comportement-alimentaire/ratio-tour-de-taille
+indice de conicité: https://www.sciencedirect.com/science/article/pii/S0870255117301348?via%3Dihub 
+
+BMI : 
+https://welliecare.com/surpoids-obesite-calcul-bmi-imc/
 # Référence
 
 <!--% N'indiquez rien ci-dessous. Quarto se chargera de rajouter vos références bibliographiques automatiquement. -->
