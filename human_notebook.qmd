@@ -620,11 +620,11 @@ L’intolérance au gluten ou au lactose seule ne semble pas influencer de mani�
 
 -   Selon l'indice de conicité le régime alimentaire influence le bmi, cependant après des test nous ne pouvons pas dire que le régime alimentaire ai réellement une influence. 
 
--   Nous ne pouvons pas dire que le fait de fumer ou que le genre des individus influence le BMI 
+-   Nous ne pouvons pas dire que le fait de fumer puisse influencer significativement le bmi
 
--   ...
+-   Le sucre ne semble pas d'être en lien significaif ni avec le BMI ni avec le rtt 
 
--   ...
+-   Le genre des individus ne semble pas non plus influencer le bmi de manière significative. 
 
 <!--# Important : ce document doit compiler SANS ERREURS avec le bouton 'Rendu' sinon le travail sera sanctionné lourdement. La compilation du document Quarto est maintenant considérée comme acquise. -->
 
