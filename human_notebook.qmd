@@ -117,13 +117,13 @@ chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
 Nous observons sur ce graphique que la consommation de sucre ne semble pas avoir d'impact concret sur le tour de poignet et le tour de taille.
 
 ```{r description2etudiant3}
-chart(data = biometry, ~ activite_physique ) +
-  geom_histogram(bins = 20)
+chart(data = biometry, masse_corr ~ activite_physique | genre) +
+  geom_point() + labs( y = "Masse (kg)")
 
 
 ```
 
-On observe que dans notre échantillon l'activité physique est décrite selon une distribution bimodale et qu'une grande partie des individus ne fais pas de sport \# levels age -\> pour créer des catégories
+On observe une tendance à avoir une masse plus élevée lorsque l'activité physique est moindre. Au contraire, lorsque l'activité physique augmente, la masse est moins elévée.
 
 ### Description par l'étudiant 4
 
