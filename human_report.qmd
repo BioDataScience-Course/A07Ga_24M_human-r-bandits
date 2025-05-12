@@ -145,5 +145,5 @@ informations supplémentaires pour l'introduction : @incollection{lebacq2015,
   volume = {1},
   publisher = {WIV-ISP},
   address = {Bruxelles}
-
+indice de conicité: https://www.sciencedirect.com/science/article/pii/S0870255117301348?via%3Dihub 
 <!--% N'indiquez rien ci-dessous. Quarto se chargera de rajouter vos références bibliographiques automatiquement. -->
