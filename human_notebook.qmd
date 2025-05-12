@@ -53,7 +53,7 @@ biometry <- read$rds("data/biometry.rds")
 ...Vos deux descriptions ici...
 
 ```{r description 1 étudiant 1}
-chart(data = biometry, masse_corr ~ tour_taille | genre) + geom_point() 
+chart(data = biometry, masse_corr ~ tour_taille | genre) + geom_point() + labs(y= "Masse (kg)")
 
 
 
@@ -175,7 +175,7 @@ biometry <-
 <!--% Graphique ou tableau utilisant l'indice calculé.-->
 
 ```{r plot_indice1}
-chart(data = biometry, masse_corr ~ rtt | genre) + geom_point() +  xlab("rapport tour de taille taille ") + ylab( "Masse de l'individu kg")
+chart(data = biometry, masse_corr ~ rtt | genre) + geom_point() +  xlab("rapport tour de taille taille ") + ylab( "Masse de l'individu (kg)")
 
 ```
 
@@ -552,7 +552,6 @@ labs(y = "rtt moyen", x= "fumeur")
 ```
 
 <!--% Hypothèse nulle et alternative -->
-
 H0: Il n’y a aucun effet du tabagisme (fumeur_cat) ou du genre (genre) sur le rapport tour de taille/taille (rtt). Les moyennes de tous les groupes sont égales.
 
 H1: Il existe au moins une différence significative entre les moyennes de rtt selon le genre ou le statut de fumeur.
