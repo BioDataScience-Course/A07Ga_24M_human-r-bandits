@@ -54,6 +54,20 @@ Le but de notre étude est d'analyser les causes de l'obésité dans le Hainaut 
 
 <!--# N'oubliez pas que ce document doit pouvoir compiler indépendamment du reste. Cela implique que vous ajoutiez un chunk d'importation des données et que vous recalculiez tout ce qui doit l'être... Par contre, un simple copier-coller de toute la partie résultats du bloc-notes ne sera pas considéré comme un travail réalisé : vous devez sélectionner, et éventuellement remanier un peu le code, pour ne conserver que ce qui est utile ici. -->
 
+```{r setup, include=FALSE}
+# Ceci est nécessaire pour les tests SDD, ne pas utiliser dans un "vrai" projet
+if (!"tools:tests" %in% search())
+  source(here::here("tests/tools_tests.R"), attach(NULL, name = "tools:tests"))
+
+# Configuration de l'environnement SciViews::R
+SciViews::R("infer","model",lang = "fr")
+```
+```{r import}
+biometry <- read$rds("data/biometry.rds")
+
+```
+
+
 ...Vos descriptions des données ici...
 
 ## Tests d'hypothèses
