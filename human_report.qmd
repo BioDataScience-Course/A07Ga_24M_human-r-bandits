@@ -73,7 +73,7 @@ biometry <- read$rds("data/biometry.rds")
 
 ```
 
-```{r description 1 2}
+```{r description 1 }
 chart(data = biometry, masse_corr ~ tour_taille | genre) + geom_point() + labs(y= "Masse (kg)")
 
 ```
