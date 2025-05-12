@@ -44,7 +44,15 @@ Le but de notre étude est d'analyser les causes de l'obésité dans le Hainaut 
 
 <!--% Cette section doit comprendre une explication technique sur les mesures effectuées et sur le protocole relatif à l'acquisition des données en 3 à 4 paragraphes. Vous ajouterez aussi un paragraphe qui détaille les outils logiciels et statistiques utilisés (logiciels et versions des logiciels). Un simple copier-coller du matériel et méthodes du bloc-notes ne sera PAS considéré comme acceptable. -->
 
-...Votre matmet ici...
+La méthode utilisée correspond à de la prise de mesure par divers contributeurs. Chaque contributeur a pris des mesures sur différentes personnes de son entourage. Les mesures ont donc été réalisée in vivo. 
+
+Chaque contributeurs a mesuré 4 individus. Étant donné que 36 contributeurs ont participé, nous avons échantillonné 144 individus de façon aléatoire. 
+
+Les mesures consistaient en des questions posées par les contributeurs ainsi que des mesures mesurées directement sur les individus. Nous avons mesurés les tours de taille, de hanche, de poignet avec un mètre ainsi que la masse à l'aide de balances. Les balances ayant chacune leur propre erreur et étant toutes différentes, nous avons commencé par mesurer la masse des contributeurs sur une balance de référence et sur leur balance personnelle, permettant ainsi de déterminer l'erreur de la balance. Nous avons ensuite modifié nos données directement. 
+
+Toutes les mesures ont été réalisées en tout anonymat, pour ce faire les contributeurs ont reçu des numéros et ont pu attribuer à chaque individu mesuré une lettre allant de A à D nommant ainsi les individus par une suite de chiffre et de lettre. 
+
+Les données ont été compilées dans un fichier Google sheet partagé par tout les contributeurs. Elles ont ensuite été analysées dans RStudio, un logiciel qui permet de coder en R. La version du language R utilisée est R.4.3.0. Les balises du projet dans le logiciel d'analyse sont en Quarto/Rmarkdown. Les codes ont été écrit avec le package ggplot2. 
 
 # Résultats
 
