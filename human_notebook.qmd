@@ -567,6 +567,9 @@ anova(biometry_anova2_1 <- lm(data = biometry, rtt ~ fumeur_cat + genre)) %>.%
 ```
 
 <!--% Interprétation statistique et biologique -->
+Les valeurs de p-value pour tout les termes sont supérieurs au seuil alpha à 5% (0.806 et 0.280) ce qui veut dire qu'on ne rejette pas l'hypothèse nulle et qu'on a pas un effet significatif du sexe ou de du  fait de fumer ou non.
+Nous ne pouvons donc pas dire que le sexe ou le fait de fumeurs influencent de manière significative le BMI des individus dans cet échantillon. 
+
 
 ### ANOVA à deux facteurs 2
 
@@ -615,9 +618,9 @@ L’intolérance au gluten ou au lactose seule ne semble pas influencer de mani�
 
 -   Un indice qui défini notre BMI est le rtt car au plus le rtt est élévé, plus il y a de chance d'être obèse et donc peut induire des problèmes de santé.
 
--   
+-   Selon l'indice de conicité le régime alimentaire influence le bmi, cependant après des test nous ne pouvons pas dire que le régime alimentaire ai réellement une influence. 
 
--   ...
+-   Nous ne pouvons pas dire que le fait de fumer ou que le genre des individus influence le BMI 
 
 -   ...
 
