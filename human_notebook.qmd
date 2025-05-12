@@ -552,11 +552,11 @@ labs(y = "rtt moyen", x= "fumeur")
 ```
 
 <!--% Hypothèse nulle et alternative -->
+H0: Il n’y a aucun effet du tabagisme (fumeur_cat) ou du genre (genre) sur le rapport tour de taille/taille (rtt). Les moyennes de tous les groupes sont égales.
 
-
-
+H1: Il existe au moins une différence significative entre les moyennes de rtt selon le genre ou le statut de fumeur.
 <!--% Vérification des conditions d'application -->
-```{r bartlett_anova2_2}
+```{r bartlett_anova2_1}
 bartlett.test(data = biometry, rtt ~ interaction(fumeur_cat, genre))
 ```
 ```{r test_anova2_1}
@@ -626,7 +626,8 @@ L’intolérance au gluten ou au lactose seule ne semble pas influencer de mani�
 #Bibliographie 
 
 infos et données sur rth : https://www.cregg.org/commissions/motricite-et-nutrition/outils/#:~:text=RTH%20%3A%20rapport%20taille%20sur%20hanche,%2C85%20et%200%2C95.
-
+infos et données sur rtt: 
+https://www.sciensano.be/fr/resultats-de-lenquete-nationale-de-consommation-alimentaire-2022-2023/statut-ponderal-et-troubles-du-comportement-alimentaire/ratio-tour-de-taille
 # Référence
 
 <!--% N'indiquez rien ci-dessous. Quarto se chargera de rajouter vos références bibliographiques automatiquement. -->
