@@ -354,24 +354,26 @@ On peut donc en conclure qu'il y a une dépendance significative entre les caté
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_2}
-(bmi_tab <- table(dénombrement_bmi = biometry$bmi_cat))
+table(biometry$bmi_cat, biometry$sucre)
 
 ```
 
 <!--% Hypothèse nulle et alternative -->
 
-H0:μ sous-poids = μ poids normal = μ surpoids = μ obèse 
+H0: indépendance entre BMI et sucre  
 
-H1 : μ i != μ j 
+H1 : dépendance entre BMI et sucre  
 
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_2}
-chisq.test(bmi_tab, p = c("Sous-poids" = 1/4, "Poids normal" = 1/4, "Surpoids" = 1/4, "Obèse" = 1/4), rescale.p = FALSE)
+chisq_tab2 <- table(biometry$bmi_cat, biometry$sucre)
+chisq.test(chisq_tab2)
 ```
 
 <!--% Interprétation statistique et biologique -->
-Nous rejetons H0 au seuil alpha de 5% (df = 3 X-squared = 30.846). Il y'a une différence significative entre la distribution observée des catégories de bmi et la distribution théorique de 1/4 pour chaque catégorie. 
+Nous ne rejetons pas H0 au seuil alpha de 5% (df = 9 p = 0.6308). 
+On peut donc en conclure qu'il n'y a pas significativement de lien de dépendance entre le BMI et le Sucre. Cependant, au vu du degré d'indépendance élevé, nous pouvons remettre en question le résultat de ce test.
 
 <!--# Travaillez jusqu'ici pour le module 7. -->
 
@@ -612,9 +614,9 @@ L’intolérance au gluten ou au lactose seule ne semble pas influencer de mani�
 
 <!--% Reprenez ci-dessous sous forme d'éléments de listes brefs les résultats les plus importants que vous retirez de votre analyse. Ils doivent vous guider pour décider quels tests (les plus intéressants) vous allez conserver dans le rapport. -->
 
--   ...
+-   Un indice qui défini notre BMI est le rtt car au plus le rtt est élévé, plus il y a de chance d'être obèse et donc peut induire des problèmes de santé.
 
--   ...
+-   
 
 -   ...
 
