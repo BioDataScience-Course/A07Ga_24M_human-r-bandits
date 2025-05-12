@@ -110,20 +110,20 @@ On a une distribution asymétrique à droite, la majorité des individus consomm
 ...Vos deux descriptions ici...
 
 ```{r description1etudiant3}
-chart(data = biometry, masse_corr ~ sucre %fill=% sucre) +
-  geom_boxplot() 
+chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
+  geom_point() 
 ```
 
-Nous observons sur ce graphique que la consommation de sucre ne semble pas avoir d'impact concret sur la masse des individu bien qu'il y ai plus de variation au plus les sujet ont tendance à en consommer souvent.
+Nous observons sur ce graphique que la consommation de sucre ne semble pas avoir d'impact concret sur le tour de poignet et le tour de taille.
 
 ```{r description2etudiant3}
-chart(data = biometry, masse_corr ~ activite_physique | genre) +
-  geom_point() + labs( y = "Masse (kg)")
+chart(data = biometry, ~ activite_physique ) +
+  geom_histogram(bins = 20)
 
 
 ```
 
-On observe une tendance à avoir une masse plus élevée lorsque l'activité physique est moindre. Au contraire, lorsque l'activité physique augmente, la masse est moins elévée.
+On observe que dans notre échantillon l'activité physique est décrite selon une distribution bimodale et qu'une grande partie des individus ne fais pas de sport \# levels age -\> pour créer des catégories
 
 ### Description par l'étudiant 4
 
@@ -433,7 +433,7 @@ t.test(data = biometry, bmi ~ intolerance_gluten,
 ```
 
 <!--% Interprétation statistique et biologique -->
-On peut donc remarquer que nous avons un p-value de 0,8286 ce qui veut dire que nous n'avons pas de différence signification au seuil alpha à 5% entre le bmi de ceux qui sont tolérant au gluten et ceux qui ne le sont pas. On a également un t de 0.95 et un df de 140.  
+On peut donc remarquer que nous avons un p-value de 0,8286 ce qui veut dire que nous n'avons pas de différence signification au seuil alpha à 5% entre le bmi de ceux qui sont tolérant au gluten et ceux qui ne le sont pas. On a également un t de 0.95 et un df de 140. Le fait de ne pas observer de différence significative pourrait s'expliquer sur le faible nombre d'individus tolérants au gluten ce qui rendrait le test moins fiable 
 
 <!--# Travaillez jusqu'ici pour le module 8. Commencez à travailler sur le rapport (intro, mat&met). -->
 
@@ -567,8 +567,7 @@ anova(biometry_anova2_1 <- lm(data = biometry, rtt ~ fumeur_cat + genre)) %>.%
 ```
 
 <!--% Interprétation statistique et biologique -->
-Les valeurs de p-value pour tout les termes sont supérieurs au seuil alpha à 5% (0.806, 0.280) ce qui veut dire qu'on ne rejette pas l'hypothèse nulle et qu'on a pas un effet significatif du genre ou des fumeurs sur le rtt.
-Mais on observe une homocédaticité pour nos variables donc le test est pertinent.
+
 ### ANOVA à deux facteurs 2
 
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
