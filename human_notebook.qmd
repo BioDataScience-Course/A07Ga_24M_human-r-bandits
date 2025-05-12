@@ -110,20 +110,20 @@ On a une distribution asymétrique à droite, la majorité des individus consomm
 ...Vos deux descriptions ici...
 
 ```{r description1etudiant3}
-chart(data = biometry, masse_corr ~ sucre %fill=% sucre) +
-  geom_boxplot() 
+chart(data = biometry, tour_poignet ~ tour_taille %col=% sucre) +
+  geom_point() 
 ```
 
-Nous observons sur ce graphique que la consommation de sucre ne semble pas avoir d'impact concret sur la masse des individu bien qu'il y ai plus de variation au plus les sujet ont tendance à en consommer souvent.
+Nous observons sur ce graphique que la consommation de sucre ne semble pas avoir d'impact concret sur le tour de poignet et le tour de taille.
 
 ```{r description2etudiant3}
-chart(data = biometry, masse_corr ~ activite_physique | genre) +
-  geom_point() + labs( y = "Masse (kg)")
+chart(data = biometry, ~ activite_physique ) +
+  geom_histogram(bins = 20)
 
 
 ```
 
-On observe une tendance à avoir une masse plus élevée lorsque l'activité physique est moindre. Au contraire, lorsque l'activité physique augmente, la masse est moins elévée.
+On observe que dans notre échantillon l'activité physique est décrite selon une distribution bimodale et qu'une grande partie des individus ne fais pas de sport \# levels age -\> pour créer des catégories
 
 ### Description par l'étudiant 4
 
@@ -354,24 +354,26 @@ On peut donc en conclure qu'il y a une dépendance significative entre les caté
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
 
 ```{r plot_chi2_2}
-(bmi_tab <- table(dénombrement_bmi = biometry$bmi_cat))
+table(biometry$bmi_cat, biometry$sucre)
 
 ```
 
 <!--% Hypothèse nulle et alternative -->
 
-H0:μ sous-poids = μ poids normal = μ surpoids = μ obèse 
+H0: indépendance entre BMI et sucre  
 
-H1 : μ i != μ j 
+H1 : dépendance entre BMI et sucre  
 
 <!--% Vérification des conditions d'application -->
 
 ```{r test_chi2_2}
-chisq.test(bmi_tab, p = c("Sous-poids" = 1/4, "Poids normal" = 1/4, "Surpoids" = 1/4, "Obèse" = 1/4), rescale.p = FALSE)
+chisq_tab2 <- table(biometry$bmi_cat, biometry$sucre)
+chisq.test(chisq_tab2)
 ```
 
 <!--% Interprétation statistique et biologique -->
-Nous rejetons H0 au seuil alpha de 5% (df = 3 X-squared = 30.846). Il y'a une différence significative entre la distribution observée des catégories de bmi et la distribution théorique de 1/4 pour chaque catégorie. 
+Nous ne rejetons pas H0 au seuil alpha de 5% (df = 9 p = 0.6308). 
+On peut donc en conclure qu'il n'y a pas significativement de lien de dépendance entre le BMI et le Sucre. Cependant, au vu du degré d'indépendance élevé, nous pouvons remettre en question le résultat de ce test.
 
 <!--# Travaillez jusqu'ici pour le module 7. -->
 
@@ -431,7 +433,7 @@ t.test(data = biometry, bmi ~ intolerance_gluten,
 ```
 
 <!--% Interprétation statistique et biologique -->
-On peut donc remarquer que nous avons un p-value de 0,8286 ce qui veut dire que nous n'avons pas de différence signification au seuil alpha à 5% entre le bmi de ceux qui sont tolérant au gluten et ceux qui ne le sont pas. On a également un t de 0.95 et un df de 140.  
+On peut donc remarquer que nous avons un p-value de 0,8286 ce qui veut dire que nous n'avons pas de différence signification au seuil alpha à 5% entre le bmi de ceux qui sont tolérant au gluten et ceux qui ne le sont pas. On a également un t de 0.95 et un df de 140. Le fait de ne pas observer de différence significative pourrait s'expliquer sur le faible nombre d'individus tolérants au gluten ce qui rendrait le test moins fiable 
 
 <!--# Travaillez jusqu'ici pour le module 8. Commencez à travailler sur le rapport (intro, mat&met). -->
 
@@ -565,8 +567,7 @@ anova(biometry_anova2_1 <- lm(data = biometry, rtt ~ fumeur_cat + genre)) %>.%
 ```
 
 <!--% Interprétation statistique et biologique -->
-Les valeurs de p-value pour tout les termes sont supérieurs au seuil alpha à 5% (0.806, 0.280) ce qui veut dire qu'on ne rejette pas l'hypothèse nulle et qu'on a pas un effet significatif du genre ou des fumeurs sur le rtt.
-Mais on observe une homocédaticité pour nos variables donc le test est pertinent.
+
 ### ANOVA à deux facteurs 2
 
 <!--% Graphique ou tableau présentant les données par rapport au test à réaliser. -->
@@ -612,9 +613,9 @@ L’intolérance au gluten ou au lactose seule ne semble pas influencer de mani�
 
 <!--% Reprenez ci-dessous sous forme d'éléments de listes brefs les résultats les plus importants que vous retirez de votre analyse. Ils doivent vous guider pour décider quels tests (les plus intéressants) vous allez conserver dans le rapport. -->
 
--   ...
+-   Un indice qui défini notre BMI est le rtt car au plus le rtt est élévé, plus il y a de chance d'être obèse et donc peut induire des problèmes de santé.
 
--   ...
+-   
 
 -   ...
 
