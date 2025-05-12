@@ -557,7 +557,7 @@ H0: Il n’y a aucun effet du tabagisme (fumeur_cat) ou du genre (genre) sur le 
 
 H1: Il existe au moins une différence significative entre les moyennes de rtt selon le genre ou le statut de fumeur.
 <!--% Vérification des conditions d'application -->
-```{r bartlett_anova2_2}
+```{r bartlett_anova2_1}
 bartlett.test(data = biometry, rtt ~ interaction(fumeur_cat, genre))
 ```
 ```{r test_anova2_1}
