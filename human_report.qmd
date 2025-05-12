@@ -68,11 +68,53 @@ Les données ont été compilées dans un fichier Google sheet partagé par tout
 
 <!--# N'oubliez pas que ce document doit pouvoir compiler indépendamment du reste. Cela implique que vous ajoutiez un chunk d'importation des données et que vous recalculiez tout ce qui doit l'être... Par contre, un simple copier-coller de toute la partie résultats du bloc-notes ne sera pas considéré comme un travail réalisé : vous devez sélectionner, et éventuellement remanier un peu le code, pour ne conserver que ce qui est utile ici. -->
 
-
 ```{r import}
 biometry <- read$rds("data/biometry.rds")
 
 ```
+
+```{r description 1 2}
+chart(data = biometry, masse_corr ~ tour_taille | genre) + geom_point() + labs(y= "Masse (kg)")
+
+```
+
+```{r description 2}
+#chart(biometry, tour_taille ~ masse_corr %col=% masse_corr)+ geom_point()
+
+chart(data = biometry, masse_corr ~ genre) +
+  geom_boxplot() +
+  labs(title = "Répartition de la masse selon le genre",
+       x = "Genre", y = "Masse (kg)") 
+
+```
+
+```{r description 3}
+chart(data = biometry, masse_corr ~ sucre %fill=% sucre) +
+  geom_boxplot() + labs( y = "Masse (kg)")
+```
+
+```{r description 4}
+#compraison du type d'alimentation et du bmi
+chart(biometry, masse_corr ~ alimentation) +
+ geom_boxplot(na.rm = TRUE)
+
+```
+
+```{r description 5}
+#tableau par sex comparant la moyenne de taille et de poid 
+biometry %>%
+  group_by(., genre) %>%  
+  summarise(
+    `Taille Moyenne` = mean(taille, na.rm = TRUE),
+    `Masse Moyenne` = mean(masse_corr, na.rm = TRUE),
+    `Nombres Mesurés` = n()
+  ) -> c
+  as.data.frame(c)
+
+```
+
+On constate une corrélation entre un tour de taille plus large et une masse corporelle plus importante. De manière générale, les hommes présentent un tour de taille plus fin mais une masse plus élevée que les femmes. La masse corporelle médiane est d’ailleurs plus importante chez les hommes, avec une variabilité plus faible, bien que quelques valeurs extrêmes soient présentes. Cette différence dans la répartition des masses pourrait s’expliquer par des facteurs physiologiques ou comportementaux propres à chaque genre, comme la composition corporelle ou les habitudes alimentaires. Concernant la consommation de sucre, elle ne semble pas avoir d’effet direct sur la masse corporelle, même si une plus grande variabilité est observée chez les individus qui en consomment fréquemment. En ce qui concerne les régimes alimentaires, très peu de différences de masse sont notées entre les personnes ayant un régime carnivore ou omnivore, alors que les individus végétariens présentent en moyenne une masse significativement plus faible. Reste à savoir si cela influence réellement leurs indices d'obésité(calculés plus bas). Enfin, les différences de taille et de poids entre hommes et femmes sont marquées : les hommes étant en général plus grands et plus massifs, on peut légitimement s’interroger sur l’impact de ces écarts sur leurs indices respectifs.
+
 
 
 ...Vos descriptions des données ici...
