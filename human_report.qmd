@@ -37,7 +37,7 @@ SciViews::R(___, lang = "fr")
 
 <!--% Formulez ici de façon concise et précise votre question de recherche en 1 à 2 phrases. -->
 
-...Votre but ici...
+Le but de notre étude est d'analyser les causes de l'obésité dans le Hainaut et de déterminer les facteurs qui influencent positivement et négativement la prise ou perte de poids.
 
 # Matériel et méthodes
 
