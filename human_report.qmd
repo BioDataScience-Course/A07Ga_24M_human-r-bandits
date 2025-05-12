@@ -122,6 +122,13 @@ On constate une relation entre un tour de taille plus large et une masse corpore
 ## Tests d'hypothèses
 
 <!--% Sélectionnez les 4 tests d'hypothèses les plus pertinents depuis `human_notebook.qmd`, ainsi bien sûr que les calculs des indices nécessaires que vous placerez juste au-dessus de vos tests. Ces tests doivent répondre à votre question de recherche (le but). Reformulez les interprétations pour former un texte qui se lit en continu. -->
+Dans le cadre de notre étude visant à analyser les causes de l’obésité dans le Hainaut et à identifier les facteurs influençant la prise ou la perte de poids, plusieurs tests d’hypothèse ont été réalisés. Un test du chi² d’indépendance a tout d’abord été appliqué pour évaluer la relation entre le BMI et la consommation de sucre. Les résultats indiquent que nous ne rejetons pas l’hypothèse nulle (p = 0,6308 ; df = 9), ce qui suggère une absence de lien de dépendance significatif entre ces deux variables. Toutefois, au vu du degré d’indépendance élevé, la robustesse de ce résultat peut être remise en question.
+
+Ensuite, un t-test a été utilisé pour comparer les moyennes de BMI entre les hommes et les femmes. La p-value, largement supérieure au seuil de 5 %, ne permet pas de rejeter l’hypothèse nulle, ce qui indique qu’aucune différence significative n’a été observée entre les deux genres. Biologiquement, cela suggère que le genre ne semble pas, de manière générale, influencer le BMI.
+
+Par ailleurs, une ANOVA à un facteur a été menée afin d’analyser l’effet du type de régime alimentaire (carnivore, omnivore ou végétarien) sur le BMI. Là encore, l’hypothèse nulle n’a pas pu être rejetée au seuil de 5 %, ce qui signifie qu’aucune différence significative entre les groupes alimentaires n’a été détectée concernant le BMI.
+
+Enfin, une ANOVA à deux facteurs a été réalisée pour étudier l’influence combinée du sexe et du tabagisme sur le BMI. Les p-values obtenues pour les deux facteurs (respectivement 0,806 et 0,280) étant supérieures au seuil critique, nous concluons qu’aucun de ces facteurs ne présente d’effet significatif sur le BMI dans notre échantillon.
 
 ...Vos tests d'hypothèses ici...
 
