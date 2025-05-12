@@ -505,7 +505,7 @@ H1: ∃(i,j) tel que %\mu%\[i\] != %\mu%\[j\] (avec i et j sont "carnivore", "om
 
 <!--% Vérification des conditions d'application -->
 
-```{r test_anova1_2}
+```{r barlett_anova1_2}
 bartlett.test(data = biometry, bmi ~ alimentation)
 
   
