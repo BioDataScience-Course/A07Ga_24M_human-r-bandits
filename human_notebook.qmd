@@ -553,6 +553,9 @@ labs(y = "rtt moyen", x= "fumeur")
 
 <!--% Hypothèse nulle et alternative -->
 
+H0: Il n’y a aucun effet du tabagisme (fumeur_cat) ou du genre (genre) sur le rapport tour de taille/taille (rtt). Les moyennes de tous les groupes sont égales.
+
+H1: Il existe au moins une différence significative entre les moyennes de rtt selon le genre ou le statut de fumeur.
 <!--% Vérification des conditions d'application -->
 ```{r bartlett_anova2_2}
 bartlett.test(data = biometry, rtt ~ interaction(fumeur_cat, genre))
