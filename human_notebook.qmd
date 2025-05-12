@@ -634,6 +634,9 @@ infos et données sur rth : https://www.cregg.org/commissions/motricite-et-nutri
 infos et données sur rtt: 
 https://www.sciensano.be/fr/resultats-de-lenquete-nationale-de-consommation-alimentaire-2022-2023/statut-ponderal-et-troubles-du-comportement-alimentaire/ratio-tour-de-taille
 indice de conicité: https://www.sciencedirect.com/science/article/pii/S0870255117301348?via%3Dihub 
+
+BMI : 
+https://welliecare.com/surpoids-obesite-calcul-bmi-imc/
 # Référence
 
 <!--% N'indiquez rien ci-dessous. Quarto se chargera de rajouter vos références bibliographiques automatiquement. -->
