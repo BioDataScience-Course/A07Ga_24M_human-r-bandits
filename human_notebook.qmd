@@ -431,7 +431,7 @@ t.test(data = biometry, bmi ~ intolerance_gluten,
 ```
 
 <!--% Interprétation statistique et biologique -->
-On peut donc remarquer que nous avons un p-value de 0,8286 ce qui veut dire que nous n'avons pas de différence signification au seuil alpha à 5% entre le bmi de ceux qui sont tolérant au gluten et ceux qui ne le sont pas. On a également un t de 0.95 et un df de 140.  
+On peut donc remarquer que nous avons un p-value de 0,8286 ce qui veut dire que nous n'avons pas de différence signification au seuil alpha à 5% entre le bmi de ceux qui sont tolérant au gluten et ceux qui ne le sont pas. On a également un t de 0.95 et un df de 140. Le fait de ne pas observer de différence significative pourrait s'expliquer sur le faible nombre d'individus tolérants au gluten ce qui rendrait le test moins fiable 
 
 <!--# Travaillez jusqu'ici pour le module 8. Commencez à travailler sur le rapport (intro, mat&met). -->
 
