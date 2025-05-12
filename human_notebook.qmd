@@ -553,6 +553,8 @@ labs(y = "rtt moyen", x= "fumeur")
 
 <!--% Hypothèse nulle et alternative -->
 
+
+
 <!--% Vérification des conditions d'application -->
 ```{r bartlett_anova2_2}
 bartlett.test(data = biometry, rtt ~ interaction(fumeur_cat, genre))
