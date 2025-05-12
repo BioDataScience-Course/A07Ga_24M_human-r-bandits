@@ -31,13 +31,11 @@ SciViews::R("infer", lang = "fr")
 
 <!--# Ce projet porte sur la santé humaine liée à l'obésité, à la façon de se nourrir et aux activités réalisées (plus ou moins sédentaire ou actif) ... Réalisez des recherches bibliographiques afin d'avoir une vision précise de la thématique. Existe-t-il des indicateurs calculables pour quantifier l'état de santé d'un individu, par exemple ? Naturellement, ces indicateurs doivent être calculables sur bases des variables mesurées dans votre jeu de données. Focalisez-vous donc sur ces variables-là. -->
 
+Pour commencer, l'obésité est une problématique de santé qui concerne un nombre important d'individus dans la population mondiale. La proportion de personnes atteint d'obésité augmente petit à petit avec l'age, dans la catégorie d'individus de plus de 65 ans on un intervalle de personnes obéses compris entee 20 et 30% selon le sexe. En 2014, L'OMS a recensé plus de 1,9 milliards de personnes en surpoids et parmi elle 600 millions avaient dépassé le seuil d'obésité. L'obésité est donc un sujet très important à étudier et à comprendre les mécanismes qui compose cela. L'obésité se définit comme une accumulation excessive de masse grasse corporelle pouvant nuire à la santé, elle peut être associer à de nombreuses complications comme le diabète de type 2, affections cardio-vasculaires, problèmes articulaires,...L'excès de graisse corporelle dans la graisse abdominale est associé à une augmentation de la pression artérielle et du risque d'hyperinsulénémie ce qui engendre un développement de maladies chroniques.
 
-Pour commencer, l'obésité est une problématique de santé qui concerne un nombre important d'individus dans la population mondiale. La proportion de personnes atteint d'obésité augmente petit à petit avec l'age, dans la catégorie d'individus de plus de 65 ans on un intervalle de personnes obéses compris entee 20 et 30% selon le sexe. En 2014, L'OMS a recensé plus de 1,9 milliards de personnes en surpoids et parmi elle 600 millions avaient dépassé le seuil d'obésité. L'obésité est donc un sujet très important à étudier et à comprendre les mécanismes qui compose cela. 
-L'obésité se définit comme une accumulation excessive de masse grasse corporelle pouvant nuire à la santé, elle peut être associer à de nombreuses complications comme le diabète de type 2, affections cardio-vasculaires, problèmes articulaires,...L'excès de graisse corporelle dans la graisse abdominale est associé à une augmentation de la pression artérielle et du risque d'hyperinsulénémie ce qui engendre un développement de maladies chroniques. 
+Pour étudier l'obésité, on peut prendre en compte de nombreux facteurs ce qui permet de recourir à de multiples indicateurs de santé tels que l'indice de masse corporelle (BMI), le rapport taille/hanche, le rapport tour de taille/taille ou encore l'indice de conicité. Ces indicateurs permettent de quantifier objectivement la condition physique et l'état de santé d'un individu en fonction des donnés disponibles
 
-Pou étudier l'obésité, on peut prendre en compte de nombreux facteurs ce qui permet de recourir à de multiples indicateurs de santé tels que l'indice de masse corporelle (BMI), le rapport taille/hanche, le rapport tour de taille/taille ou encore l'indice de cognicité. Ces indicateurs permettent de quantifier objectivement la condition physique et l'état de santé d'un individu en fonction des donnés disponibles
-
-Ici dans le cas de notre étude de biométrie, nous avons choisi d'analyser celle-ci grâce aux données d'individus du Hainaut pour analyser les causes de l'obésité à travers plusieurs variables mesurées dans notre jeu de données. Et à partir de nos multiples analyses du jeu de données, nous allons mettre en évidence des pistes d'analyses utiles pour mieux comprendre la problématique de l'obésité et des facteurs qui le composent et l'influencent 
+Ici dans le cas de notre étude de biométrie, nous avons choisi d'analyser celle-ci grâce aux données d'individus du Hainaut pour analyser les causes de l'obésité à travers plusieurs variables mesurées dans notre jeu de données. Et à partir de nos multiples analyses du jeu de données, nous allons mettre en évidence des pistes d'analyses utiles pour mieux comprendre la problématique de l'obésité et des facteurs qui le composent et l'influencent.
 
 # But
 
@@ -49,15 +47,15 @@ Le but de notre étude est d'analyser les causes de l'obésité dans le Hainaut 
 
 <!--% Cette section doit comprendre une explication technique sur les mesures effectuées et sur le protocole relatif à l'acquisition des données en 3 à 4 paragraphes. Vous ajouterez aussi un paragraphe qui détaille les outils logiciels et statistiques utilisés (logiciels et versions des logiciels). Un simple copier-coller du matériel et méthodes du bloc-notes ne sera PAS considéré comme acceptable. -->
 
-La méthode utilisée correspond à de la prise de mesure par divers contributeurs. Chaque contributeur a pris des mesures sur différentes personnes de son entourage. Les mesures ont donc été réalisée in vivo. 
+La méthode utilisée correspond à de la prise de mesure par divers contributeurs. Chaque contributeur a pris des mesures sur différentes personnes de son entourage. Les mesures ont donc été réalisée in vivo.
 
-Chaque contributeurs a mesuré 4 individus. Étant donné que 36 contributeurs ont participé, nous avons échantillonné 144 individus de façon aléatoire. 
+Chaque contributeurs a mesuré 4 individus. Étant donné que 36 contributeurs ont participé, nous avons échantillonné 144 individus de façon aléatoire.
 
-Les mesures consistaient en des questions posées par les contributeurs ainsi que des mesures mesurées directement sur les individus. Nous avons mesurés les tours de taille, de hanche, de poignet avec un mètre ainsi que la masse à l'aide de balances. Les balances ayant chacune leur propre erreur et étant toutes différentes, nous avons commencé par mesurer la masse des contributeurs sur une balance de référence et sur leur balance personnelle, permettant ainsi de déterminer l'erreur de la balance. Nous avons ensuite modifié nos données directement. 
+Les mesures consistaient en des questions posées par les contributeurs ainsi que des mesures mesurées directement sur les individus. Nous avons mesurés les tours de taille, de hanche, de poignet avec un mètre ainsi que la masse à l'aide de balances. Les balances ayant chacune leur propre erreur et étant toutes différentes, nous avons commencé par mesurer la masse des contributeurs sur une balance de référence et sur leur balance personnelle, permettant ainsi de déterminer l'erreur de la balance. Nous avons ensuite modifié nos données directement.
 
-Toutes les mesures ont été réalisées en tout anonymat, pour ce faire les contributeurs ont reçu des numéros et ont pu attribuer à chaque individu mesuré une lettre allant de A à D nommant ainsi les individus par une suite de chiffre et de lettre. 
+Toutes les mesures ont été réalisées en tout anonymat, pour ce faire les contributeurs ont reçu des numéros et ont pu attribuer à chaque individu mesuré une lettre allant de A à D nommant ainsi les individus par une suite de chiffre et de lettre.
 
-Les données ont été compilées dans un fichier Google sheet partagé par tout les contributeurs. Elles ont ensuite été analysées dans RStudio, un logiciel qui permet de coder en R. La version du language R utilisée est R.4.3.0. Les balises du projet dans le logiciel d'analyse sont en Quarto/Rmarkdown. Les codes ont été écrit avec le package ggplot2. 
+Les données ont été compilées dans un fichier Google sheet partagé par tout les contributeurs. Elles ont ensuite été analysées dans RStudio, un logiciel qui permet de coder en R. La version du language R utilisée est R.4.3.0. Les balises du projet dans le logiciel d'analyse sont en Quarto/Rmarkdown. Les codes ont été écrit avec le package ggplot2.
 
 # Résultats
 
@@ -113,8 +111,7 @@ biometry %>%
 
 ```
 
-On constate une relation entre un tour de taille plus large et une masse corporelle plus importante. De manière générale, les hommes présentent un tour de taille plus fin mais une masse plus élevée que les femmes. La masse corporelle médiane est d’ailleurs plus importante chez les hommes, avec une variabilité plus faible, bien que quelques valeurs extrêmes soient présentes. Cette différence dans la répartition des masses pourrait s’expliquer par des facteurs physiologiques ou comportementaux propres à chaque genre, comme la composition corporelle ou les habitudes alimentaires. Concernant la consommation de sucre, elle ne semble pas avoir d’effet direct sur la masse corporelle, même si une plus grande variabilité est observée chez les individus qui en consomment fréquemment. En ce qui concerne les régimes alimentaires, très peu de différences de masse sont notées entre les personnes ayant un régime carnivore ou omnivore, alors que les individus végétariens présentent en moyenne une masse significativement plus faible. Reste à savoir si cela influence réellement leurs indices d'obésité(calculés plus bas). Enfin, les différences de taille et de poids entre hommes et femmes sont marquées : les hommes étant en général plus grands et plus massifs, on peut légitimement s’interroger sur l’impact de ces écarts sur leurs indices respectifs.
-
+On constate une relation entre un tour de taille plus large et une masse corporelle plus importante. De manière générale, les hommes présentent un tour de taille plus fin mais une masse plus élevée que les femmes. La masse corporelle médiane est d'ailleurs plus importante chez les hommes, avec une variabilité plus faible, bien que quelques valeurs extrêmes soient présentes. Cette différence dans la répartition des masses pourrait s'expliquer par des facteurs physiologiques ou comportementaux propres à chaque genre, comme la composition corporelle ou les habitudes alimentaires. Concernant la consommation de sucre, elle ne semble pas avoir d'effet direct sur la masse corporelle, même si une plus grande variabilité est observée chez les individus qui en consomment fréquemment. En ce qui concerne les régimes alimentaires, très peu de différences de masse sont notées entre les personnes ayant un régime carnivore ou omnivore, alors que les individus végétariens présentent en moyenne une masse significativement plus faible. Reste à savoir si cela influence réellement leurs indices d'obésité(calculés plus bas). Enfin, les différences de taille et de poids entre hommes et femmes sont marquées : les hommes étant en général plus grands et plus massifs, on peut légitimement s'interroger sur l'impact de ces écarts sur leurs indices respectifs.
 
 ## Tests d'hypothèses
 
@@ -132,6 +129,7 @@ biometry <-
   labels = c("sans risque", "à risque"),  # Noms des classes
   right = FALSE)
 ```
+
 ### BMI
 
 ```{r indice4}
@@ -157,8 +155,6 @@ biometry$bmi_cat2 <- cut(biometry$bmi,
 table(biometry$bmi_cat2, biometry$rtt_cat)
 ```
 
-
-
 H0 : indépendance entre Bmi et rtt
 
 H1 : dépendance entre Bmi et rtt
@@ -167,7 +163,8 @@ H1 : dépendance entre Bmi et rtt
 chisq_tab <- table(biometry$bmi_cat2, biometry$rtt_cat)
 chisq.test(chisq_tab)
 ```
-### Test t student différences entre les genres 
+
+### Test t student différences entre les genres
 
 ```{r plot_t}
 chart(data = biometry,bmi ~ genre ) +
@@ -177,15 +174,17 @@ chart(data = biometry,bmi ~ genre ) +
   labs(y ="indice de masse corporelle")
 
 ```
-H0 :μ(bmi) homme  = μ(bmi) femme
 
-H1 :μ(bmi) homme !=  μ(bmi) femme
+H0 :μ(bmi) homme = μ(bmi) femme
+
+H1 :μ(bmi) homme != μ(bmi) femme
 
 ```{r test_t}
 t.test(data = biometry, bmi ~ genre,
   alternative = "two.sided", conf.level = 0.95, var.equal = TRUE)
 
 ```
+
 ### Anova 1 facteur sucre rtt
 
 ```{r plot_anova_1}
@@ -195,6 +194,7 @@ chart(data = biometry, bmi ~ alimentation) +
   stat_summary(geom = "point", fun = "mean", color = "red", size = 3) +
   ylab("BMI")
 ```
+
 H0: %\mu%\[vg\] = %\mu%\[carn\] == %\mu%\[om\]
 
 H1: ∃(i,j) tel que %\mu%\[i\] != %\mu%\[j\] (avec i et j sont "carnivore", "omnivore" ou "végétarien")
@@ -230,10 +230,10 @@ biometry %>.%
 labs(y = "rtt moyen", x= "fumeur")
 
 ```
-H0: Il n’y a aucun effet du tabagisme (fumeur_cat) ou du genre (genre) sur le rapport tour de taille/taille (rtt). Les moyennes de tous les groupes sont égales.
+
+H0: Il n'y a aucun effet du tabagisme (fumeur_cat) ou du genre (genre) sur le rapport tour de taille/taille (rtt). Les moyennes de tous les groupes sont égales.
 
 H1: Il existe au moins une différence significative entre les moyennes de rtt selon le genre ou le statut de fumeur.
-
 
 ```{r bartlett_anova_2}
 bartlett.test(data = biometry, rtt ~ interaction(fumeur_cat, genre))
@@ -243,40 +243,35 @@ bartlett.test(data = biometry, rtt ~ interaction(fumeur_cat, genre))
 anova(biometry_anova2_1 <- lm(data = biometry, rtt ~ fumeur_cat + genre)) %>.%
   tabularise(.)
 ```
+
 ### Interprétation des différents test éffectués
 
-Un test du chi² d’indépendance a tout d’abord été appliqué pour évaluer la relation entre le BMI et la consommation de sucre. Les résultats indiquent que nous ne rejetons pas l’hypothèse nulle (p = 0,6308 ; df = 9), ce qui suggère une absence de lien de dépendance significatif entre ces deux variables. Toutefois, au vu du degré d’indépendance élevé, la robustesse de ce résultat peut être remise en question.
+Un test du chi² d'indépendance a tout d'abord été appliqué pour évaluer la relation entre le BMI et la consommation de sucre. Les résultats indiquent que nous ne rejetons pas l'hypothèse nulle (p = 0,6308 ; df = 9), ce qui suggère une absence de lien de dépendance significatif entre ces deux variables. Toutefois, au vu du degré d'indépendance élevé, la robustesse de ce résultat peut être remise en question.
 
-Ensuite, un t-test a été utilisé pour comparer les moyennes de BMI entre les hommes et les femmes. La p-value, largement supérieure au seuil de 5 %, ne permet pas de rejeter l’hypothèse nulle, ce qui indique qu’aucune différence significative n’a été observée entre les deux genres. Biologiquement, cela suggère que le genre ne semble pas, de manière générale, influencer le BMI.
+Ensuite, un t-test a été utilisé pour comparer les moyennes de BMI entre les hommes et les femmes. La p-value, largement supérieure au seuil de 5 %, ne permet pas de rejeter l'hypothèse nulle, ce qui indique qu'aucune différence significative n'a été observée entre les deux genres. Biologiquement, cela suggère que le genre ne semble pas, de manière générale, influencer le BMI.
 
-Par ailleurs, une ANOVA à un facteur a été menée afin d’analyser l’effet du type de régime alimentaire (carnivore, omnivore ou végétarien) sur le BMI. Là encore, l’hypothèse nulle n’a pas pu être rejetée au seuil de 5 %, ce qui signifie qu’aucune différence significative entre les groupes alimentaires n’a été détectée concernant le BMI.
+Par ailleurs, une ANOVA à un facteur a été menée afin d'analyser l'effet du type de régime alimentaire (carnivore, omnivore ou végétarien) sur le BMI. Là encore, l'hypothèse nulle n'a pas pu être rejetée au seuil de 5 %, ce qui signifie qu'aucune différence significative entre les groupes alimentaires n'a été détectée concernant le BMI.
 
-Enfin, une ANOVA à deux facteurs a été réalisée pour étudier l’influence combinée du sexe et du tabagisme sur le BMI. Les p-values obtenues pour les deux facteurs (respectivement 0,806 et 0,280) étant supérieures au seuil critique, nous concluons qu’aucun de ces facteurs ne présente d’effet significatif sur le BMI dans notre échantillon.
-# Discussion et conclusions
+Enfin, une ANOVA à deux facteurs a été réalisée pour étudier l'influence combinée du sexe et du tabagisme sur le BMI. Les p-values obtenues pour les deux facteurs (respectivement 0,806 et 0,280) étant supérieures au seuil critique, nous concluons qu'aucun de ces facteurs ne présente d'effet significatif sur le BMI dans notre échantillon.
+
+### Discussion et conclusions
 
 <!--% Reprenez les résultats obtenus, discutez-les d'un point de vue biologique en 4 à 5 paragraphes et concluez votre travail. Vous pouvez les mettre également en relation avec vos recherches bibliographiques dans cette section. -->
 
-...Vos conclusions ici...
+Suite à ces analyses, nous pouvons en conclure plusieurs choses :
+
+Premièrement, lors de la description des données nous avons pu voir des tendance que prenait les variables, comme le fait que les hommes ont généralement une masse plus importante mais un tour de taille plus petit que les femmes ou bien que les végétariens sont relativement moins massif que les carnivores ou omnivores mais cependant impossible de déduire si cela ne sont que des tendances ou bien des conséquences de différents facteurs.
+
+Les résultats suivant sont quand à eux bien plus étonnant car lors des différents test nous n'avons trouvé aucuns lien significatif entre le facteurs analysés et l'indice de masse corporel. Pour le sucre, cela peut encore se comprendre car en effet ils sont dit sucres rapides et donc ne sont pas beaucoup stockés par l'organisme. Nous avons pu prouver également que le genre du sujet n'influence pas significativement son BMI ce qui encore une fois peut parraitre logique car le BMI est un facteur universel et donc ne dois pas être influencé par le genre.
+
+Les tests anova n'ont pas aider non plus à déterminer si les facteurs du régime alimentaire ou le tabagisme peuvent influencer significativement le BMI. Pour le tabagisme, c'est logique car de nombreux effets néfastes sont connus par rapport aux poumons mais aucuns n'influence la masse corporelle. Cependant pour le régime alimentaire, nous restons septique car selon l'indice de conicité le régime alimentaire est censé influencer le BMI.
+
+Après toutes ces analyses et du peu de résultats concluants que nous avons obtenu, nous pouvons nous poser une série de questions. En effet, on pourrait se demander si lors de l'échantillonnage, il n'y a pas eu de fausses informations qui se sont glissées à travers les différents relevés comme des sujets qui ne sont pas honnête ou bien des facteurs trop large qui introduisent des catégories imprécises pour les différentes personnes interrogées. On peut également se demander si l'échantillon testé est assez grand ou si, malheuresement pour cette expérience, nous n'avons pas évaluer un groupe assez représentatif.
+
+Bien que nos résultats ne nous ont pas permis de prouver un lien direct entre le BMI et les facteurs analysés, nous pouvons tout de même conclure qu'il n'est pas significativement influencé par le fait de fumer, le genre ou bien la quantité de sucre consommée. Pour le régime alimentaire des études plus approfondies sont nécessaire pour confirmer ou non sa corrélation avec le BMI comme prédit par l'indice de conicité.
 
 <!--# Important : ce document doit compiler SANS ERREURS avec le bouton 'Rendu' sinon le travail sera sanctionné lourdement. La compilation du document Quarto est maintenant considérée comme acquise. -->
 
 # Référence
 
-obésité proportion : 
-https://www.sciensano.be/fr/resultats-de-lenquete-nationale-de-consommation-alimentaire-2022-2023/statut-ponderal-et-troubles-du-comportement-alimentaire/surpoids-et-obesite-imc#:~:text=Hommes,-Your%20browser%20does&text=47%20%25%20de%20la%20population%20%C3%A2g%C3%A9e,un%20poids%20consid%C3%A9r%C3%A9%20comme%20normal.
-obésité définition :
-https://www.citadelle.be/Services/Services-medicaux/Centre-de-la-chirurgie-bariatrique-et-nutrition/Q-est-ce-que-l-obesite
-informations supplémentaires pour l'introduction : @incollection{lebacq2015,
-  author = {Lebacq, Thérésa},
-  title = {Anthropom{'e}trie ({IMC}, tour de taille et ratio tour de taille/taille).},
-  year = {2015},
-  booktitle = {Enqu{^e}te de consommation alimentaire 2014-2015},
-  volume = {1},
-  publisher = {WIV-ISP},
-  address = {Bruxelles}
-indice de conicité:
-https://www.sciencedirect.com/science/article/pii/S0870255117301348?via%3Dihub 
-infos et données sur rth : https://www.cregg.org/commissions/motricite-et-nutrition/outils/#:~:text=RTH%20%3A%20rapport%20taille%20sur%20hanche,%2C85%20et%200%2C95.
-infos et données sur rtt: 
-https://www.sciensano.be/fr/resultats-de-lenquete-nationale-de-consommation-alimentaire-2022-2023/statut-ponderal-et-troubles-du-comportement-alimentaire/ratio-tour-de-taille
-<!--% N'indiquez rien ci-dessous. Quarto se chargera de rajouter vos références bibliographiques automatiquement. -->
+obésité proportion : https://www.sciensano.be/fr/resultats-de-lenquete-nationale-de-consommation-alimentaire-2022-2023/statut-ponderal-et-troubles-du-comportement-alimentaire/surpoids-et-obesite-imc#:\~:text=Hommes,-Your%20browser%20does&text=47%20%25%20de%20la%20population%20%C3%A2g%C3%A9e,un%20poids%20consid%C3%A9r%C3%A9%20comme%20normal. obésité définition : https://www.citadelle.be/Services/Services-medicaux/Centre-de-la-chirurgie-bariatrique-et-nutrition/Q-est-ce-que-l-obesite informations supplémentaires pour l'introduction : @incollection{lebacq2015, author = {Lebacq, Thérésa}, title = {Anthropom{'e}trie ({IMC}, tour de taille et ratio tour de taille/taille).}, year = {2015}, booktitle = {Enqu{\^e}te de consommation alimentaire 2014-2015}, volume = {1}, publisher = {WIV-ISP}, address = {Bruxelles} indice de conicité: https://www.sciencedirect.com/science/article/pii/S0870255117301348?via%3Dihub infos et données sur rth : https://www.cregg.org/commissions/motricite-et-nutrition/outils/#:\~:text=RTH%20%3A%20rapport%20taille%20sur%20hanche,%2C85%20et%200%2C95. infos et données sur rtt: https://www.sciensano.be/fr/resultats-de-lenquete-nationale-de-consommation-alimentaire-2022-2023/statut-ponderal-et-troubles-du-comportement-alimentaire/ratio-tour-de-taille <!--% N'indiquez rien ci-dessous. Quarto se chargera de rajouter vos références bibliographiques automatiquement. -->
