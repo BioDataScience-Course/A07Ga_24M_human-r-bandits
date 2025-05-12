@@ -31,8 +31,14 @@ SciViews::R("infer", lang = "fr")
 
 <!--# Ce projet porte sur la santé humaine liée à l'obésité, à la façon de se nourrir et aux activités réalisées (plus ou moins sédentaire ou actif) ... Réalisez des recherches bibliographiques afin d'avoir une vision précise de la thématique. Existe-t-il des indicateurs calculables pour quantifier l'état de santé d'un individu, par exemple ? Naturellement, ces indicateurs doivent être calculables sur bases des variables mesurées dans votre jeu de données. Focalisez-vous donc sur ces variables-là. -->
 
-Votre introduction ici
+Introduction : 
 
+Pour commencer, l'obésité est une problématique de santé qui concerne un nombre important d'individus dans la population mondiale. La proportion de personnes atteint d'obésité augmente petit à petit avec l'age, dans la catégorie d'individus de plus de 65 ans on un intervalle de personnes obéses compris entee 20 et 30% selon le sexe. En 2014, L'OMS a recensé plus de 1,9 milliards de personnes en surpoids et parmi elle 600 millions avaient dépassé le seuil d'obésité. L'obésité est donc un sujet très important à étudier et à comprendre les mécanismes qui compose cela. 
+L'obésité se définit comme une accumulation excessive de masse grasse corporelle pouvant nuire à la santé, elle peut être associer à de nombreuses complications comme le diabète de type 2, affections cardio-vasculaires, problèmes articulaires,...L'excès de graisse corporelle dans la graisse abdominale est associé à une augmentation de la pression artérielle et du risque d'hyperinsulénémie ce qui engendre un développement de maladies chroniques. 
+
+Pou étudier l'obésité, on peut prendre en compte de nombreux facteurs ce qui permet de recourir à de multiples indicateurs de santé tels que l'indice de masse corporelle (BMI), le rapport taille/hanche, le rapport tour de taille/taille ou encore l'indice de cognicité. Ces indicateurs permettent de quantifier objectivement la condition physique et l'état de santé d'un individu en fonction des donnés disponibles
+
+Ici dans le cas de notre étude de biométrie, nous avons choisi d'analyser celle-ci grâce aux données d'individus du Hainaut pour analyser les causes de l'obésité à travers plusieurs variables mesurées dans notre jeu de données. Et à partir de nos multiples analyses du jeu de données, nous allons mettre en évidence des pistes d'analyses utiles pour mieux comprendre la problématique de l'obésité et des facteurs qui le composent et l'influencent 
 
 # But
 
@@ -62,6 +68,13 @@ Les données ont été compilées dans un fichier Google sheet partagé par tout
 
 <!--# N'oubliez pas que ce document doit pouvoir compiler indépendamment du reste. Cela implique que vous ajoutiez un chunk d'importation des données et que vous recalculiez tout ce qui doit l'être... Par contre, un simple copier-coller de toute la partie résultats du bloc-notes ne sera pas considéré comme un travail réalisé : vous devez sélectionner, et éventuellement remanier un peu le code, pour ne conserver que ce qui est utile ici. -->
 
+
+```{r import}
+biometry <- read$rds("data/biometry.rds")
+
+```
+
+
 ...Vos descriptions des données ici...
 
 ## Tests d'hypothèses
@@ -79,5 +92,16 @@ Les données ont été compilées dans un fichier Google sheet partagé par tout
 <!--# Important : ce document doit compiler SANS ERREURS avec le bouton 'Rendu' sinon le travail sera sanctionné lourdement. La compilation du document Quarto est maintenant considérée comme acquise. -->
 
 # Référence
+
+obésité proportion : https://www.sciensano.be/fr/resultats-de-lenquete-nationale-de-consommation-alimentaire-2022-2023/statut-ponderal-et-troubles-du-comportement-alimentaire/surpoids-et-obesite-imc#:~:text=Hommes,-Your%20browser%20does&text=47%20%25%20de%20la%20population%20%C3%A2g%C3%A9e,un%20poids%20consid%C3%A9r%C3%A9%20comme%20normal.
+obésité définition : https://www.citadelle.be/Services/Services-medicaux/Centre-de-la-chirurgie-bariatrique-et-nutrition/Q-est-ce-que-l-obesite
+informations supplémentaires pour l'introduction : @incollection{lebacq2015,
+  author = {Lebacq, Thérésa},
+  title = {Anthropom{'e}trie ({IMC}, tour de taille et ratio tour de taille/taille).},
+  year = {2015},
+  booktitle = {Enqu{^e}te de consommation alimentaire 2014-2015},
+  volume = {1},
+  publisher = {WIV-ISP},
+  address = {Bruxelles}
 
 <!--% N'indiquez rien ci-dessous. Quarto se chargera de rajouter vos références bibliographiques automatiquement. -->
